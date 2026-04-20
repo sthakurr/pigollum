@@ -1,6 +1,7 @@
 README.md
 setup.py
 src/pigollum/__init__.py
+src/pigollum/query_qwen.py
 src/pigollum.egg-info/PKG-INFO
 src/pigollum.egg-info/SOURCES.txt
 src/pigollum.egg-info/dependency_links.txt
@@ -12,6 +13,7 @@ src/pigollum/principle/__init__.py
 src/pigollum/principle/buffer.py
 src/pigollum/principle/extractor.py
 src/pigollum/principle/journal.py
+src/pigollum/principle/planner.py
 src/pigollum/principle/scorer.py
 src/pigollum/utils/__init__.py
 src/pigollum/utils/llm_client.py

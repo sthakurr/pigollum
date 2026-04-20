@@ -1,0 +1,53 @@
+name: pigollum
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+
+  # ── PyTorch (CUDA 12.1) ───────────────────────────────────────────────────
+  # Change the cudatoolkit version to match your driver if needed.
+  # For CPU-only: replace with `cpuonly` and remove nvidia channel.
+  # - pytorch::pytorch>=2.1
+  # - pytorch::torchvision
+  # - pytorch::torchaudio
+  # - nvidia::cudatoolkit=12.1
+
+  # ── Scientific stack ──────────────────────────────────────────────────────
+  - numpy>=1.24
+  - pandas>=2.0
+  - scipy>=1.11
+
+  # ── Pip-installed packages ────────────────────────────────────────────────
+  - pip:
+      # ── Bayesian Optimisation ──────────────────────────────────────────
+      - botorch>=0.11          # GP surrogates + multi-objective acquisition
+      - gpytorch>=1.11         # GP kernel engine (botorch dependency)
+
+      # ── LLM / transformer stack ────────────────────────────────────────
+      - transformers>=4.40     # HuggingFace model hub (ESM-2, Qwen, …)
+      - accelerate>=0.30       # device placement for HF models
+      - peft>=0.10             # LoRA fine-tuning of ESM-2 featurizer
+      - tokenizers>=0.19       # fast tokenisers (HF dep)
+
+      # ── Sentence embeddings (principle similarity) ─────────────────────
+      - sentence-transformers>=2.7
+
+      # ── LLM API clients ────────────────────────────────────────────────
+      # OpenAI-compatible (OpenAI, Together, Groq, vLLM, Ollama, Gemini)
+      - openai>=1.30
+
+      # ── Experiment tracking ────────────────────────────────────────────
+      - wandb>=0.17            # optional — disable with wandb.enabled: false
+
+      # ── Utilities ──────────────────────────────────────────────────────
+      - pyyaml>=6.0
+      - tqdm>=4.66
+      - einops>=0.7            # tensor manipulation (LoRA featurizer)
+
+      # ── PiGollum itself ────────────────────────────────────────────────
+      - -e .                   # installs src/pigollum in editable mode
