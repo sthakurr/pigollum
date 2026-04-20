@@ -1,0 +1,199 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# PiGollum – FLIP2 / TrpB Experiment Configuration
+#
+# Single-objective BO: maximise fitness (target) on the FLIP2 trpB one_to_many
+# benchmark using principle-guided BO with GP as experiment agent.
+#
+# Dataset: ~/gollum/data/flip2/trpB/
+#   one_to_many_train.csv  (labelled)
+#
+# Backbone: ESM-2 (650M) tokenisation → DualDeepGP with LoRA fine-tuning
+# Principle guidance: sentence-transformers (all-MiniLM-L6-v2) + LLM
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+data:
+  class_path: gollum.data.module.BaseDataModule
+  init_args:
+    # Paths relative to --data_root (default: ../gollum/)
+    data_path: data/flip2/trpB/one_to_many_train.csv
+    # test_data_path: data/flip2/enzymes_sequence_10k.csv
+    # round_2_data_path: data/flip2/enzymes_sequence_round_2.csv
+    input_column: sequence
+    target_column: target
+    maximize: true
+    exclude_top: false
+    normalize_input: standard_scaling
+    featurizer:
+      class_path: gollum.featurization.base.Featurizer
+      init_args:
+        representation: get_tokens
+        model_name: facebook/esm2_t33_650M_UR50D
+        pooling_method: cls
+    initializer:
+      class_path: gollum.initialization.initializers.BOInitializer
+      init_args:
+        method: true_random
+        n_clusters: 10
+
+# ── Surrogate model ───────────────────────────────────────────────────────────
+surrogate_model:
+  class_path: gollum.surrogate_models.gp.DeepGP
+  init_args:
+    likelihood:
+      class_path: gpytorch.likelihoods.GaussianLikelihood
+      init_args:
+        noise_prior: null
+        noise_constraint: null
+        batch_shape:
+          class_path: torch.Size
+    covar_module:
+      class_path: gpytorch.kernels.ScaleKernel
+      init_args:
+        base_kernel:
+          class_path: gpytorch.kernels.MaternKernel
+          init_args:
+            nu: 2.5
+            ard_num_dims: null
+            batch_shape: null
+            active_dims: null
+            lengthscale_prior: null
+            lengthscale_constraint: null
+        outputscale_prior: null
+        outputscale_constraint: null
+        ard_num_dims: null
+        batch_shape: null
+        active_dims: null
+        lengthscale_prior: null
+        lengthscale_constraint: null
+    mean_module:
+      class_path: gpytorch.means.ConstantMean
+    standardize: true
+    normalize: false
+    initial_noise_val: 1.0
+    noise_constraint: 1.0e-04
+    initial_outputscale_val: 1.0
+    initial_lengthscale_val: 1.0
+    gp_lr: 0.2
+    ft_lr: 0.002
+    scale_embeddings: true
+    train_mll_additionally: false
+    finetuning_model:
+      class_path: gollum.featurization.deep.LLMFeaturizer 
+      init_args:
+        projection_dim: 64
+        from_top: true
+        target_ratio: 0.25
+        model_name: t5-base
+        pooling_method: average
+        normalize_embeddings: false
+        lora_dropout: 0.2
+        trainable: true
+
+# ── Acquisition function ──────────────────────────────────────────────────────
+acquisition:
+  class_path: botorch.acquisition.analytic.ExpectedImprovement
+  init_args:
+    maximise: true
+
+# ── BO loop ───────────────────────────────────────────────────────────────────
+bo:
+  class_path: gollum.bo.optimizer.BotorchOptimizer
+  init_args:
+    batch_strategy: "kriging"
+    batch_size: 1
+
+n_iters: 10
+seed: 42
+
+# ── PiGollum principle-guidance settings ──────────────────────────────────────
+pigollum:
+  # Weight of principle scores vs BO acquisition scores (α)
+  # 0.0 = pure BO  |  1.0 = pure principle guidance
+  principle_weight: 0.3
+
+  # How to schedule α as more principles accumulate
+  # Options: "constant" | "linear" | "step"
+  principle_weight_schedule: linear
+
+  # Minimum principles before guidance activates
+  min_principles_for_guidance: 3
+
+  # ── Inner PiFlow loop settings ────────────────────────────────────────────
+  # Number of hypothesis-validation cycles per BO iteration.
+  # Each step: Planner → LLM hypothesis → GP validation → principle extraction
+  n_inner_steps: 5
+
+  # Number of candidate sequences to consider per inner step.
+  # Selected by GP uncertainty (explore) or GP mean (refine/validate).
+  candidate_sample_size: 50
+
+  # ── Warm-start settings ───────────────────────────────────────────────────
+  # Whether to run the warm-start (broad → refined principles)
+  warm_start_principles: true
+
+  # Number of broad domain-knowledge principles to generate
+  n_broad_principles: 3
+
+  # ── Exploration-exploitation trade-off ────────────────────────────────────
+  # λ in PiFlow: exploration vs exploitation in principle scoring
+  lambda_factor: 0.5
+
+  # Plateau detection thresholds
+  plateau_threshold: 0.1
+  plateau_count: 3
+
+  # Sentence-transformers model for principle/candidate embeddings
+  embedding_model: all-MiniLM-L6-v2
+
+  # Task context injected into LLM prompts
+  # task_context: >
+  #   Biocatalytic enzyme engineering: design amino acid sequences to maximise
+  #   yield and enantioselectivity for an asymmetric transformation.
+
+  # ── Inference backend ──────────────────────────────────────────────────────
+  # backend: "hf"  → local HuggingFace model (default when no API key present)
+  # backend: "api" → OpenAI-compatible API endpoint
+  backend: hf
+
+  # Local HF model for hypothesis + principle extraction.
+  hf_model_name: Qwen/Qwen2.5-7B-Instruct
+  hf_torch_dtype: bfloat16
+
+  # API settings (only needed when backend: "api")
+  llm_api_key: null
+  llm_base_url: null
+  llm_model: null
+
+  # ── Gemini settings (only needed when backend: "gemini") ───────────────────
+  # Set backend: gemini and provide your key here or via GEMINI_API_KEY env var.
+  # Supported models: gemini-2.0-flash, gemini-1.5-flash, gemini-1.5-pro, etc.
+  # No extra SDK required — uses the OpenAI-compatible Gemini REST endpoint.
+  #
+  # backend: gemini
+  # llm_api_key: null          # or set GEMINI_API_KEY env var
+  # llm_model: gemini-2.0-flash
+
+# ── Weights & Biases logging ──────────────────────────────────────────────────
+# Enable with --wandb_project <name> on the CLI, or set enabled: true here.
+# Logs per-iteration: best-so-far objectives, action type, n_principles,
+# directional hypothesis text, planner/scorer agent responses,
+# and a principle-scores table (reward, exploration, exploitation, final).
+wandb:
+  enabled: false
+  project: pigollum
+  run_name: null     # auto-generated by W&B if null
+  tags: []
+
+  # ── Post-acquisition 3-agent pipeline ────────────────────────────────────
+  # After acquisition scores are computed, 3 LLM agents run before greedy select:
+  #   Agent 1 (Planner)    – re-ranks principles given new GP-validated evidence
+  #   Agent 2 (Hypothesis) – generates a directional hypothesis for the next step
+  #   Agent 3 (Scorer)     – re-ranks top-k candidates by hypothesis alignment
+  enable_post_acq_agents: true
+
+  # How many top-k candidates (by acquisition score) to pass to the Scorer agent
+  top_k_for_rescoring: 50
+
+  # Whether to include oracle evaluation history in the Hypothesis agent's context
+  include_experimental_data: true

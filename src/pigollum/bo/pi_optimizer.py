@@ -33,18 +33,13 @@ The ``principle_weight`` (α) can be scheduled to increase as more principles
 accumulate, gradually shifting trust from pure BO toward principle guidance.
 """
 import logging
-import sys
-import os
 from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
 from torch import Tensor
 
-# Add gollum to path (it lives in pigollum/gollum-2)
-_GOLLUM_SRC = os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "gollum-2", "src")
-if os.path.isdir(_GOLLUM_SRC):
-    sys.path.insert(0, os.path.abspath(_GOLLUM_SRC))
+# gollum package lives alongside pigollum under src/; no extra path needed
 
 from gollum.bo.optimizer import BotorchOptimizer
 

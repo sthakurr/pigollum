@@ -31,7 +31,7 @@ A **post-acquisition 3-agent pipeline** (Planner → Hypothesis → Scorer) furt
 
   PER BO ITERATION
   ─────────────────────────────────────────────────────────────────────────
-  1. Train DualDeepGP on (train_x, train_y)
+  1. Train DeepGP on (train_x, train_y)
   2. GP predicts means + stds for all candidates   ← Experiment Agent
 
   3. Inner PiFlow loop  (n_inner_steps × per iteration)
@@ -72,7 +72,7 @@ A **post-acquisition 3-agent pipeline** (Planner → Hypothesis → Scorer) furt
 
 - CUDA-capable GPU (A6000 or equivalent recommended for local LLM inference)
 - [Conda](https://docs.conda.io/en/latest/miniconda.html) / [Mamba](https://github.com/mamba-org/mamba)
-- The `gollum-2` repository cloned as a sibling directory
+- The `gollum` repository cloned as a sibling directory (`~/gollum/`)
 
 ### Create the environment
 
@@ -88,10 +88,10 @@ conda activate pigollum
 
 ### Data
 
-Place the biocat dataset under `gollum-2/data/biocat/`:
+Place the biocat dataset under `~/gollum/data/biocat/`:
 
 ```
-gollum-2/
+~/gollum/
 └── data/
     └── biocat/
         ├── enzymes_sequence_yield_ee_processed_ddg_yeo-johnson.csv   # 200 labelled
@@ -108,7 +108,7 @@ gollum-2/
 conda activate pigollum
 python run_experiment.py \
   --config configs/biocat_pigollum.yaml \
-  --data_root gollum-2 \
+  --data_root ../gollum \
   --output_dir results/biocat_pigollum \
   --n_iters 10
 ```

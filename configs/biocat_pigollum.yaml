@@ -5,7 +5,7 @@
 # enantioselectivity (ddg_scaled) using principle-guided multi-objective BO
 # with GP as experiment agent (PiFlow-style inner loop).
 #
-# Dataset: gollum-2/data/biocat/
+# Dataset: ~/gollum/data/biocat/
 #   enzymes_sequence_yield_ee_processed_ddg_yeo-johnson.csv  (200 labelled)
 #   enzymes_sequence_10k.csv                                  (10k candidates)
 #
@@ -17,7 +17,7 @@
 data:
   class_path: gollum.data.module.BaseDataModule
   init_args:
-    # Paths relative to --data_root (default: gollum-2/)
+    # Paths relative to --data_root (default: ../gollum/)
     data_path: data/biocat/enzymes_sequence_yield_ee_processed_ddg_yeo-johnson.csv
     test_data_path: data/biocat/enzymes_sequence_10k.csv
     round_2_data_path: data/biocat/enzymes_sequence_round_2.csv
@@ -43,10 +43,10 @@ data:
 
 # ── Surrogate model ───────────────────────────────────────────────────────────
 surrogate_model:
-  class_path: gollum.surrogate_models.gp_mo_multilayer.DualDeepGP
+  class_path: gollum.surrogate_models.gp.DeepGP
   init_args:
     finetuning_model:
-      class_path: gollum.featurization.deep_multilayer.LLMFeaturizer
+      class_path: gollum.featurization.deep.LLMFeaturizer
       init_args:
         input_dim: 1280          # ESM-2 t33 hidden size
         projection_dim: 32
@@ -60,7 +60,6 @@ surrogate_model:
     ft_lr: 0.002
     gp_lr: 0.1
     noise_constraint: 1.0e-5
-    device: cuda           # change to "cpu" if no GPU available
 
 # ── Acquisition function ──────────────────────────────────────────────────────
 acquisition:

@@ -1,2 +1,7 @@
 .claude/
 .understand-anything/
+src/gollum/__pycache__/
+*__pycache__/
+src/pigollum/bo/__pycache__/
+src/pigollum/principle/__pycache__/
+src/pigollum.egg-info/

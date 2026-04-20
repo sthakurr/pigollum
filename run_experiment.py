@@ -62,16 +62,12 @@ except ImportError:
     _wandb_module = None
     _WANDB_AVAILABLE = False
 
-# ── gollum path setup ────────────────────────────────────────────────────────
+# ── path setup ────────────────────────────────────────────────────────────────
+# Both gollum and pigollum packages live under src/
 _HERE = Path(__file__).parent.resolve()
-_GOLLUM_SRC = _HERE / "gollum-2" / "src"
-if _GOLLUM_SRC.is_dir():
-    sys.path.insert(0, str(_GOLLUM_SRC))
-
-# ── pigollum path setup ───────────────────────────────────────────────────────
-_PIGOLLUM_SRC = _HERE / "src"
-if _PIGOLLUM_SRC.is_dir():
-    sys.path.insert(0, str(_PIGOLLUM_SRC))
+_SRC = _HERE / "src"
+if _SRC.is_dir():
+    sys.path.insert(0, str(_SRC))
 
 from gollum.data.module import BaseDataModule
 from gollum.utils.config import instantiate_class
@@ -200,8 +196,12 @@ def log_iteration(
 
     best_so_far = train_y_np.max(axis=0)
 
-    dominated_mask = is_non_dominated(torch.tensor(train_y_np))
-    pareto_size = int(dominated_mask.sum().item())
+    multi_obj = len(objective_names) > 1
+    if multi_obj:
+        dominated_mask = is_non_dominated(torch.tensor(train_y_np))
+        pareto_size = int(dominated_mask.sum().item())
+    else:
+        pareto_size = None
 
     # Count principles by source
     all_principles = principle_buffer.get_all()
@@ -215,8 +215,10 @@ def log_iteration(
     print(f"{'─'*60}")
     for i, obj in enumerate(objective_names):
         new_vals = new_y_np[:, i] if new_y_np.ndim > 1 else new_y_np
-        print(f"  {obj}: new={new_vals[0]:.4f}  best_so_far={best_so_far[i]:.4f}")
-    print(f"  Pareto front size: {pareto_size}")
+        bsf = best_so_far[i] if hasattr(best_so_far, "__len__") else float(best_so_far)
+        print(f"  {obj}: new={new_vals[0]:.4f}  best_so_far={bsf:.4f}")
+    if multi_obj:
+        print(f"  Pareto front size: {pareto_size}")
     print(f"  Principles: {principle_buffer.size} total "
           f"(broad={n_broad}, refined={n_refined}, gp={n_gp}, oracle={n_oracle})")
     if principle_buffer.size > 0:
@@ -229,7 +231,7 @@ def log_iteration(
         "iteration": iteration,
         "newly_selected_sequences": newly_selected_seqs,
         "newly_selected_y": new_y_np.tolist(),
-        "best_so_far": best_so_far.tolist(),
+        "best_so_far": best_so_far.tolist() if hasattr(best_so_far, "tolist") else float(best_so_far),
         "pareto_size": pareto_size,
         "n_principles": principle_buffer.size,
         "n_principles_by_source": {
@@ -341,7 +343,7 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
     # ------------------------------------------------------------------
     # 1. Data module
     # ------------------------------------------------------------------
-    logger.info("Loading biocat dataset…")
+    logger.info("Loading dataset…")
     dm = build_data_module(cfg, data_root)
 
     input_col = cfg["data"]["init_args"]["input_column"]
@@ -611,8 +613,8 @@ def main():
         help="Path to YAML config file",
     )
     parser.add_argument(
-        "--data_root", default="gollum-2",
-        help="Root directory containing the data/ folder (e.g. gollum-2/)",
+        "--data_root", default="../gollum",
+        help="Root directory containing the data/ folder (e.g. ../gollum/)",
     )
     parser.add_argument(
         "--output_dir", default="results/biocat_pigollum",
