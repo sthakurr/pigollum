@@ -1,36 +1,30 @@
 """
-run_experiment.py – PiGollum experiment entry point for the biocat dataset.
-
-Redesigned architecture: GP acts as the experiment agent (oracle) that
-validates LLM-generated hypotheses in an inner PiFlow loop.
+run_experiment.py – PiGollum experiment entry point.
 
 Usage
 -----
     conda run -n gollum python run_experiment.py --config configs/biocat_pigollum.yaml
 
-Optional LLM integration (principle extraction via GPT/local LLM):
+Optional LLM integration:
     export PIGOLLUM_LLM_API_KEY=sk-...
     export PIGOLLUM_LLM_BASE_URL=http://localhost:11434/v1
     export PIGOLLUM_LLM_MODEL=gpt-4o-mini
 
 Architecture
 ────────────
-    Warm-start:
+    Warm-start (once):
         1. LLM generates broad domain-knowledge principles
-        2. Retrieve relevant training examples for each
-        3. LLM refines principles with supporting/contradicting evidence
+        2. LLM refines each principle with supporting/contradicting evidence
 
     Per BO iteration:
-        1. Train GP surrogate
+        1. Fine-tune LLM-GP on (train_x, train_y)
         2. GP predicts all candidates (means + stds)
-        3. Inner PiFlow loop (n_inner_steps):
-           a. Planner suggests action (explore/refine/validate)
-           b. LLM generates predictive hypotheses for selected candidates
-           c. GP validates hypotheses (provides predictions)
-           d. Extract principles from (hypothesis, GP prediction)
-        4. Combine acquisition scores + principle scores
-        5. Select candidate for real oracle evaluation
-        6. Extract principle from real outcome
+        3. Compute acquisition scores (GP mean / UCB / std per action type)
+        4. 3-agent pipeline (Planner → Hypothesis → Scorer):
+           a. Planner takes (pk, yk) — re-ranks principles with EXPLORE/VALIDATE/REFINE actions
+           b. Hypothesis generates directional hypothesis from action-annotated principles
+           c. Scorer re-ranks top-k candidates; hybrid score = acq + LLM alignment
+        5. Greedy selection → oracle evaluation → principle extraction
 
 Outputs
 -------
@@ -78,7 +72,6 @@ from pigollum.bo.pi_optimizer import PiGollumOptimizer
 from pigollum.principle.buffer import PrincipleBuffer
 from pigollum.principle.extractor import PrincipleExtractor
 from pigollum.principle.scorer import PrincipleScorer
-from pigollum.principle.planner import Planner
 from pigollum.principle.journal import PrincipleJournal
 
 warnings.filterwarnings("ignore")
@@ -124,8 +117,6 @@ def build_pi_optimizer(cfg: dict, extractor: Optional[PrincipleExtractor]) -> Pi
     min_principles = pi_cfg.get("min_principles_for_guidance", 3)
     weight_schedule = pi_cfg.get("principle_weight_schedule", None)
     embedding_model = pi_cfg.get("embedding_model", "all-MiniLM-L6-v2")
-    n_inner_steps = pi_cfg.get("n_inner_steps", 5)
-    candidate_sample_size = pi_cfg.get("candidate_sample_size", 10)
 
     device_str = surr_cfg.get("init_args", {}).get("device", "cpu")
 
@@ -137,12 +128,6 @@ def build_pi_optimizer(cfg: dict, extractor: Optional[PrincipleExtractor]) -> Pi
         device=device_str,
     )
 
-    planner = Planner(
-        n_inner_steps=n_inner_steps,
-        candidate_sample_size=candidate_sample_size,
-        task_context=pi_cfg.get("task_context", ""),
-    )
-
     batch_size = bo_cfg.get("init_args", {}).get("batch_size", 1)
 
     optimizer = PiGollumOptimizer(
@@ -152,11 +137,8 @@ def build_pi_optimizer(cfg: dict, extractor: Optional[PrincipleExtractor]) -> Pi
         principle_weight=principle_weight,
         min_principles_for_guidance=min_principles,
         principle_weight_schedule=weight_schedule,
-        n_inner_steps=n_inner_steps,
-        candidate_sample_size=candidate_sample_size,
         extractor=extractor,
         scorer=scorer,
-        planner=planner,
         enable_post_acq_agents=pi_cfg.get("enable_post_acq_agents", False),
         top_k_for_rescoring=pi_cfg.get("top_k_for_rescoring", 20),
         include_experimental_data=pi_cfg.get("include_experimental_data", True),
@@ -362,18 +344,7 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
     # 2. PrincipleExtractor (wraps LLM)
     # ------------------------------------------------------------------
     pi_cfg = cfg.get("pigollum", {})
-    task_context = pi_cfg.get(
-        "task_context",
-        (
-            "Biocatalytic enzyme engineering: optimise amino acid sequences (enzymes) to maximise "
-            "reaction yield and enantioselectivity (ddg_scaled) for a target asymmetric "
-            "transformation: CC(C(=O)ON1C(=O)C2=C(C=CC=C2)C1=O)C1=CC=CC=C1 + TMSCN --> CC(C#N)C1=CC=CC=C1. "
-            "The sequences are not really related to each other as we are in an exploration phase but we need "
-            "to train an intelligent GP that can learn the defining principles for this task from the "
-            "weak signal we have. We need the GP to have enough information to rank a subset of sequences "
-            "to perform virtual screening. The top-ranked sequences will go further for experimental validation."
-        ),
-    )
+    task_context = pi_cfg.get("task_context", "")
 
     _dtype_map = {
         "bfloat16": torch.bfloat16,
@@ -454,7 +425,7 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
         )
 
     # ------------------------------------------------------------------
-    # 6. Main BO loop with inner PiFlow loop
+    # 6. Main BO loop
     # ------------------------------------------------------------------
     for iteration in range(1, n_iters + 1):
         logger.info("\n=== Iteration %d / %d ===", iteration, n_iters)
@@ -472,8 +443,6 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
         ]
 
         # --- Suggest next experiments ---
-        # This now runs: train GP → GP predictions → inner PiFlow loop →
-        # acquisition + principle scores → selection
         candidates = optimizer.suggest_next_experiments(
             train_x=train_x,
             train_y=train_y,

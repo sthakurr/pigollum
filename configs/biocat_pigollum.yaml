@@ -27,7 +27,7 @@ data:
       - ddg_scaled       # enantioselectivity proxy (maximise)
     maximize: [true, true]
     exclude_top: false
-    normalize_input: standard_scaling
+    normalize_input: original
     featurizer:
       class_path: gollum.featurization.base.Featurizer
       init_args:

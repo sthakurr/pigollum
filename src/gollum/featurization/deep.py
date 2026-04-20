@@ -1,3 +1,4 @@
+import logging
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -8,6 +9,8 @@ from gollum.featurization.utils.pooling import average_pool, last_token_pool, we
 from gollum.featurization.text import get_model_and_tokenizer
 from gollum.featurization.utils.layers import get_target_layers
 from torch.nn import init
+
+_logger = logging.getLogger(__name__)
 
 class BaseNNFeaturizer(nn.Module):
     """
@@ -83,7 +86,7 @@ class LLMFeaturizer(BaseNNFeaturizer):
         from_top: bool = True,
     ):
         super().__init__(input_dim=input_dim, projection_dim=projection_dim)
-        print(model_name, "for LLM")
+        _logger.info("LLMFeaturizer: loading model '%s' (config input_dim=%d)", model_name, input_dim)
         self._uses_esmc = "esmc" in model_name.lower() or "evolutionaryscale/esmc" in model_name.lower()
         self.llm, self.tokenizer = get_model_and_tokenizer(model_name, "cuda")
         if trainable:
@@ -111,16 +114,43 @@ class LLMFeaturizer(BaseNNFeaturizer):
             self.llm.requires_grad_(False)
 
         self.trainable = trainable
-        self.embedding_dim = input_dim
         self.pooling_method = pooling_method
         self.normalize_embeddings = normalize_embeddings
-        self.input_dim = input_dim
+
+        # Auto-detect the actual hidden size from the loaded model so the
+        # projector input dim is always consistent with what the LLM outputs.
+        # Walk up to 3 levels of wrapping (raw model → PeftModel → LoraModel).
+        actual_dim = input_dim
+        m = self.llm
+        for _ in range(3):
+            cfg = getattr(m, "config", None)
+            if cfg is not None and hasattr(cfg, "hidden_size"):
+                actual_dim = int(cfg.hidden_size)
+                break
+            # Try unwrapping one more level
+            m = getattr(m, "base_model", None) or getattr(m, "model", None)
+            if m is None:
+                break
+        self.embedding_dim = actual_dim
+        self.input_dim = actual_dim
+
+        if actual_dim != input_dim:
+            _logger.warning(
+                "LLMFeaturizer: model '%s' has hidden_size=%d but config specified "
+                "input_dim=%d. Using detected hidden_size=%d for the projector. "
+                "If this is unexpected, check that the correct model is loading.",
+                model_name, actual_dim, input_dim, actual_dim,
+            )
+        else:
+            _logger.info(
+                "LLMFeaturizer: model='%s', hidden_size=%d, projection_dim=%s",
+                model_name, actual_dim, projection_dim,
+            )
 
         if projection_dim is not None:
             self.projector = ProjectionLayer(
-                input_dim=input_dim, projection_dim=projection_dim
+                input_dim=actual_dim, projection_dim=projection_dim
             )
-
         else:
             self.projector = nn.Identity()
 

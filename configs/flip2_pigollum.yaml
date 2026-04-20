@@ -23,7 +23,7 @@ data:
     target_column: target
     maximize: true
     exclude_top: false
-    normalize_input: standard_scaling
+    normalize_input: original
     featurizer:
       class_path: gollum.featurization.base.Featurizer
       init_args:
@@ -147,9 +147,17 @@ pigollum:
   embedding_model: all-MiniLM-L6-v2
 
   # Task context injected into LLM prompts
-  # task_context: >
-  #   Biocatalytic enzyme engineering: design amino acid sequences to maximise
-  #   yield and enantioselectivity for an asymmetric transformation.
+  task_context: >
+    Protein fitness optimisation: engineer single-point mutant variants of the
+    tryptophan synthase β-subunit (TrpB), which catalyses the PLP-dependent
+    β-substitution of L-serine with indole to produce L-tryptophan. TrpB is
+    essential for cell growth in organisms that cannot acquire tryptophan
+    exogenously. Each candidate sequence is a single amino acid substitution
+    relative to the wild-type TrpB sequence. The objective is to maximise
+    variant fitness, which reflects catalytic activity and growth
+    complementation. Design principles should focus on residues that govern
+    PLP cofactor binding, active-site geometry, substrate positioning, and
+    inter-subunit communication with the α-subunit (TrpA).
 
   # ── Inference backend ──────────────────────────────────────────────────────
   # backend: "hf"  → local HuggingFace model (default when no API key present)

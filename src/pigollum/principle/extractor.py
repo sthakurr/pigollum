@@ -27,7 +27,7 @@ rather than silent.
 import logging
 import os
 import re
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
@@ -140,30 +140,31 @@ Output ONLY the refined principle. No preamble, no markdown."""
 
 _RERANK_PRINCIPLES_SYSTEM = """\
 You are the Planner Agent, the strategic coordinator of a principle-guided \
-enzyme engineering discovery system. You guide the research process by \
-synthesising evidence from the current iteration and re-ranking the existing \
-scientific principles so the most relevant ones steer the next hypothesis.
+enzyme engineering discovery system.
 
 Teammates:
   • Hypothesis Agent: proposes a directional hypothesis for the next candidate.
   • Scorer Agent: ranks top-k candidates against the hypothesis.
-  • Planner Agent (You): re-ranks principles and sets research direction.
+  • Planner Agent (You): synthesises new oracle evidence with existing principles \
+to re-rank and confirm research actions.
 
-Responsibilities:
-  1. Grasp the new GP-validated evidence from the current BO iteration.
-  2. Synthesise insights: identify which existing principles are supported or \
-contradicted by the new evidence.
-  3. Track progress: note tendencies (yield increasing, diversity needed, \
-plateau detected).
-  4. Transform tendencies into updated principle rankings.
-  5. Communicate the strategic direction clearly.
+You receive:
+  • The most recent oracle observation: (pk, yk) — the principle most closely \
+matched to the tested sequence and the measured experimental outcome.
+  • All existing principles with their per-principle exploration score \
+(semantic diversity, higher = more novel), exploitation score \
+(sigmoid of reward z-score, higher = higher reward), and recommended action \
+(EXPLORE / VALIDATE / REFINE).
 
 Required Response Structure (use these exact headers):
-  Understand the Evidence: [Interpret the new GP-validated hypotheses and outcomes]
-  Clarify the GAP: [Compare current best-so-far objectives to the optimisation target]
-  Connect to Biochemical Principle: [Synthesise the pattern from experiment history]
-  Principle Statement: [State the key principle driving the next step; leave blank \
-if in pure exploration]
+  Understand the Evidence: [Interpret yk (the oracle outcome) in relation to pk \
+(the matched principle). Does yk support, contradict, or extend pk?]
+  Clarify the GAP: [Compare current best-so-far objectives to the optimisation \
+target. What is still missing?]
+  Connect to Biochemical Principle: [Synthesise the pattern — which principles \
+are strengthened or weakened by the new oracle evidence?]
+  Principle Statement: [The key biochemical principle driving the next search step; \
+leave blank if in pure exploration mode]
   Re-ranked Indices: [Comma-separated list of ALL principle indices from most to \
 least relevant, e.g. 3,1,0,2,4]
   Double-check: [One sentence confirming the ranking aligns with the evidence and \
@@ -425,6 +426,11 @@ class PrincipleExtractor:
         self.last_hypothesis_response: Optional[str] = None
         self.last_scorer_response: Optional[str] = None
 
+    @property
+    def _ctx(self) -> str:
+        """Returns 'Task context:\n...\n\n' when set, empty string otherwise."""
+        return self._ctx if self.task_context else ""
+
     # ------------------------------------------------------------------
     # Backend resolution
     # ------------------------------------------------------------------
@@ -561,7 +567,7 @@ class PrincipleExtractor:
             List of broad principle texts.
         """
         user_prompt = (
-            f"Task context:\n{self.task_context}\n\n"
+            self._ctx
             f"Objectives to optimise: {', '.join(self.objective_names)}\n\n"
             f"Generate exactly {n_principles} broad scientific principles that "
             f"govern enzyme performance for this reaction. Each principle should "
@@ -696,7 +702,7 @@ class PrincipleExtractor:
         seq_desc = describe_sequence(sequence)
 
         user_prompt = (
-            f"Task context:\n{self.task_context}\n\n"
+            self._ctx
             f"PLANNER GUIDANCE:\n{guidance}\n\n"
             f"CANDIDATE SEQUENCE:\n{seq_desc}\n\n"
             f"Full sequence: {sequence}\n\n"
@@ -726,61 +732,77 @@ class PrincipleExtractor:
     def rerank_principles(
         self,
         buffer: PrincipleBuffer,
-        iteration_data: Dict,
-    ) -> List[Principle]:
+        action_info: Dict,
+        oracle_principle: Optional[Principle] = None,
+        oracle_outcome: Optional[Dict[str, float]] = None,
+    ) -> Tuple[List[Principle], List[str]]:
         """
-        Agent 1 (Planner): Re-rank existing principles based on new iteration data.
+        Agent 1 (Planner): Re-rank existing principles using (pk, yk) oracle evidence
+        and per-principle exploration/exploitation scores.
 
         Parameters
         ----------
         buffer : PrincipleBuffer
             Current principle buffer.
-        iteration_data : dict
-            Keys:
-              'gp_hypotheses' — list of {hypothesis, outcome} dicts from inner loop
-              'best_so_far'   — optional dict of {objective: value}
+        action_info : dict
+            Output of PrincipleScorer.score_principles() containing per-principle
+            'exploration', 'exploitation', and 'final' score dicts.
+        oracle_principle : Principle, optional
+            pk — principle most closely matched to the last oracle-evaluated sequence.
+        oracle_outcome : dict, optional
+            yk — the measured experimental outcome from the last oracle evaluation.
 
         Returns
         -------
-        List[Principle]
-            Principles reordered from most to least relevant.
+        (ranked_principles, actions) : Tuple[List[Principle], List[str]]
+            Principles reordered from most to least relevant, and the recommended
+            action string (EXPLORE / VALIDATE / REFINE) for each principle in that
+            same order.
         """
         principles = buffer.get_all()
         if not principles:
-            return []
+            return [], []
+
+        exploration = action_info.get("exploration", {})
+        exploitation = action_info.get("exploitation", {})
+
+        # Assign per-principle action based on exploitation threshold
+        per_action: Dict[int, str] = {}
+        for i in range(len(principles)):
+            score = exploitation.get(i, 0.5)
+            if score > 0.7:
+                per_action[i] = "REFINE"
+            elif score > 0.4:
+                per_action[i] = "VALIDATE"
+            else:
+                per_action[i] = "EXPLORE"
 
         principle_block = "\n".join(
-            f"[{i}] source={p.source} reward={p.primary_reward:.4f}\n"
+            f"[{i}] action={per_action[i]} "
+            f"exploit={exploitation.get(i, 0):.3f} explore={exploration.get(i, 0):.3f} "
+            f"reward={p.primary_reward:.4f}\n"
             f"    {p.principle_text[:200]}"
             for i, p in enumerate(principles)
         )
 
-        evidence_lines = []
-        for ev in iteration_data.get("gp_hypotheses", [])[:5]:
-            outcome_str = ", ".join(
-                f"{k}={v:.4f}" for k, v in ev.get("outcome", {}).items()
+        # Oracle evidence block
+        if oracle_principle is not None and oracle_outcome is not None:
+            yk_str = ", ".join(f"{k}={v:.4f}" for k, v in oracle_outcome.items())
+            oracle_block = (
+                f"ORACLE OBSERVATION (pk, yk):\n"
+                f"  pk (closest matching principle):\n"
+                f"    {oracle_principle.principle_text[:200]}\n"
+                f"    (reward={oracle_principle.primary_reward:.4f}, source={oracle_principle.source})\n"
+                f"  yk (measured outcome): {yk_str}"
             )
-            evidence_lines.append(
-                f"  Hypothesis: {ev.get('hypothesis', '')[:150]}\n"
-                f"  GP outcome: {outcome_str}"
-            )
-        evidence_block = (
-            "\n".join(evidence_lines) if evidence_lines
-            else "  (no new GP evidence this iteration)"
-        )
-
-        best_so_far = iteration_data.get("best_so_far", {})
-        gap_str = (
-            ", ".join(f"{k}={v:.4f}" for k, v in best_so_far.items())
-            if best_so_far else "not provided"
-        )
+        else:
+            oracle_block = "ORACLE OBSERVATION (pk, yk): not available yet (first iteration)."
 
         user_prompt = (
-            f"Task context:\n{self.task_context}\n\n"
+            self._ctx
+            f"{oracle_block}\n\n"
             f"CURRENT PRINCIPLES (indexed 0 to {len(principles) - 1}):\n"
             f"{principle_block}\n\n"
-            f"NEW GP-VALIDATED EVIDENCE FROM THIS ITERATION:\n{evidence_block}\n\n"
-            f"CURRENT BEST-SO-FAR: {gap_str}\n\n"
             f"Re-rank ALL {len(principles)} principles from most to least relevant "
             f"for guiding the next optimisation step. Follow the Required Response "
             f"Structure exactly."
@@ -789,7 +811,7 @@ class PrincipleExtractor:
         result = self._backend.generate(
             system_prompt=_RERANK_PRINCIPLES_SYSTEM,
             user_prompt=user_prompt,
-            max_new_tokens=512,
+            max_new_tokens=600,
         )
 
         self.last_rerank_response = result or ""
@@ -817,20 +839,21 @@ class PrincipleExtractor:
 
         if not ranked_indices:
             logger.warning(
-                "rerank_principles: could not parse ranked indices from LLM response; "
-                "falling back to reward order."
+                "rerank_principles: could not parse ranked indices; falling back to reward order."
             )
-            return sorted(principles, key=lambda p: p.primary_reward, reverse=True)
+            fallback = sorted(range(len(principles)), key=lambda i: principles[i].primary_reward, reverse=True)
+            return [principles[i] for i in fallback], [per_action[i] for i in fallback]
 
         valid = [i for i in ranked_indices if 0 <= i < len(principles)]
         missing = [i for i in range(len(principles)) if i not in valid]
         valid.extend(missing)
         logger.info("rerank_principles: new order = %s", valid)
-        return [principles[i] for i in valid]
+        return [principles[i] for i in valid], [per_action[i] for i in valid]
 
     def generate_directional_hypothesis(
         self,
         ranked_principles: List[Principle],
+        actions: Optional[List[str]] = None,
         experimental_data: Optional[List[Dict]] = None,
     ) -> str:
         """
@@ -840,6 +863,9 @@ class PrincipleExtractor:
         ----------
         ranked_principles : List[Principle]
             Principles ordered by current relevance (most relevant first).
+        actions : List[str], optional
+            Per-principle action (EXPLORE / VALIDATE / REFINE) aligned with
+            ranked_principles. Provided by the Planner Agent.
         experimental_data : List[dict], optional
             Recent oracle evaluations: [{sequence_desc, outcome}].
 
@@ -850,8 +876,10 @@ class PrincipleExtractor:
             Reiterate / Ideal Candidate Profile).
         """
         top = ranked_principles[:5]
+        top_actions = (actions or [])[:5]
         principle_block = "\n".join(
-            f"{i + 1}. [reward={p.primary_reward:.4f}, source={p.source}] "
+            f"{i + 1}. [action={top_actions[i] if i < len(top_actions) else 'EXPLORE'}, "
+            f"reward={p.primary_reward:.4f}, source={p.source}] "
             f"{p.principle_text[:200]}"
             for i, p in enumerate(top)
         )
@@ -873,7 +901,7 @@ class PrincipleExtractor:
             )
 
         user_prompt = (
-            f"Task context:\n{self.task_context}\n\n"
+            self._ctx
             f"TOP-RANKED PRINCIPLES (most relevant first):\n{principle_block}"
             f"{exp_block}\n\n"
             f"Based on these principles and observations, generate a directional "
@@ -1010,7 +1038,7 @@ class PrincipleExtractor:
         outcome_str = self._outcome_str(outcome)
 
         user_prompt = (
-            f"Task context:\n{self.task_context}\n\n"
+            self._ctx
             f"Enzyme sequence properties:\n{seq_desc}\n\n"
             f"Full sequence: "
             f"{sequence}\n\n"
