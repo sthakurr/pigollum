@@ -42,6 +42,7 @@ class PrincipleSnapshot:
     """
     principle_id:    str
     iteration_added: int          # BO iteration when first discovered
+    source:          str          # "broad" | "refined" | "gp" | "oracle"
     principle_text:  str
     hypothesis:      str
     reward:          float
@@ -131,6 +132,7 @@ class PrincipleJournal:
                 snapshots.append(PrincipleSnapshot(
                     principle_id=p.id,
                     iteration_added=p.iteration,
+                    source=p.source,
                     principle_text=p.principle_text,
                     hypothesis=p.hypothesis,
                     reward=p.primary_reward,

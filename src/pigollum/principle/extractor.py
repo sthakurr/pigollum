@@ -32,7 +32,7 @@ from typing import Dict, List, Optional
 import numpy as np
 import torch
 
-from pigollum.utils.llm_client import build_llm_client, chat_complete
+from pigollum.utils.llm_client import build_llm_client, build_gemini_client, chat_complete
 from pigollum.utils.sequence_utils import describe_sequence
 from pigollum.principle.buffer import Principle, PrincipleBuffer
 
@@ -420,6 +420,11 @@ class PrincipleExtractor:
             temperature=temperature,
         )
 
+        # Last raw LLM responses — stored so callers (e.g. wandb logger) can read them
+        self.last_rerank_response: Optional[str] = None
+        self.last_hypothesis_response: Optional[str] = None
+        self.last_scorer_response: Optional[str] = None
+
     # ------------------------------------------------------------------
     # Backend resolution
     # ------------------------------------------------------------------
@@ -429,7 +434,21 @@ class PrincipleExtractor:
         backend, hf_model_name, torch_dtype,
         llm_api_key, llm_base_url, llm_model, temperature,
     ):
-        # Explicit API override
+        # ── Gemini backend ────────────────────────────────────────────────
+        if backend == "gemini":
+            client, model = build_gemini_client(
+                api_key=llm_api_key,
+                model_name=llm_model,
+            )
+            if client is not None:
+                logger.info("PrincipleExtractor: using Gemini backend (model=%s)", model)
+                return _APIBackend(client=client, model=model, temperature=temperature)
+            raise RuntimeError(
+                "PrincipleExtractor: Gemini backend requested but no API key found. "
+                "Set GEMINI_API_KEY or GOOGLE_API_KEY."
+            )
+
+        # ── OpenAI-compatible API backend ─────────────────────────────────
         has_api_key = bool(
             llm_api_key
             or os.environ.get("PIGOLLUM_LLM_API_KEY")
@@ -466,8 +485,8 @@ class PrincipleExtractor:
 
         raise RuntimeError(
             "PrincipleExtractor: could not initialise any inference backend. "
-            "Either set PIGOLLUM_LLM_API_KEY, or ensure transformers is installed "
-            "for local HF inference."
+            "Either set PIGOLLUM_LLM_API_KEY / GEMINI_API_KEY, or ensure "
+            "transformers is installed for local HF inference."
         )
 
     # ------------------------------------------------------------------
@@ -773,6 +792,12 @@ class PrincipleExtractor:
             max_new_tokens=512,
         )
 
+        self.last_rerank_response = result or ""
+        logger.info(
+            "=== Planner Agent Response ===\n%s\n=== End Planner Response ===",
+            result or "(empty)",
+        )
+
         # Parse "Re-ranked Indices:" line — expect "3,1,0,2,4"
         ranked_indices = None
         if result:
@@ -862,6 +887,12 @@ class PrincipleExtractor:
             max_new_tokens=512,
         )
 
+        self.last_hypothesis_response = result or ""
+        logger.info(
+            "=== Hypothesis Agent Response ===\n%s\n=== End Hypothesis Response ===",
+            result or "(empty)",
+        )
+
         if not result:
             best = ranked_principles[0] if ranked_principles else None
             fallback = best.principle_text if best else "Prioritize high-reward sequence features."
@@ -928,6 +959,12 @@ class PrincipleExtractor:
             system_prompt=_CANDIDATE_SCORER_SYSTEM,
             user_prompt=user_prompt,
             max_new_tokens=256,
+        )
+
+        self.last_scorer_response = result or ""
+        logger.info(
+            "=== Scorer Agent Response ===\n%s\n=== End Scorer Response ===",
+            result or "(empty)",
         )
 
         llm_scores = np.zeros(n, dtype=np.float64)

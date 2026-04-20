@@ -54,6 +54,14 @@ import torch
 import yaml
 from tqdm import tqdm
 
+# wandb is optional — gracefully disabled when not installed or not configured
+try:
+    import wandb as _wandb_module
+    _WANDB_AVAILABLE = True
+except ImportError:
+    _wandb_module = None
+    _WANDB_AVAILABLE = False
+
 # ── gollum path setup ────────────────────────────────────────────────────────
 _HERE = Path(__file__).parent.resolve()
 _GOLLUM_SRC = _HERE / "gollum-2" / "src"
@@ -232,6 +240,81 @@ def log_iteration(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# W&B helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _wandb_active() -> bool:
+    return _WANDB_AVAILABLE and _wandb_module.run is not None
+
+
+def wandb_log_iteration(
+    iteration: int,
+    optimizer: "PiGollumOptimizer",
+    journal: "PrincipleJournal",
+    objective_names: List[str],
+    selected_outcomes: List[Dict],
+    best_train_y: List[float],
+) -> None:
+    """Log per-iteration metrics, principle table, and agent outputs to W&B."""
+    if not _wandb_active():
+        return
+
+    log_dict: Dict = {"iteration": iteration}
+
+    # ── BO objectives ─────────────────────────────────────────────────
+    for name, val in zip(objective_names, best_train_y):
+        log_dict[f"best_so_far/{name}"] = val
+    for out in selected_outcomes:
+        for name, val in out.items():
+            log_dict[f"new_candidate/{name}"] = val
+
+    action = optimizer._last_action_info.get("action_type", "unknown")
+    log_dict["action_type"] = action
+    log_dict["n_principles"] = optimizer.principle_buffer.size
+
+    # ── Directional hypothesis (full structured text) ─────────────────
+    if optimizer._last_direction_hyp:
+        log_dict["direction_hypothesis"] = optimizer._last_direction_hyp
+    if optimizer._last_planner_response:
+        log_dict["planner_response"] = optimizer._last_planner_response
+    if optimizer._last_scorer_response:
+        log_dict["scorer_response"] = optimizer._last_scorer_response
+
+    # ── Principle scores table ────────────────────────────────────────
+    if journal._records:
+        last_rec = journal._records[-1]
+        if last_rec.principle_scores:
+            table = _wandb_module.Table(columns=[
+                "principle_id", "source", "iteration_added",
+                "reward", "exploration_score", "exploitation_score",
+                "final_score", "selected", "principle_text",
+            ])
+            for snap in last_rec.principle_scores:
+                table.add_data(
+                    snap.principle_id[:8],
+                    snap.source,
+                    snap.iteration_added,
+                    round(snap.reward, 4),
+                    round(snap.exploration_score, 4),
+                    round(snap.exploitation_score, 4),
+                    round(snap.final_score, 4),
+                    snap.was_selected,
+                    snap.principle_text[:120],
+                )
+            log_dict[f"principles/iter_{iteration:03d}"] = table
+
+            # Also log per-principle scalars for easy charting
+            for snap in last_rec.principle_scores:
+                pid = snap.principle_id[:8]
+                log_dict[f"principle_scores/reward/{pid}"] = snap.reward
+                log_dict[f"principle_scores/exploration/{pid}"] = snap.exploration_score
+                log_dict[f"principle_scores/exploitation/{pid}"] = snap.exploitation_score
+                log_dict[f"principle_scores/final/{pid}"] = snap.final_score
+
+    _wandb_module.log(log_dict, step=iteration)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Main experiment loop
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -240,6 +323,20 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
     np.random.seed(seed)
 
     os.makedirs(output_dir, exist_ok=True)
+
+    # ── W&B initialisation ───────────────────────────────────────────────────
+    wandb_cfg = cfg.get("wandb", {})
+    if _WANDB_AVAILABLE and wandb_cfg.get("enabled", False):
+        _wandb_module.init(
+            project=wandb_cfg.get("project", "pigollum"),
+            name=wandb_cfg.get("run_name", None),
+            tags=wandb_cfg.get("tags", []),
+            config=cfg,
+            dir=output_dir,
+        )
+        logger.info("W&B run initialised: %s", _wandb_module.run.name)
+    elif wandb_cfg.get("enabled", False) and not _WANDB_AVAILABLE:
+        logger.warning("wandb not installed — W&B logging disabled. Run: pip install wandb")
 
     # ------------------------------------------------------------------
     # 1. Data module
@@ -452,6 +549,16 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
             results=results,
         )
 
+        # --- W&B logging ---
+        wandb_log_iteration(
+            iteration=iteration,
+            optimizer=optimizer,
+            journal=journal,
+            objective_names=objective_names,
+            selected_outcomes=selected_outcomes,
+            best_train_y=train_y.cpu().numpy().max(axis=0).tolist(),
+        )
+
     # ------------------------------------------------------------------
     # 7. Save outputs
     # ------------------------------------------------------------------
@@ -482,6 +589,14 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
     for name, val in zip(objective_names, best):
         print(f"  {name}: {val:.4f}")
 
+    if _wandb_active():
+        _wandb_module.log({
+            f"final_best/{name}": float(val)
+            for name, val in zip(objective_names, best)
+        })
+        _wandb_module.finish()
+        logger.info("W&B run finished.")
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Entry point
@@ -508,11 +623,26 @@ def main():
         "--n_iters", type=int, default=None,
         help="Override n_iters from config",
     )
+    parser.add_argument(
+        "--wandb_project", default=None,
+        help="Enable W&B logging and set the project name (overrides config)",
+    )
+    parser.add_argument(
+        "--wandb_run_name", default=None,
+        help="W&B run name (overrides config)",
+    )
     args = parser.parse_args()
 
     cfg = load_config(args.config)
     if args.n_iters is not None:
         cfg["n_iters"] = args.n_iters
+    if args.wandb_project is not None:
+        cfg.setdefault("wandb", {})
+        cfg["wandb"]["enabled"] = True
+        cfg["wandb"]["project"] = args.wandb_project
+    if args.wandb_run_name is not None:
+        cfg.setdefault("wandb", {})
+        cfg["wandb"]["run_name"] = args.wandb_run_name
 
     run(
         cfg=cfg,

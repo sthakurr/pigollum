@@ -126,6 +126,10 @@ class PiGollumOptimizer(BotorchOptimizer):
         self._last_gp_stds: Optional[np.ndarray] = None
         self._iteration_gp_data: List[Dict] = []   # accumulates per inner loop step
         self._oracle_history: List[Dict] = []       # accumulates across all iterations
+        # Last post-acquisition agent outputs — exposed for wandb / external loggers
+        self._last_planner_response: Optional[str] = None
+        self._last_direction_hyp: Optional[str] = None
+        self._last_scorer_response: Optional[str] = None
 
     # ------------------------------------------------------------------
     # GP prediction helper (experiment agent)
@@ -415,12 +419,14 @@ class PiGollumOptimizer(BotorchOptimizer):
             top_k_idx = np.argsort(final_scores)[-top_k:]
 
             # Agent 1: Planner re-ranks principles
-            logger.info("PiGollum [Agent 1]: re-ranking principles…")
+            logger.info("PiGollum [Agent 1 / Planner]: re-ranking principles…")
             best_so_far: Dict = {}
-            if self.journal is not None and hasattr(self.journal, "_iterations") \
-                    and self.journal._iterations:
-                last = self.journal._iterations[-1]
-                best_so_far = last.get("best_so_far", {})
+            if self.journal is not None and hasattr(self.journal, "_records") \
+                    and self.journal._records:
+                last_rec = self.journal._records[-1]
+                if last_rec.best_train_y:
+                    obj_names = getattr(self.journal, "objective_names", [])
+                    best_so_far = dict(zip(obj_names, last_rec.best_train_y))
             ranked_principles = self.principle_extractor.rerank_principles(
                 buffer=self.principle_buffer,
                 iteration_data={
@@ -428,9 +434,10 @@ class PiGollumOptimizer(BotorchOptimizer):
                     "best_so_far": best_so_far,
                 },
             )
+            self._last_planner_response = self.principle_extractor.last_rerank_response
 
             # Agent 2: Hypothesis generates directional hypothesis
-            logger.info("PiGollum [Agent 2]: generating directional hypothesis…")
+            logger.info("PiGollum [Agent 2 / Hypothesis]: generating directional hypothesis…")
             exp_data = (
                 self._get_oracle_history() if self.include_experimental_data else None
             )
@@ -438,15 +445,12 @@ class PiGollumOptimizer(BotorchOptimizer):
                 ranked_principles=ranked_principles,
                 experimental_data=exp_data,
             )
-            logger.info(
-                "PiGollum directional hypothesis: %s…",
-                direction_hyp[:120].replace("\n", " "),
-            )
-            print(f"\n[PiGollum] Directional Hypothesis:\n{direction_hyp}\n")
+            self._last_direction_hyp = direction_hyp
 
             # Agent 3: Scorer re-ranks top-k candidates by hypothesis alignment
             logger.info(
-                "PiGollum [Agent 3]: scoring top-%d candidates by hypothesis…", top_k
+                "PiGollum [Agent 3 / Scorer]: scoring top-%d candidates by hypothesis…",
+                top_k,
             )
             top_k_seqs = [candidate_sequences[i] for i in top_k_idx]
             rescored = self.principle_extractor.score_candidates_by_hypothesis(
@@ -456,6 +460,7 @@ class PiGollumOptimizer(BotorchOptimizer):
                 gp_stds=gp_stds[top_k_idx],
                 acq_scores=final_scores[top_k_idx],
             )
+            self._last_scorer_response = self.principle_extractor.last_scorer_response
 
             # Redistribute original top-k score magnitudes according to new ranking,
             # preserving the top-k's advantage over the rest of the pool.
