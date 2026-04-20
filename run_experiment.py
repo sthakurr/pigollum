@@ -530,8 +530,15 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
             best_train_y=train_y.cpu().numpy().max(axis=0).tolist(),
         )
 
+        # --- Flush results to disk after every iteration ---
+        with open(os.path.join(output_dir, "bo_results.json"), "w") as f:
+            json.dump(results, f, indent=2)
+        optimizer.principle_buffer.save(os.path.join(output_dir, "principles.json"))
+        journal.save(os.path.join(output_dir, "journal.json"), buffer=optimizer.principle_buffer)
+        journal.save_text_report_iterations(os.path.join(output_dir, "evolution_report.txt"))
+
     # ------------------------------------------------------------------
-    # 7. Save outputs
+    # 7. Save final outputs (report requires full buffer)
     # ------------------------------------------------------------------
     results_path = os.path.join(output_dir, "bo_results.json")
     with open(results_path, "w") as f:

@@ -1,0 +1,403 @@
+
+══════════════════════════════════════════════════════════════════════════════
+  PiGollum Principle Evolution Report
+══════════════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────────────
+  Phase 0 — Warm-start  (1 initial principles)
+──────────────────────────────────────────────────────────────────────────────
+  [warm]  reward=+0.0000  expl=0.586  expt=0.269
+          Principle: **Rule**: Ensure proper PLP cofactor binding by
+            maintaining hydrogen bond donors and acceptors at the
+            PLP-binding site.
+  [warm]  reward=+0.0000  expl=0.000  expt=0.269
+          Principle: **Mechanism**: The PLP cofactor binds via
+            hydrogen bonding networks involving specific residues.
+            Disrupting these interactions can lead to poor cofactor
+            binding, reducing the enzyme's catalytic efficiency.
+  [warm]  reward=+0.0000  expl=1.000  expt=0.269
+          Principle: **Predictive Implication**: When designing
+            mutants, prioritize residues that form hydrogen bonds
+            with PLP, ensuring they maintain their hydrogen-bonding
+            capacity.
+  [warm]  reward=+0.3746  expl=0.091  expt=0.731
+          Principle: **Major premise**: Proper PLP cofactor binding
+            is crucial for enzymatic activity, involving specific
+            hydrogen bond donors and acceptors at the PLP-binding
+            site.  **Minor premise with evidence**: The presence of
+            14.7% positive-charged and 12.6% negative-charged
+            residues within the first 60 amino acids of the sequence
+            consistently correlates with higher enzymatic activity
+            (target values ranging from 0.0205 to 0.8342), while
+            deviations from these percentages (either higher or
+            lower) generally result in lower or even negative
+            activity (target values ranging from -0.1343 to 0.0042).
+            **Updated predictive conclusion**: To ensure optimal PLP
+            cofactor binding and maintain high enzymatic activity,
+            the PLP-binding site should contain approximately 14.7%
+            positive-charged and 12.6% negative-charged residues,
+            with minor variations tolerated but not exceeding 15%
+            positive-charged or 13% negative-charged residues.
+  [warm]  reward=+0.3746  expl=0.052  expt=0.731
+          Principle: **Major premise**: Hydrogen bonding networks
+            involving specific residues are crucial for PLP cofactor
+            binding in enzymes, which is essential for maintaining
+            high catalytic efficiency.  **Minor premise with
+            evidence**: In a series of enzymes with similar
+            sequences, disrupting hydrogen bonding networks by
+            altering specific residues leads to a reduction in PLP
+            cofactor binding, resulting in decreased catalytic
+            efficiency. For instance, sequences with minor
+            variations in positive-charged residues (e.g., 14.7% to
+            14.9%) show reduced catalytic efficiency (targets
+            ranging from 0.4350 to 0.0042), while sequences with
+            significant deviations (e.g., 12.6% to 12.9% negative-
+            charged residues) also exhibit reduced catalytic
+            efficiency (targets ranging from 0.0205 to -0.1343).
+            **Updated predictive conclusion**: Therefore, disrupting
+            hydrogen bonding networks involving specific residues
+            will generally lead to poor PLP cofactor binding and
+            reduced catalytic efficiency, unless the changes do not
+            significantly alter the overall hydrogen bonding pattern
+            or are compensated by other structural elements that
+            maintain cofactor binding.
+  [warm]  reward=+0.3746  expl=0.439  expt=0.731
+          Principle: **Major premise**: Residues forming hydrogen
+            bonds with PLP are critical for maintaining catalytic
+            activity in PLP-dependent enzymes.  **Minor premise with
+            evidence**: In multiple PLP-dependent enzymes, residues
+            that form hydrogen bonds with PLP have a composition
+            profile characterized by a high proportion of
+            hydrophobic residues (41.6% to 42.2%) and a moderate
+            proportion of positive-charged residues (14.7% to
+            14.9%), while negative-charged residues are less
+            frequent (12.6% to 12.9%).  **Updated predictive
+            conclusion**: To optimize the catalytic activity of PLP-
+            dependent enzymes through mutagenesis, prioritize
+            residues that form hydrogen bonds with PLP and ensure
+            they maintain a composition profile with at least 41.6%
+            hydrophobic residues, no more than 14.9% positive-
+            charged residues, and no more than 12.9% negative-
+            charged residues. Deviations from these composition
+            profiles may lead to reduced catalytic activity.
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 1  [EXPLORE]  — 6 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Explore: current best principle (reward=0.0000) has low exploitation score. Diversify into unexplored regions…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   0.586   0.269   0.427            **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.000   0.269   0.134            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   1.000   0.269   0.634         ★  **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.091   0.731   0.411            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.052   0.731   0.391            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.439   0.731   0.585            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.000   0.000   0.000            (1) Major premise: Enzyme active sites rely on pre…
+
+  ► New principle discovered  (reward=+0.0021)
+      (1) Major premise: Enzyme active sites rely on precise geometric
+        and electrostatic arrangements to maintain optimal cofactor
+        binding and substrate positioning, which are critical for
+        catalytic efficiency. (2) Minor premise: The observed low yield
+        is due to a single amino acid substitution that disrupts the
+        hydrogen bonding network around the PLP cofactor, altering the
+        binding affinity and substrate positioning, as evidenced by the
+        high hydrophobic content and key charged residues near the
+        active site. (3) Conclusion: In future sequence designs,
+        prioritize maintaining or enhancing the hydrogen bonding network
+        around cofactors and ensure proper positioning of substrates to
+        preserve optimal active site geometry and electrostatic
+        interactions.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=+0.0021
+  Best so far: target=+0.8342
+
+══════════════════════════════════════════════════════════════════════════════
+  Winning Principles
+══════════════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────────────
+  Top 5 by Observed Reward (best outcomes)
+──────────────────────────────────────────────────────────────────────────────
+  #1  reward=+0.3746  reward=+0.3746  iter=-1  id=e7b8c5fc…
+      Principle: **Major premise**: Proper PLP cofactor binding is
+        crucial for enzymatic activity, involving specific hydrogen bond
+        donors and acceptors at the PLP-binding site.  **Minor premise
+        with evidence**: The presence of 14.7% positive-charged and
+        12.6% negative-charged residues within the first 60 amino acids
+        of the sequence consistently correlates with higher enzymatic
+        activity (target values ranging from 0.0205 to 0.8342), while
+        deviations from these percentages (either higher or lower)
+        generally result in lower or even negative activity (target
+        values ranging from -0.1343 to 0.0042).  **Updated predictive
+        conclusion**: To ensure optimal PLP cofactor binding and
+        maintain high enzymatic activity, the PLP-binding site should
+        contain approximately 14.7% positive-charged and 12.6% negative-
+        charged residues, with minor variations tolerated but not
+        exceeding 15% positive-charged or 13% negative-charged residues.
+      Hypothesis: Refined from broad principle: **Rule**: Ensure proper
+        PLP cofactor binding by maintaining hydrogen bond donors and
+        acceptors at th
+
+  #2  reward=+0.3746  reward=+0.3746  iter=-1  id=aea4ca42…
+      Principle: **Major premise**: Hydrogen bonding networks involving
+        specific residues are crucial for PLP cofactor binding in
+        enzymes, which is essential for maintaining high catalytic
+        efficiency.  **Minor premise with evidence**: In a series of
+        enzymes with similar sequences, disrupting hydrogen bonding
+        networks by altering specific residues leads to a reduction in
+        PLP cofactor binding, resulting in decreased catalytic
+        efficiency. For instance, sequences with minor variations in
+        positive-charged residues (e.g., 14.7% to 14.9%) show reduced
+        catalytic efficiency (targets ranging from 0.4350 to 0.0042),
+        while sequences with significant deviations (e.g., 12.6% to
+        12.9% negative-charged residues) also exhibit reduced catalytic
+        efficiency (targets ranging from 0.0205 to -0.1343).  **Updated
+        predictive conclusion**: Therefore, disrupting hydrogen bonding
+        networks involving specific residues will generally lead to poor
+        PLP cofactor binding and reduced catalytic efficiency, unless
+        the changes do not significantly alter the overall hydrogen
+        bonding pattern or are compensated by other structural elements
+        that maintain cofactor binding.
+      Hypothesis: Refined from broad principle: **Mechanism**: The PLP
+        cofactor binds via hydrogen bonding networks involving specific
+        residues. Dis
+
+  #3  reward=+0.3746  reward=+0.3746  iter=-1  id=95db3881…
+      Principle: **Major premise**: Residues forming hydrogen bonds with
+        PLP are critical for maintaining catalytic activity in PLP-
+        dependent enzymes.  **Minor premise with evidence**: In multiple
+        PLP-dependent enzymes, residues that form hydrogen bonds with
+        PLP have a composition profile characterized by a high
+        proportion of hydrophobic residues (41.6% to 42.2%) and a
+        moderate proportion of positive-charged residues (14.7% to
+        14.9%), while negative-charged residues are less frequent (12.6%
+        to 12.9%).  **Updated predictive conclusion**: To optimize the
+        catalytic activity of PLP-dependent enzymes through mutagenesis,
+        prioritize residues that form hydrogen bonds with PLP and ensure
+        they maintain a composition profile with at least 41.6%
+        hydrophobic residues, no more than 14.9% positive-charged
+        residues, and no more than 12.9% negative-charged residues.
+        Deviations from these composition profiles may lead to reduced
+        catalytic activity.
+      Hypothesis: Refined from broad principle: **Predictive
+        Implication**: When designing mutants, prioritize residues that
+        form hydrogen bonds wit
+
+  #4  reward=+0.0021  reward=+0.0021  iter=1  id=493f5198…
+      Principle: (1) Major premise: Enzyme active sites rely on precise
+        geometric and electrostatic arrangements to maintain optimal
+        cofactor binding and substrate positioning, which are critical
+        for catalytic efficiency. (2) Minor premise: The observed low
+        yield is due to a single amino acid substitution that disrupts
+        the hydrogen bonding network around the PLP cofactor, altering
+        the binding affinity and substrate positioning, as evidenced by
+        the high hydrophobic content and key charged residues near the
+        active site. (3) Conclusion: In future sequence designs,
+        prioritize maintaining or enhancing the hydrogen bonding network
+        around cofactors and ensure proper positioning of substrates to
+        preserve optimal active site geometry and electrostatic
+        interactions.
+      Hypothesis: The observed low yield (target = 0.0021) likely stems
+        from a single amino acid substitution that disrupts the optimal
+        geometry and electrostatic interactions within the active site.
+        Specifically, the
+
+  #5  reward=+0.0000  reward=+0.0000  iter=-1  id=f19e0075…
+      Principle: **Rule**: Ensure proper PLP cofactor binding by
+        maintaining hydrogen bond donors and acceptors at the PLP-
+        binding site.
+      Hypothesis: (domain-knowledge seed principle)
+
+
+──────────────────────────────────────────────────────────────────────────────
+  Top 5 by Selection Count (most often guided BO)
+──────────────────────────────────────────────────────────────────────────────
+  #1  reward=+0.0000  selections=2  iter=-1  id=0802bb14…
+      Principle: **Predictive Implication**: When designing mutants,
+        prioritize residues that form hydrogen bonds with PLP, ensuring
+        they maintain their hydrogen-bonding capacity.
+      Hypothesis: (domain-knowledge seed principle)
+
+  #2  reward=+0.0000  selections=0  iter=-1  id=f19e0075…
+      Principle: **Rule**: Ensure proper PLP cofactor binding by
+        maintaining hydrogen bond donors and acceptors at the PLP-
+        binding site.
+      Hypothesis: (domain-knowledge seed principle)
+
+  #3  reward=+0.0000  selections=0  iter=-1  id=59d1fdaa…
+      Principle: **Mechanism**: The PLP cofactor binds via hydrogen
+        bonding networks involving specific residues. Disrupting these
+        interactions can lead to poor cofactor binding, reducing the
+        enzyme's catalytic efficiency.
+      Hypothesis: (domain-knowledge seed principle)
+
+  #4  reward=+0.3746  selections=0  iter=-1  id=e7b8c5fc…
+      Principle: **Major premise**: Proper PLP cofactor binding is
+        crucial for enzymatic activity, involving specific hydrogen bond
+        donors and acceptors at the PLP-binding site.  **Minor premise
+        with evidence**: The presence of 14.7% positive-charged and
+        12.6% negative-charged residues within the first 60 amino acids
+        of the sequence consistently correlates with higher enzymatic
+        activity (target values ranging from 0.0205 to 0.8342), while
+        deviations from these percentages (either higher or lower)
+        generally result in lower or even negative activity (target
+        values ranging from -0.1343 to 0.0042).  **Updated predictive
+        conclusion**: To ensure optimal PLP cofactor binding and
+        maintain high enzymatic activity, the PLP-binding site should
+        contain approximately 14.7% positive-charged and 12.6% negative-
+        charged residues, with minor variations tolerated but not
+        exceeding 15% positive-charged or 13% negative-charged residues.
+      Hypothesis: Refined from broad principle: **Rule**: Ensure proper
+        PLP cofactor binding by maintaining hydrogen bond donors and
+        acceptors at th
+
+  #5  reward=+0.3746  selections=0  iter=-1  id=aea4ca42…
+      Principle: **Major premise**: Hydrogen bonding networks involving
+        specific residues are crucial for PLP cofactor binding in
+        enzymes, which is essential for maintaining high catalytic
+        efficiency.  **Minor premise with evidence**: In a series of
+        enzymes with similar sequences, disrupting hydrogen bonding
+        networks by altering specific residues leads to a reduction in
+        PLP cofactor binding, resulting in decreased catalytic
+        efficiency. For instance, sequences with minor variations in
+        positive-charged residues (e.g., 14.7% to 14.9%) show reduced
+        catalytic efficiency (targets ranging from 0.4350 to 0.0042),
+        while sequences with significant deviations (e.g., 12.6% to
+        12.9% negative-charged residues) also exhibit reduced catalytic
+        efficiency (targets ranging from 0.0205 to -0.1343).  **Updated
+        predictive conclusion**: Therefore, disrupting hydrogen bonding
+        networks involving specific residues will generally lead to poor
+        PLP cofactor binding and reduced catalytic efficiency, unless
+        the changes do not significantly alter the overall hydrogen
+        bonding pattern or are compensated by other structural elements
+        that maintain cofactor binding.
+      Hypothesis: Refined from broad principle: **Mechanism**: The PLP
+        cofactor binds via hydrogen bonding networks involving specific
+        residues. Dis
+
+
+──────────────────────────────────────────────────────────────────────────────
+  Top 5 by Influence Score (reward × selections)
+──────────────────────────────────────────────────────────────────────────────
+  #1  reward=+0.3746  influence=0.37  iter=-1  id=e7b8c5fc…
+      Principle: **Major premise**: Proper PLP cofactor binding is
+        crucial for enzymatic activity, involving specific hydrogen bond
+        donors and acceptors at the PLP-binding site.  **Minor premise
+        with evidence**: The presence of 14.7% positive-charged and
+        12.6% negative-charged residues within the first 60 amino acids
+        of the sequence consistently correlates with higher enzymatic
+        activity (target values ranging from 0.0205 to 0.8342), while
+        deviations from these percentages (either higher or lower)
+        generally result in lower or even negative activity (target
+        values ranging from -0.1343 to 0.0042).  **Updated predictive
+        conclusion**: To ensure optimal PLP cofactor binding and
+        maintain high enzymatic activity, the PLP-binding site should
+        contain approximately 14.7% positive-charged and 12.6% negative-
+        charged residues, with minor variations tolerated but not
+        exceeding 15% positive-charged or 13% negative-charged residues.
+      Hypothesis: Refined from broad principle: **Rule**: Ensure proper
+        PLP cofactor binding by maintaining hydrogen bond donors and
+        acceptors at th
+
+  #2  reward=+0.3746  influence=0.37  iter=-1  id=aea4ca42…
+      Principle: **Major premise**: Hydrogen bonding networks involving
+        specific residues are crucial for PLP cofactor binding in
+        enzymes, which is essential for maintaining high catalytic
+        efficiency.  **Minor premise with evidence**: In a series of
+        enzymes with similar sequences, disrupting hydrogen bonding
+        networks by altering specific residues leads to a reduction in
+        PLP cofactor binding, resulting in decreased catalytic
+        efficiency. For instance, sequences with minor variations in
+        positive-charged residues (e.g., 14.7% to 14.9%) show reduced
+        catalytic efficiency (targets ranging from 0.4350 to 0.0042),
+        while sequences with significant deviations (e.g., 12.6% to
+        12.9% negative-charged residues) also exhibit reduced catalytic
+        efficiency (targets ranging from 0.0205 to -0.1343).  **Updated
+        predictive conclusion**: Therefore, disrupting hydrogen bonding
+        networks involving specific residues will generally lead to poor
+        PLP cofactor binding and reduced catalytic efficiency, unless
+        the changes do not significantly alter the overall hydrogen
+        bonding pattern or are compensated by other structural elements
+        that maintain cofactor binding.
+      Hypothesis: Refined from broad principle: **Mechanism**: The PLP
+        cofactor binds via hydrogen bonding networks involving specific
+        residues. Dis
+
+  #3  reward=+0.3746  influence=0.37  iter=-1  id=95db3881…
+      Principle: **Major premise**: Residues forming hydrogen bonds with
+        PLP are critical for maintaining catalytic activity in PLP-
+        dependent enzymes.  **Minor premise with evidence**: In multiple
+        PLP-dependent enzymes, residues that form hydrogen bonds with
+        PLP have a composition profile characterized by a high
+        proportion of hydrophobic residues (41.6% to 42.2%) and a
+        moderate proportion of positive-charged residues (14.7% to
+        14.9%), while negative-charged residues are less frequent (12.6%
+        to 12.9%).  **Updated predictive conclusion**: To optimize the
+        catalytic activity of PLP-dependent enzymes through mutagenesis,
+        prioritize residues that form hydrogen bonds with PLP and ensure
+        they maintain a composition profile with at least 41.6%
+        hydrophobic residues, no more than 14.9% positive-charged
+        residues, and no more than 12.9% negative-charged residues.
+        Deviations from these composition profiles may lead to reduced
+        catalytic activity.
+      Hypothesis: Refined from broad principle: **Predictive
+        Implication**: When designing mutants, prioritize residues that
+        form hydrogen bonds wit
+
+  #4  reward=+0.0021  influence=0.00  iter=1  id=493f5198…
+      Principle: (1) Major premise: Enzyme active sites rely on precise
+        geometric and electrostatic arrangements to maintain optimal
+        cofactor binding and substrate positioning, which are critical
+        for catalytic efficiency. (2) Minor premise: The observed low
+        yield is due to a single amino acid substitution that disrupts
+        the hydrogen bonding network around the PLP cofactor, altering
+        the binding affinity and substrate positioning, as evidenced by
+        the high hydrophobic content and key charged residues near the
+        active site. (3) Conclusion: In future sequence designs,
+        prioritize maintaining or enhancing the hydrogen bonding network
+        around cofactors and ensure proper positioning of substrates to
+        preserve optimal active site geometry and electrostatic
+        interactions.
+      Hypothesis: The observed low yield (target = 0.0021) likely stems
+        from a single amino acid substitution that disrupts the optimal
+        geometry and electrostatic interactions within the active site.
+        Specifically, the
+
+  #5  reward=+0.0000  influence=0.00  iter=-1  id=f19e0075…
+      Principle: **Rule**: Ensure proper PLP cofactor binding by
+        maintaining hydrogen bond donors and acceptors at the PLP-
+        binding site.
+      Hypothesis: (domain-knowledge seed principle)
+
+
+══════════════════════════════════════════════════════════════════════════════
+  The Winning Principle
+══════════════════════════════════════════════════════════════════════════════
+  Reward:         +0.3746
+  Selection count: 0
+  Influence score: 0.37
+  Discovered at iteration: -1
+  Sequence: …
+
+  HYPOTHESIS
+    Refined from broad principle: **Rule**: Ensure proper PLP cofactor
+      binding by maintaining hydrogen bond donors and acceptors at th
+
+  PRINCIPLE
+    **Major premise**: Proper PLP cofactor binding is crucial for
+      enzymatic activity, involving specific hydrogen bond donors and
+      acceptors at the PLP-binding site.  **Minor premise with evidence**:
+      The presence of 14.7% positive-charged and 12.6% negative-charged
+      residues within the first 60 amino acids of the sequence
+      consistently correlates with higher enzymatic activity (target
+      values ranging from 0.0205 to 0.8342), while deviations from these
+      percentages (either higher or lower) generally result in lower or
+      even negative activity (target values ranging from -0.1343 to
+      0.0042).  **Updated predictive conclusion**: To ensure optimal PLP
+      cofactor binding and maintain high enzymatic activity, the PLP-
+      binding site should contain approximately 14.7% positive-charged and
+      12.6% negative-charged residues, with minor variations tolerated but
+      not exceeding 15% positive-charged or 13% negative-charged residues.

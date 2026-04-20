@@ -1,0 +1,48 @@
+{
+  "os": "Linux-6.11.0-17-generic-x86_64-with-glibc2.39",
+  "python": "CPython 3.10.20",
+  "startedAt": "2026-04-20T18:53:52.466492Z",
+  "args": [
+    "--config",
+    "configs/flip2_pigollum.yaml",
+    "--output_dir",
+    "results/flip2/trpB",
+    "--n_iters",
+    "50"
+  ],
+  "program": "/home/saumya/pigollum/run_experiment.py",
+  "codePath": "run_experiment.py",
+  "codePathLocal": "run_experiment.py",
+  "git": {
+    "remote": "https://github.com/sthakurr/pigollum.git",
+    "commit": "bfe35dc19f050b085fb6b8c3a5a7fd113579c32b"
+  },
+  "email": "thakursaumya01@gmail.com",
+  "root": "results/flip2/trpB",
+  "host": "liacpc22",
+  "executable": "/home/saumya/miniconda3/envs/pigollum/bin/python",
+  "cpu_count": 12,
+  "cpu_count_logical": 24,
+  "gpu": "NVIDIA RTX A6000",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "972252708864",
+      "used": "893469581312"
+    }
+  },
+  "memory": {
+    "total": "134174265344"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA RTX A6000",
+      "memoryTotal": "51527024640",
+      "cudaCores": 10752,
+      "architecture": "Ampere",
+      "uuid": "GPU-a6f65e7d-2dc7-27a7-972b-996705b41e14"
+    }
+  ],
+  "cudaVersion": "12.4",
+  "writerId": "y611p67u1jyrfe0gjjs4a1j1n0vxjsvk"
+}

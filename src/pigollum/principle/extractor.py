@@ -429,7 +429,7 @@ class PrincipleExtractor:
     @property
     def _ctx(self) -> str:
         """Returns 'Task context:\n...\n\n' when set, empty string otherwise."""
-        return self._ctx if self.task_context else ""
+        return f"Task context:\n{self.task_context}\n\n" if self.task_context else ""
 
     # ------------------------------------------------------------------
     # Backend resolution
@@ -568,7 +568,7 @@ class PrincipleExtractor:
         """
         user_prompt = (
             self._ctx
-            f"Objectives to optimise: {', '.join(self.objective_names)}\n\n"
+            + f"Objectives to optimise: {', '.join(self.objective_names)}\n\n"
             f"Generate exactly {n_principles} broad scientific principles that "
             f"govern enzyme performance for this reaction. Each principle should "
             f"capture a distinct biochemical mechanism (e.g., active-site geometry, "
@@ -703,7 +703,7 @@ class PrincipleExtractor:
 
         user_prompt = (
             self._ctx
-            f"PLANNER GUIDANCE:\n{guidance}\n\n"
+            + f"PLANNER GUIDANCE:\n{guidance}\n\n"
             f"CANDIDATE SEQUENCE:\n{seq_desc}\n\n"
             f"Full sequence: {sequence}\n\n"
             f"Based on the planner's guidance and the scientific principles above, "
@@ -800,7 +800,7 @@ class PrincipleExtractor:
 
         user_prompt = (
             self._ctx
-            f"{oracle_block}\n\n"
+            + f"{oracle_block}\n\n"
             f"CURRENT PRINCIPLES (indexed 0 to {len(principles) - 1}):\n"
             f"{principle_block}\n\n"
             f"Re-rank ALL {len(principles)} principles from most to least relevant "
@@ -902,7 +902,7 @@ class PrincipleExtractor:
 
         user_prompt = (
             self._ctx
-            f"TOP-RANKED PRINCIPLES (most relevant first):\n{principle_block}"
+            + f"TOP-RANKED PRINCIPLES (most relevant first):\n{principle_block}"
             f"{exp_block}\n\n"
             f"Based on these principles and observations, generate a directional "
             f"hypothesis for the next optimal enzyme candidate. Follow the Required "
@@ -1039,7 +1039,7 @@ class PrincipleExtractor:
 
         user_prompt = (
             self._ctx
-            f"Enzyme sequence properties:\n{seq_desc}\n\n"
+            + f"Enzyme sequence properties:\n{seq_desc}\n\n"
             f"Full sequence: "
             f"{sequence}\n\n"
             f"Observed experimental outcomes: {outcome_str}\n\n"

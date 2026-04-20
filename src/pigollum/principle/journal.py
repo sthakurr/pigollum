@@ -202,11 +202,8 @@ class PrincipleJournal:
     # Reporting
     # ------------------------------------------------------------------
 
-    def report(self, buffer=None, top_k: int = 5) -> str:
-        """
-        Generate and return the full human-readable evolution report.
-        Also prints it to stdout.
-        """
+    def _report_iterations_lines(self) -> list:
+        """Return the lines for the warm-start + per-BO-iteration sections only."""
         lines = []
         _h1 = lambda t: lines.append("\n" + "═" * _W + f"\n  {t}\n" + "═" * _W)
         _h2 = lambda t: lines.append("\n" + "─" * _W + f"\n  {t}\n" + "─" * _W)
@@ -241,11 +238,9 @@ class PrincipleJournal:
                 f"— {r.n_principles_before} principles in buffer"
             )
 
-            # Action suggestion
             lines.append(f"  Guidance: {r.suggestion[:120]}…" if len(r.suggestion) > 120
                          else f"  Guidance: {r.suggestion}")
 
-            # Score table for all principles
             if r.principle_scores:
                 lines.append("")
                 lines.append(
@@ -262,13 +257,11 @@ class PrincipleJournal:
                         f"{s.final_score:>6.3f}  {sel_mark:>8}  {short}…"
                     )
 
-            # Newly discovered principle
             if r.new_principle_text:
                 lines.append("")
                 lines.append(f"  ► New principle discovered  (reward={r.new_principle_reward:+.4f})")
                 _p(r.new_principle_text, indent=6)
 
-            # BO outcome
             if r.selected_outcomes:
                 lines.append("")
                 for seq, out in zip(r.selected_sequences, r.selected_outcomes):
@@ -280,6 +273,30 @@ class PrincipleJournal:
                     for n, v in zip(self.objective_names, r.best_train_y)
                 )
                 lines.append(f"  Best so far: {best_str}")
+
+        return lines
+
+    def report_iterations(self) -> str:
+        """Return the warm-start + per-BO-iteration sections (no Winning Principles)."""
+        return "\n".join(self._report_iterations_lines())
+
+    def save_text_report_iterations(self, path: str) -> None:
+        """Write only the iteration-by-iteration section to a .txt file."""
+        with open(path, "w") as f:
+            f.write(self.report_iterations())
+
+    def report(self, buffer=None, top_k: int = 5) -> str:
+        """
+        Generate and return the full human-readable evolution report
+        (iterations + Winning Principles section).
+        """
+        lines = self._report_iterations_lines()
+        _h1 = lambda t: lines.append("\n" + "═" * _W + f"\n  {t}\n" + "═" * _W)
+        _h2 = lambda t: lines.append("\n" + "─" * _W + f"\n  {t}\n" + "─" * _W)
+        _p  = lambda t, indent=2: lines.extend(
+            textwrap.wrap(t, width=_W - indent, initial_indent=" " * indent,
+                          subsequent_indent=" " * (indent + 2))
+        )
 
         # ── Winning principles ──────────────────────────────────────────
         _h1("Winning Principles")
