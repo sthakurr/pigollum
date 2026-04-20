@@ -1,0 +1,182 @@
+[
+  {
+    "iteration": 1,
+    "newly_selected_sequences": [
+      "MGMTLEEQAQAIADEAMRPENMERLFERIGELLGKPAEEVRETFDRYFRDGDRSVAREFLEQMVYMSGLIAGLSPEEIERALAASEARIAEAADARLNGRRAMGVAHGAVAEWLEADPRWRGRPEVLGIRILAERGLALGALEGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        32.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      45.0,
+      -0.021085578948259354
+    ],
+    "pareto_size": 1,
+    "n_principles": 2
+  },
+  {
+    "iteration": 2,
+    "newly_selected_sequences": [
+      "MGMTEEEIFREAVEEMLAIMDELGREERREEFRRLAEEMERFWKETGGVITEPEEARRFARRMAEMSGLIAGAPPEVIEEAKRAMEEDAREMAERGASFWEMMKVAHERTLDMLVERGVITPEEAARVKKVVNEYADKMEAARGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        38.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      45.0,
+      -0.021085578948259354
+    ],
+    "pareto_size": 1,
+    "n_principles": 3
+  },
+  {
+    "iteration": 3,
+    "newly_selected_sequences": [
+      "MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEAGDEERAAQFREWMREMSRAMHELGLTDEDIELTERAVERAEADPETDRFMLEMALAHAEALEELADAGRLTPEQRERVRELAERARAAYERGRGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        47.0,
+        2.207183361053467
+      ]
+    ],
+    "best_so_far": [
+      47.0,
+      2.207183361053467
+    ],
+    "pareto_size": 1,
+    "n_principles": 4
+  },
+  {
+    "iteration": 4,
+    "newly_selected_sequences": [
+      "MGPRAREVAKRYMGEEAFEEAVRRARARLRARGHPAADLPLDELIAGVEAGDEERERLFREFMREMSEAMFEMGLLDEDIDLTEEAVERAEADPETDRASIAMAEAHARALRELAEAGRLDPERVARVRELAERAEAAVERGRGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        52.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 5
+  },
+  {
+    "iteration": 5,
+    "newly_selected_sequences": [
+      "MGGRAREEAEKVMGREAFDRALALMRERLRAEGHPAADTPLDELIAGVEAGDEEKAAAFLDYMRRMSEAMFELGLTEEDFELTEMAMDRAEAEPETDRASLYMAEAHARAFLEMAEAGRLDPETRERVREMAKRIEAAIARGRGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        51.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 6
+  },
+  {
+    "iteration": 6,
+    "newly_selected_sequences": [
+      "MGASGTVRFGPDAPEFKVRRIFRYGDAVIMELTEPPEGIRGRYMASLILRDRSREAGERAAEIAREVPGVLHVELMPDGREPGMVHLWFDTEEEARRALDELQARLAEAGLDIDKAAMDKMYEQMVGLIRPGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        23.0,
+        1.1484984159469604
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 7
+  },
+  {
+    "iteration": 7,
+    "newly_selected_sequences": [
+      "MGPVRPVPLPPELRKYVPEETAERRVLGAAVDSPADIRPTLEAMRPHFDDEFLLVVHRMPADDPRTPARGQWMIMVFNGVKDLEAMARAFAAMHAPDEPVHTRRVRRDDPLDELVAWAEEAMGGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        40.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 8
+  },
+  {
+    "iteration": 8,
+    "newly_selected_sequences": [
+      "MGDAFLAEFRREADRVIARAPDPEMRARAREARDRIEALIREAGAENLDRLTREEVREFGEAMMTMKAAELGLTPEEAEEVIARVRPDIDEAAERGLSALEMMGVAHASVARAAGELRGWPEEEIERMVQAERERAARGVAAHGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        27.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 9
+  },
+  {
+    "iteration": 9,
+    "newly_selected_sequences": [
+      "MGEERLRELTRRYLELAMKYPFEEIVERVARYMGMTKEEVLEIFEKAIKEGNPEYVREFGRIMVYMAAFGLGAPEEFADRLDEVGVEIAEEAIREGKSARVVMTRVHRAVTEAALEAGLIPREEADRIVAILEEIEREIERLDGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        44.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 10
+  },
+  {
+    "iteration": 10,
+    "newly_selected_sequences": [
+      "MGRRVVELMAEAAGVPLEEIDVERTRREIAEELGVPYELYDRVIATPWGEVSDEEREPFAEAMTRMAQKMLGLPPEFAERGFAEVRDAVREAARRGAHARWLMGVLHNAVVRLAMEAGAIDPEAARRLIEALEEVRREAERETGGSGGSWSHPQFEK"
+    ],
+    "newly_selected_y": [
+      [
+        27.0,
+        -0.021085578948259354
+      ]
+    ],
+    "best_so_far": [
+      52.0,
+      2.207183361053467
+    ],
+    "pareto_size": 2,
+    "n_principles": 11
+  }
+]

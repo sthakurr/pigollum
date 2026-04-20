@@ -1,0 +1,620 @@
+
+══════════════════════════════════════════════════════════════════════════════
+  PiGollum Principle Evolution Report
+══════════════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────────────
+  Phase 0 — Warm-start  (1 initial principles)
+──────────────────────────────────────────────────────────────────────────────
+  [warm]  reward=+45.0000  expl=0.000  expt=0.000
+          Principle: (1) Major premise: Enzymes with a high
+            hydrophobic content and favorable electrostatic profiles
+            are more stable and properly folded, which is essential
+            for maintaining the correct active site geometry and
+            enhancing catalytic efficiency.  (2) Minor premise: The
+            enzyme in question has a high hydrophobic content
+            (54.1%) and a net charge of -6, contributing to its
+            stability and proper folding, which are crucial for
+            maintaining the active site geometry necessary for
+            efficient catalysis.  (3) Conclusion: In future sequence
+            designs, prioritize enzymes with a balanced hydrophobic
+            content and favorable electrostatic profiles to ensure
+            proper folding and active site geometry, thereby
+            enhancing catalytic efficiency.
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 1  [EXPLORE]  — 1 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Initialize more observations to build principle knowledge. Diverse exploration is crucial at this early stage…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.000   0.000         ★  (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+
+  ► New principle discovered  (reward=+32.0000)
+      (1) Major premise: Enzymes with high hydrophobic content tend to
+        form compact, stable structures that facilitate efficient
+        catalysis through hydrophobic packing. (2) Minor premise: The
+        enzyme in question has a high hydrophobic content (45.9%),
+        resulting in a compact structure that enhances catalytic
+        efficiency. (3) Conclusion: In future designs, prioritize
+        sequences with high hydrophobic content to promote compact
+        protein structures and improve catalytic efficiency.
+
+  Evaluated: MGMTLEEQAQAIADEAMRPENMERLFERIGELLGKPAEEVRETFDRYFRD…  →  objective=+32.0000  ddg_scaled=-0.0211
+  Best so far: objective=+45.0000  ddg_scaled=-0.0211
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 2  [EXPLORE]  — 2 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Initialize more observations to build principle knowledge. Diverse exploration is crucial at this early stage…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.000   0.000         ★  (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.000   0.000   0.000            (1) Major premise: Enzymes often utilize a combina…
+
+  ► New principle discovered  (reward=+38.0000)
+      (1) Major premise: Enzymes often utilize a combination of
+        electrostatic interactions and hydrophobic core stability to
+        enhance substrate binding and maintain active site geometry for
+        efficient catalysis. (2) Minor premise: The enzyme in question
+        has a high negative charge and multiple acidic residues that
+        facilitate strong electrostatic interactions with the substrate,
+        while a hydrophobic core composed of 42.7% hydrophobic residues
+        ensures robust protein stability and conformational rigidity,
+        which are essential for maintaining the active site geometry.
+        (3) Conclusion: In future sequence designs, prioritize sequences
+        with a balanced distribution of acidic residues for
+        electrostatic interactions and a significant proportion of
+        hydrophobic residues to ensure protein stability and active site
+        geometry.
+
+  Evaluated: MGMTEEEIFREAVEEMLAIMDELGREERREEFRRLAEEMERFWKETGGVI…  →  objective=+38.0000  ddg_scaled=-0.0211
+  Best so far: objective=+45.0000  ddg_scaled=-0.0211
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 3  [REFINE]  — 3 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Refine around principle: '(1) Major premise: Enzymes with a high hydrophobic content and favorable electrosta…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   1.000   0.778   0.889         ★  (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   1.000   0.233   0.616            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   1.000   0.484   0.742            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   0.000   0.000   0.000            (1) Major premise: Enzymes often utilize a combina…
+
+  ► New principle discovered  (reward=+47.0000)
+      (1) Major premise: Enzymes often utilize a combination of
+        electrostatic interactions and specific motifs to enhance
+        catalytic efficiency and selectivity. (2) Minor premise: The
+        enzyme in question exhibits a high content of negatively charged
+        residues that interact with positively charged intermediates, a
+        catalytic triad-like motif for proton transfer and nucleophilic
+        attack, and a hydrophobic core ensuring proper folding and
+        conformational stability. (3) Conclusion: Future sequence
+        designs should prioritize incorporating negatively charged
+        residues near positively charged intermediates, including motifs
+        like ASP-ARG-HIS for enhanced catalysis, and maintaining a
+        hydrophobic core to ensure proper folding and active-site
+        geometry.
+
+  Evaluated: MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEA…  →  objective=+47.0000  ddg_scaled=+2.2072
+  Best so far: objective=+47.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 4  [REFINE]  — 4 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Refine around principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interaction…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.681   0.340            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   1.000   0.193   0.596            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.252   0.396   0.324            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   0.572   0.749   0.661         ★  (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.000   0.000   0.000            (1) Major premise: High hydrophobic content and ap…
+
+  ► New principle discovered  (reward=+52.0000)
+      (1) Major premise: High hydrophobic content and appropriate
+        negative charge distribution are crucial for maintaining a
+        compact and stable protein structure, which enhances enzyme
+        stability and catalytic efficiency. (2) Minor premise: The
+        enzyme in question has a high hydrophobic content (43.9%) and a
+        net charge of -9, contributing to a compact and stable
+        structure, as evidenced by its favorable ddg_scaled value of
+        -0.0211. (3) Conclusion: In future sequence designs, prioritize
+        high hydrophobic content and balanced negative charge
+        distribution to ensure a compact and stable protein structure,
+        thereby improving enzyme stability and catalytic efficiency.
+
+  Evaluated: MGPRAREVAKRYMGEEAFEEAVRRARARLRARGHPAADLPLDELIAGVEA…  →  objective=+52.0000  ddg_scaled=-0.0211
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 5  [REFINE]  — 5 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Refine around principle: '(1) Major premise: High hydrophobic content and appropriate negative charge distrib…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.578   0.289            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   1.000   0.177   0.588            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.203   0.336   0.269            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   0.606   0.645   0.626            (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.788   0.787   0.788         ★  (1) Major premise: High hydrophobic content and ap…
+    5     5  +51.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+
+  ► New principle discovered  (reward=+51.0000)
+      (1) Major premise: Enzymes with high hydrophobic content tend to
+        have more stable protein folds due to favorable hydrophobic
+        packing, which enhances structural integrity and stability. (2)
+        Minor premise: The enzyme in question has a high hydrophobic
+        content (43.9%), leading to favorable hydrophobic packing and
+        contributing to its stable protein fold. (3) Conclusion: In
+        future sequence designs, prioritize maintaining or increasing
+        hydrophobic content to enhance enzyme stability.
+
+  Evaluated: MGGRAREEAEKVMGREAFDRALALMRERLRAEGHPAADTPLDELIAGVEA…  →  objective=+51.0000  ddg_scaled=-0.0211
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 6  [VALIDATE]  — 6 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Validate principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.529   0.265            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.748   0.153   0.450            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.207   0.296   0.251            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   1.000   0.598   0.799         ★  (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.813   0.751   0.782            (1) Major premise: High hydrophobic content and ap…
+    5     5  +51.0000   0.823   0.723   0.773            (1) Major premise: Enzymes with high hydrophobic c…
+    6     6  +23.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+
+  ► New principle discovered  (reward=+23.0000)
+      (1) Major premise: Enzymes with high hydrophobic content and
+        optimal negative charge distribution tend to exhibit enhanced
+        structural stability and improved catalytic efficiency due to
+        favorable hydrophobic packing and electrostatic interactions.
+        (2) Minor premise: The enzyme in question has a high hydrophobic
+        content (44.8%) and a significant negative charge distribution
+        (17.9%), which contribute to its structural integrity and
+        improve its catalytic performance, as evidenced by the high
+        ddg_scaled value of 1.1485.  (3) Conclusion: Future sequence
+        designs should aim to incorporate a balanced hydrophobic content
+        and strategic negative charge distribution to enhance both
+        structural stability and catalytic activity.
+
+  Evaluated: MGASGTVRFGPDAPEFKVRRIFRYGDAVIMELTEPPEGIRGRYMASLILR…  →  objective=+23.0000  ddg_scaled=+1.1485
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 7  [REFINE]  — 7 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Refine around principle: '(1) Major premise: Enzymes with high hydrophobic content tend to have more stable p…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.596   0.298            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.827   0.284   0.556            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.238   0.421   0.330            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   0.943   0.644   0.793            (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.361   0.750   0.555            (1) Major premise: High hydrophobic content and ap…
+    5     5  +51.0000   1.000   0.730   0.865         ★  (1) Major premise: Enzymes with high hydrophobic c…
+    6     6  +23.0000   0.368   0.138   0.253            (1) Major premise: Enzymes with high hydrophobic c…
+    7     7  +40.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+
+  ► New principle discovered  (reward=+40.0000)
+      (1) Major premise: Enzymes with high hydrophobic content tend to
+        form compact, stable structures due to favorable hydrophobic
+        packing interactions. (2) Minor premise: The enzyme in question
+        has a high hydrophobic content (51.8%), which likely contributes
+        to its compact and stable structure through hydrophobic packing.
+        (3) Conclusion: Future sequence designs should aim to maintain
+        or increase hydrophobic content to enhance enzyme stability and
+        activity.
+
+  Evaluated: MGPVRPVPLPPELRKYVPEETAERRVLGAAVDSPADIRPTLEAMRPHFDD…  →  objective=+40.0000  ddg_scaled=-0.0211
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 8  [VALIDATE]  — 8 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Validate principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.606   0.303            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.310   0.275   0.292            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.159   0.420   0.289            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   1.000   0.656   0.828         ★  (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.287   0.766   0.526            (1) Major premise: High hydrophobic content and ap…
+    5     5  +51.0000   0.384   0.746   0.565            (1) Major premise: Enzymes with high hydrophobic c…
+    6     6  +23.0000   0.298   0.126   0.212            (1) Major premise: Enzymes with high hydrophobic c…
+    7     7  +40.0000   0.264   0.473   0.368            (1) Major premise: Enzymes with high hydrophobic c…
+    8     8  +27.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+
+  ► New principle discovered  (reward=+27.0000)
+      (1) Major premise: Enzymes with high hydrophobic content tend to
+        have compact and stable protein structures, which are crucial
+        for proper folding and maintaining active site geometry. (2)
+        Minor premise: The enzyme in question has a high hydrophobic
+        content (45.9%), contributing to its compact and stable
+        structure, which is essential for its proper folding and active
+        site geometry. (3) Conclusion: In future sequence designs, aim
+        to maintain or increase hydrophobic content to ensure a compact
+        and stable protein structure, thereby enhancing proper folding
+        and active site geometry.
+
+  Evaluated: MGDAFLAEFRREADRVIARAPDPEMRARAREARDRIEALIREAGAENLDR…  →  objective=+27.0000  ddg_scaled=-0.0211
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 9  [VALIDATE]  — 9 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Validate principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.000   0.638   0.319            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.270   0.319   0.294            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.166   0.463   0.315            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   1.000   0.684   0.842         ★  (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.410   0.783   0.596            (1) Major premise: High hydrophobic content and ap…
+    5     5  +51.0000   0.230   0.765   0.498            (1) Major premise: Enzymes with high hydrophobic c…
+    6     6  +23.0000   0.527   0.157   0.342            (1) Major premise: Enzymes with high hydrophobic c…
+    7     7  +40.0000   0.159   0.514   0.337            (1) Major premise: Enzymes with high hydrophobic c…
+    8     8  +27.0000   0.193   0.219   0.206            (1) Major premise: Enzymes with high hydrophobic c…
+    9     9  +44.0000   0.000   0.000   0.000            (1) Major premise: Enzymes with high hydrophobic c…
+
+  ► New principle discovered  (reward=+44.0000)
+      (1) Major premise: Enzymes with high hydrophobic content tend to
+        form compact, stable structures due to favorable hydrophobic
+        packing interactions. (2) Minor premise: The enzyme in question
+        has a high hydrophobic content (43.9%), which likely contributes
+        to its compact and stable structure through hydrophobic packing
+        interactions. (3) Conclusion: In future sequence designs, aim to
+        maintain or increase hydrophobic content to promote compact and
+        stable enzyme structures.
+
+  Evaluated: MGEERLRELTRRYLELAMKYPFEEIVERVARYMGMTKEEVLEIFEKAIKE…  →  objective=+44.0000  ddg_scaled=-0.0211
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 10  [EXPLORE  ⚠ PLATEAU]  — 10 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1  +45.0000   0.169   0.633   0.401            (1) Major premise: Enzymes with a high hydrophobic…
+    1     1  +32.0000   0.166   0.301   0.234            (1) Major premise: Enzymes with high hydrophobic c…
+    2     2  +38.0000   0.278   0.450   0.364            (1) Major premise: Enzymes often utilize a combina…
+    3     3  +47.0000   1.000   0.681   0.840         ★  (1) Major premise: Enzymes often utilize a combina…
+    4     4  +52.0000   0.446   0.784   0.615            (1) Major premise: High hydrophobic content and ap…
+    5     5  +51.0000   0.137   0.765   0.451            (1) Major premise: Enzymes with high hydrophobic c…
+    6     6  +23.0000   0.547   0.142   0.344            (1) Major premise: Enzymes with high hydrophobic c…
+    7     7  +40.0000   0.000   0.503   0.251            (1) Major premise: Enzymes with high hydrophobic c…
+    8     8  +27.0000   0.152   0.202   0.177            (1) Major premise: Enzymes with high hydrophobic c…
+    9     9  +44.0000   0.108   0.608   0.358            (1) Major premise: Enzymes with high hydrophobic c…
+   10    10  +27.0000   0.000   0.000   0.000            (1) Major premise: High hydrophobic content and st…
+
+  ► New principle discovered  (reward=+27.0000)
+      (1) Major premise: High hydrophobic content and strategic negative
+        charge distribution in enzymes contribute to compact, stable
+        structures and enhanced catalytic efficiency through improved
+        substrate binding and electrostatic interactions.  (2) Minor
+        premise: The enzyme in question has a high hydrophobic content
+        (47.1%) and a negatively charged C-terminus, which likely
+        facilitates a compact structure and electrostatic interactions,
+        respectively, thereby enhancing substrate binding and
+        enantioselectivity.  (3) Conclusion: Future sequence designs
+        should aim to incorporate regions with high hydrophobic content
+        and strategically placed negatively charged residues to promote
+        compactness and improve catalytic efficiency and
+        enantioselectivity.
+
+  Evaluated: MGRRVVELMAEAAGVPLEEIDVERTRREIAEELGVPYELYDRVIATPWGE…  →  objective=+27.0000  ddg_scaled=-0.0211
+  Best so far: objective=+52.0000  ddg_scaled=+2.2072
+
+══════════════════════════════════════════════════════════════════════════════
+  Winning Principles
+══════════════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────────────
+  Top 5 by Observed Reward (best outcomes)
+──────────────────────────────────────────────────────────────────────────────
+  #1  reward=+52.0000  reward=+52.0000  iter=4  id=51d85ee6…
+      Principle: (1) Major premise: High hydrophobic content and
+        appropriate negative charge distribution are crucial for
+        maintaining a compact and stable protein structure, which
+        enhances enzyme stability and catalytic efficiency. (2) Minor
+        premise: The enzyme in question has a high hydrophobic content
+        (43.9%) and a net charge of -9, contributing to a compact and
+        stable structure, as evidenced by its favorable ddg_scaled value
+        of -0.0211. (3) Conclusion: In future sequence designs,
+        prioritize high hydrophobic content and balanced negative charge
+        distribution to ensure a compact and stable protein structure,
+        thereby improving enzyme stability and catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a compact and stable protein structure, which is
+        essential for maintaining proper folding and active site
+        geometry. The negative cha
+
+  #2  reward=+51.0000  reward=+51.0000  iter=5  id=1166ec69…
+      Principle: (1) Major premise: Enzymes with high hydrophobic
+        content tend to have more stable protein folds due to favorable
+        hydrophobic packing, which enhances structural integrity and
+        stability. (2) Minor premise: The enzyme in question has a high
+        hydrophobic content (43.9%), leading to favorable hydrophobic
+        packing and contributing to its stable protein fold. (3)
+        Conclusion: In future sequence designs, prioritize maintaining
+        or increasing hydrophobic content to enhance enzyme stability.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a stable protein fold through favorable
+        hydrophobic packing, which may enhance the overall structural
+        integrity and stability. The n
+
+  #3  reward=+47.0000  reward=+47.0000  iter=3  id=0ebc7dab…
+      Principle: (1) Major premise: Enzymes often utilize a combination
+        of electrostatic interactions and specific motifs to enhance
+        catalytic efficiency and selectivity. (2) Minor premise: The
+        enzyme in question exhibits a high content of negatively charged
+        residues that interact with positively charged intermediates, a
+        catalytic triad-like motif for proton transfer and nucleophilic
+        attack, and a hydrophobic core ensuring proper folding and
+        conformational stability. (3) Conclusion: Future sequence
+        designs should prioritize incorporating negatively charged
+        residues near positively charged intermediates, including motifs
+        like ASP-ARG-HIS for enhanced catalysis, and maintaining a
+        hydrophobic core to ensure proper folding and active-site
+        geometry.
+      Hypothesis: The enzyme's high content of negatively charged
+        residues (24.2%) likely contributes to strong electrostatic
+        interactions with the positively charged intermediates in the
+        reaction, stabilizing transiti
+
+  #4  reward=+45.0000  reward=+45.0000  iter=-1  id=eb2c76f5…
+      Principle: (1) Major premise: Enzymes with a high hydrophobic
+        content and favorable electrostatic profiles are more stable and
+        properly folded, which is essential for maintaining the correct
+        active site geometry and enhancing catalytic efficiency.  (2)
+        Minor premise: The enzyme in question has a high hydrophobic
+        content (54.1%) and a net charge of -6, contributing to its
+        stability and proper folding, which are crucial for maintaining
+        the active site geometry necessary for efficient catalysis.  (3)
+        Conclusion: In future sequence designs, prioritize enzymes with
+        a balanced hydrophobic content and favorable electrostatic
+        profiles to ensure proper folding and active site geometry,
+        thereby enhancing catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (54.1%) and
+        favorable electrostatic profile (net charge of -6) likely
+        contribute to its stability and proper folding, which are
+        crucial for maintaining the active
+
+  #5  reward=+44.0000  reward=+44.0000  iter=9  id=2987bb3d…
+      Principle: (1) Major premise: Enzymes with high hydrophobic
+        content tend to form compact, stable structures due to favorable
+        hydrophobic packing interactions. (2) Minor premise: The enzyme
+        in question has a high hydrophobic content (43.9%), which likely
+        contributes to its compact and stable structure through
+        hydrophobic packing interactions. (3) Conclusion: In future
+        sequence designs, aim to maintain or increase hydrophobic
+        content to promote compact and stable enzyme structures.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a compact, stable protein structure through
+        favorable hydrophobic packing interactions. The negative charge
+        distribution, with a net
+
+
+──────────────────────────────────────────────────────────────────────────────
+  Top 5 by Selection Count (most often guided BO)
+──────────────────────────────────────────────────────────────────────────────
+  #1  reward=+47.0000  selections=5  iter=3  id=0ebc7dab…
+      Principle: (1) Major premise: Enzymes often utilize a combination
+        of electrostatic interactions and specific motifs to enhance
+        catalytic efficiency and selectivity. (2) Minor premise: The
+        enzyme in question exhibits a high content of negatively charged
+        residues that interact with positively charged intermediates, a
+        catalytic triad-like motif for proton transfer and nucleophilic
+        attack, and a hydrophobic core ensuring proper folding and
+        conformational stability. (3) Conclusion: Future sequence
+        designs should prioritize incorporating negatively charged
+        residues near positively charged intermediates, including motifs
+        like ASP-ARG-HIS for enhanced catalysis, and maintaining a
+        hydrophobic core to ensure proper folding and active-site
+        geometry.
+      Hypothesis: The enzyme's high content of negatively charged
+        residues (24.2%) likely contributes to strong electrostatic
+        interactions with the positively charged intermediates in the
+        reaction, stabilizing transiti
+
+  #2  reward=+45.0000  selections=4  iter=-1  id=eb2c76f5…
+      Principle: (1) Major premise: Enzymes with a high hydrophobic
+        content and favorable electrostatic profiles are more stable and
+        properly folded, which is essential for maintaining the correct
+        active site geometry and enhancing catalytic efficiency.  (2)
+        Minor premise: The enzyme in question has a high hydrophobic
+        content (54.1%) and a net charge of -6, contributing to its
+        stability and proper folding, which are crucial for maintaining
+        the active site geometry necessary for efficient catalysis.  (3)
+        Conclusion: In future sequence designs, prioritize enzymes with
+        a balanced hydrophobic content and favorable electrostatic
+        profiles to ensure proper folding and active site geometry,
+        thereby enhancing catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (54.1%) and
+        favorable electrostatic profile (net charge of -6) likely
+        contribute to its stability and proper folding, which are
+        crucial for maintaining the active
+
+  #3  reward=+52.0000  selections=1  iter=4  id=51d85ee6…
+      Principle: (1) Major premise: High hydrophobic content and
+        appropriate negative charge distribution are crucial for
+        maintaining a compact and stable protein structure, which
+        enhances enzyme stability and catalytic efficiency. (2) Minor
+        premise: The enzyme in question has a high hydrophobic content
+        (43.9%) and a net charge of -9, contributing to a compact and
+        stable structure, as evidenced by its favorable ddg_scaled value
+        of -0.0211. (3) Conclusion: In future sequence designs,
+        prioritize high hydrophobic content and balanced negative charge
+        distribution to ensure a compact and stable protein structure,
+        thereby improving enzyme stability and catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a compact and stable protein structure, which is
+        essential for maintaining proper folding and active site
+        geometry. The negative cha
+
+  #4  reward=+51.0000  selections=1  iter=5  id=1166ec69…
+      Principle: (1) Major premise: Enzymes with high hydrophobic
+        content tend to have more stable protein folds due to favorable
+        hydrophobic packing, which enhances structural integrity and
+        stability. (2) Minor premise: The enzyme in question has a high
+        hydrophobic content (43.9%), leading to favorable hydrophobic
+        packing and contributing to its stable protein fold. (3)
+        Conclusion: In future sequence designs, prioritize maintaining
+        or increasing hydrophobic content to enhance enzyme stability.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a stable protein fold through favorable
+        hydrophobic packing, which may enhance the overall structural
+        integrity and stability. The n
+
+  #5  reward=+32.0000  selections=0  iter=1  id=8ceab43a…
+      Principle: (1) Major premise: Enzymes with high hydrophobic
+        content tend to form compact, stable structures that facilitate
+        efficient catalysis through hydrophobic packing. (2) Minor
+        premise: The enzyme in question has a high hydrophobic content
+        (45.9%), resulting in a compact structure that enhances
+        catalytic efficiency. (3) Conclusion: In future designs,
+        prioritize sequences with high hydrophobic content to promote
+        compact protein structures and improve catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (45.9%) likely
+        contributes to a compact, stable protein structure with
+        efficient hydrophobic packing, which enhances catalytic
+        efficiency. The negative charge dis
+
+
+──────────────────────────────────────────────────────────────────────────────
+  Top 5 by Influence Score (reward × selections)
+──────────────────────────────────────────────────────────────────────────────
+  #1  reward=+47.0000  influence=282.00  iter=3  id=0ebc7dab…
+      Principle: (1) Major premise: Enzymes often utilize a combination
+        of electrostatic interactions and specific motifs to enhance
+        catalytic efficiency and selectivity. (2) Minor premise: The
+        enzyme in question exhibits a high content of negatively charged
+        residues that interact with positively charged intermediates, a
+        catalytic triad-like motif for proton transfer and nucleophilic
+        attack, and a hydrophobic core ensuring proper folding and
+        conformational stability. (3) Conclusion: Future sequence
+        designs should prioritize incorporating negatively charged
+        residues near positively charged intermediates, including motifs
+        like ASP-ARG-HIS for enhanced catalysis, and maintaining a
+        hydrophobic core to ensure proper folding and active-site
+        geometry.
+      Hypothesis: The enzyme's high content of negatively charged
+        residues (24.2%) likely contributes to strong electrostatic
+        interactions with the positively charged intermediates in the
+        reaction, stabilizing transiti
+
+  #2  reward=+45.0000  influence=225.00  iter=-1  id=eb2c76f5…
+      Principle: (1) Major premise: Enzymes with a high hydrophobic
+        content and favorable electrostatic profiles are more stable and
+        properly folded, which is essential for maintaining the correct
+        active site geometry and enhancing catalytic efficiency.  (2)
+        Minor premise: The enzyme in question has a high hydrophobic
+        content (54.1%) and a net charge of -6, contributing to its
+        stability and proper folding, which are crucial for maintaining
+        the active site geometry necessary for efficient catalysis.  (3)
+        Conclusion: In future sequence designs, prioritize enzymes with
+        a balanced hydrophobic content and favorable electrostatic
+        profiles to ensure proper folding and active site geometry,
+        thereby enhancing catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (54.1%) and
+        favorable electrostatic profile (net charge of -6) likely
+        contribute to its stability and proper folding, which are
+        crucial for maintaining the active
+
+  #3  reward=+52.0000  influence=104.00  iter=4  id=51d85ee6…
+      Principle: (1) Major premise: High hydrophobic content and
+        appropriate negative charge distribution are crucial for
+        maintaining a compact and stable protein structure, which
+        enhances enzyme stability and catalytic efficiency. (2) Minor
+        premise: The enzyme in question has a high hydrophobic content
+        (43.9%) and a net charge of -9, contributing to a compact and
+        stable structure, as evidenced by its favorable ddg_scaled value
+        of -0.0211. (3) Conclusion: In future sequence designs,
+        prioritize high hydrophobic content and balanced negative charge
+        distribution to ensure a compact and stable protein structure,
+        thereby improving enzyme stability and catalytic efficiency.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a compact and stable protein structure, which is
+        essential for maintaining proper folding and active site
+        geometry. The negative cha
+
+  #4  reward=+51.0000  influence=102.00  iter=5  id=1166ec69…
+      Principle: (1) Major premise: Enzymes with high hydrophobic
+        content tend to have more stable protein folds due to favorable
+        hydrophobic packing, which enhances structural integrity and
+        stability. (2) Minor premise: The enzyme in question has a high
+        hydrophobic content (43.9%), leading to favorable hydrophobic
+        packing and contributing to its stable protein fold. (3)
+        Conclusion: In future sequence designs, prioritize maintaining
+        or increasing hydrophobic content to enhance enzyme stability.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a stable protein fold through favorable
+        hydrophobic packing, which may enhance the overall structural
+        integrity and stability. The n
+
+  #5  reward=+44.0000  influence=44.00  iter=9  id=2987bb3d…
+      Principle: (1) Major premise: Enzymes with high hydrophobic
+        content tend to form compact, stable structures due to favorable
+        hydrophobic packing interactions. (2) Minor premise: The enzyme
+        in question has a high hydrophobic content (43.9%), which likely
+        contributes to its compact and stable structure through
+        hydrophobic packing interactions. (3) Conclusion: In future
+        sequence designs, aim to maintain or increase hydrophobic
+        content to promote compact and stable enzyme structures.
+      Hypothesis: The enzyme's high hydrophobic content (43.9%) likely
+        contributes to a compact, stable protein structure through
+        favorable hydrophobic packing interactions. The negative charge
+        distribution, with a net
+
+
+══════════════════════════════════════════════════════════════════════════════
+  The Winning Principle
+══════════════════════════════════════════════════════════════════════════════
+  Reward:         +47.0000
+  Selection count: 5
+  Influence score: 282.00
+  Discovered at iteration: 3
+  Sequence: MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEAGDEERAAQFREWMREMSRAMHELGLTDEDI…
+
+  HYPOTHESIS
+    The enzyme's high content of negatively charged residues (24.2%)
+      likely contributes to strong electrostatic interactions with the
+      positively charged intermediates in the reaction, stabilizing
+      transition states and lowering the activation energy. The presence
+      of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates
+      proton transfer and nucleophilic attack, enhancing both reaction
+      yield and enantioselectivity. Additionally, the hydrophobic core
+      (42.0% hydrophobic residues) ensures proper folding and
+      conformational stability, which is crucial for maintaining active-
+      site geometry and efficient substrate binding.
+
+  PRINCIPLE
+    (1) Major premise: Enzymes often utilize a combination of
+      electrostatic interactions and specific motifs to enhance catalytic
+      efficiency and selectivity. (2) Minor premise: The enzyme in
+      question exhibits a high content of negatively charged residues that
+      interact with positively charged intermediates, a catalytic triad-
+      like motif for proton transfer and nucleophilic attack, and a
+      hydrophobic core ensuring proper folding and conformational
+      stability. (3) Conclusion: Future sequence designs should prioritize
+      incorporating negatively charged residues near positively charged
+      intermediates, including motifs like ASP-ARG-HIS for enhanced
+      catalysis, and maintaining a hydrophobic core to ensure proper
+      folding and active-site geometry.

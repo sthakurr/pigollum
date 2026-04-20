@@ -1,0 +1,1188 @@
+{
+  "objective_names": [
+    "objective",
+    "ddg_scaled"
+  ],
+  "selection_counts": {
+    "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437": 4,
+    "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc": 5,
+    "51d85ee6-26d3-476f-aac2-572aee74d67e": 1,
+    "1166ec69-416d-4a93-929b-dda3a9e84c0b": 1
+  },
+  "records": [
+    {
+      "iteration": -1,
+      "phase": "warm_start",
+      "n_principles_before": 0,
+      "action_type": "explore",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Initialize more observations to build principle knowledge. Diverse exploration is crucial at this early stage.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": true
+        }
+      ],
+      "best_principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+      "new_principle_id": null,
+      "new_principle_text": null,
+      "new_principle_reward": null,
+      "selected_sequences": [],
+      "selected_outcomes": [],
+      "best_train_y": [
+        45.0,
+        -0.021085578948259354
+      ]
+    },
+    {
+      "iteration": 1,
+      "phase": "bo",
+      "n_principles_before": 1,
+      "action_type": "explore",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Initialize more observations to build principle knowledge. Diverse exploration is crucial at this early stage.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": true
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+      "new_principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+      "new_principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+      "new_principle_reward": 32.0,
+      "selected_sequences": [
+        "MGMTLEEQAQAIADEAMRPENMERLFERIGELLGKPAEEVRETFDRYFRDGDRSVAREFLEQMVYMSGLIAGLSPEEIERALAASEARIAEAADARLNGRRAMGVAHGAVAEWLEADPRWRGRPEVLGIRILAERGLALGALEGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 32.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        45.0,
+        -0.021085578948259354
+      ]
+    },
+    {
+      "iteration": 2,
+      "phase": "bo",
+      "n_principles_before": 2,
+      "action_type": "explore",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Initialize more observations to build principle knowledge. Diverse exploration is crucial at this early stage.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": true
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+      "new_principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+      "new_principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+      "new_principle_reward": 38.0,
+      "selected_sequences": [
+        "MGMTEEEIFREAVEEMLAIMDELGREERREEFRRLAEEMERFWKETGGVITEPEEARRFARRMAEMSGLIAGAPPEVIEEAKRAMEEDAREMAERGASFWEMMKVAHERTLDMLVERGVITPEEAARVKKVVNEYADKMEAARGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 38.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        45.0,
+        -0.021085578948259354
+      ]
+    },
+    {
+      "iteration": 3,
+      "phase": "bo",
+      "n_principles_before": 3,
+      "action_type": "refine",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Refine around principle: '(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are \u2026'. This principle achieved reward=45.0000 and shows high exploitation potential. Seek sequences similar to this variant.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.7781489263012324,
+          "final_score": 0.8890744631506162,
+          "was_selected": true
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.23287176691674383,
+          "final_score": 0.6164358834583719,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.48431874930128405,
+          "final_score": 0.7421593746506421,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+      "new_principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+      "new_principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+      "new_principle_reward": 47.0,
+      "selected_sequences": [
+        "MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEAGDEERAAQFREWMREMSRAMHELGLTDEDIELTERAVERAEADPETDRFMLEMALAHAEALEELADAGRLTPEQRERVRELAERARAAYERGRGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 47.0,
+          "ddg_scaled": 2.207183361053467
+        }
+      ],
+      "best_train_y": [
+        47.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 4,
+      "phase": "bo",
+      "n_principles_before": 4,
+      "action_type": "refine",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Refine around principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific mo\u2026'. This principle achieved reward=47.0000 and shows high exploitation potential. Seek sequences similar to this variant.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.6809056077932697,
+          "final_score": 0.34045280389663485,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.19284043869939002,
+          "final_score": 0.596420219349695,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.2516075295484694,
+          "exploitation_score": 0.39625931091894956,
+          "final_score": 0.32393342023370947,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 0.5723335561283805,
+          "exploitation_score": 0.749284044697935,
+          "final_score": 0.6608088004131578,
+          "was_selected": true
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+      "new_principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+      "new_principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+      "new_principle_reward": 52.0,
+      "selected_sequences": [
+        "MGPRAREVAKRYMGEEAFEEAVRRARARLRARGHPAADLPLDELIAGVEAGDEERERLFREFMREMSEAMFEMGLLDEDIDLTEEAVERAEADPETDRASIAMAEAHARALRELAEAGRLDPERVARVRELAERAEAAVERGRGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 52.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 5,
+      "phase": "bo",
+      "n_principles_before": 5,
+      "action_type": "refine",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Refine around principle: '(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial\u2026'. This principle achieved reward=52.0000 and shows high exploitation potential. Seek sequences similar to this variant.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.5776509084274072,
+          "final_score": 0.2888254542137036,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.17693968918291544,
+          "final_score": 0.5884698445914577,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.20341836620669618,
+          "exploitation_score": 0.33554543463089714,
+          "final_score": 0.26948190041879666,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 0.6062629488271456,
+          "exploitation_score": 0.6451546487829306,
+          "final_score": 0.625708798805038,
+          "was_selected": false
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.7883498424412786,
+          "exploitation_score": 0.7874268256016381,
+          "final_score": 0.7878883340214584,
+          "was_selected": true
+        },
+        {
+          "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+          "iteration_added": 5,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 51.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+      "new_principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+      "new_principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+      "new_principle_reward": 51.0,
+      "selected_sequences": [
+        "MGGRAREEAEKVMGREAFDRALALMRERLRAEGHPAADTPLDELIAGVEAGDEEKAAAFLDYMRRMSEAMFELGLTEEDFELTEMAMDRAEAEPETDRASLYMAEAHARAFLEMAEAGRLDPETRERVREMAKRIEAAIARGRGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 51.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 6,
+      "phase": "bo",
+      "n_principles_before": 6,
+      "action_type": "validate",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Validate principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific mo\u2026'. Reward=47.0000 shows moderate promise. Confirm with structurally similar but distinct sequences.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.529291053756283,
+          "final_score": 0.2646455268781415,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.7475509053223602,
+          "exploitation_score": 0.15283217076434674,
+          "final_score": 0.4501915380433535,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.20700160187645328,
+          "exploitation_score": 0.29566874309739216,
+          "final_score": 0.2513351724869227,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.5984029119802766,
+          "final_score": 0.7992014559901384,
+          "was_selected": true
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.8127270528790439,
+          "exploitation_score": 0.7507480933416998,
+          "final_score": 0.7817375731103718,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+          "iteration_added": 5,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 51.0,
+          "exploration_score": 0.8226068960941822,
+          "exploitation_score": 0.7234916293298091,
+          "final_score": 0.7730492627119957,
+          "was_selected": false
+        },
+        {
+          "principle_id": "388a591d-b278-4fd4-ae61-905dd5abd0b1",
+          "iteration_added": 6,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content and optimal negative charge distribution tend to exhibit enhanced structural stability and improved catalytic efficiency due to favorable hydrophobic packing and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (44.8%) and a significant negative charge distribution (17.9%), which contribute to its structural integrity and improve its catalytic performance, as evidenced by the high ddg_scaled value of 1.1485.\n\n(3) Conclusion: Future sequence designs should aim to incorporate a balanced hydrophobic content and strategic negative charge distribution to enhance both structural stability and catalytic activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (44.8%) likely contributes to a stable protein fold through favorable hydrophobic packing interactions, which may enhance the enzyme's structural integrity and stability. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence, though not explicitly visible in the provided segment, could facilitate nucleophilic attack and acid-base catalysis during the reaction. Additionally, the negative charge distribution (17.9% negative-charged residues) may optimize electrostatic interactions with the positively charged substrate, improving both binding affinity and enantioselectivity, as evidenced by the high ddg_scaled value of 1.1485.",
+          "reward": 23.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+      "new_principle_id": "388a591d-b278-4fd4-ae61-905dd5abd0b1",
+      "new_principle_text": "(1) Major premise: Enzymes with high hydrophobic content and optimal negative charge distribution tend to exhibit enhanced structural stability and improved catalytic efficiency due to favorable hydrophobic packing and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (44.8%) and a significant negative charge distribution (17.9%), which contribute to its structural integrity and improve its catalytic performance, as evidenced by the high ddg_scaled value of 1.1485.\n\n(3) Conclusion: Future sequence designs should aim to incorporate a balanced hydrophobic content and strategic negative charge distribution to enhance both structural stability and catalytic activity.",
+      "new_principle_reward": 23.0,
+      "selected_sequences": [
+        "MGASGTVRFGPDAPEFKVRRIFRYGDAVIMELTEPPEGIRGRYMASLILRDRSREAGERAAEIAREVPGVLHVELMPDGREPGMVHLWFDTEEEARRALDELQARLAEAGLDIDKAAMDKMYEQMVGLIRPGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 23.0,
+          "ddg_scaled": 1.1484984159469604
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 7,
+      "phase": "bo",
+      "n_principles_before": 7,
+      "action_type": "refine",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Refine around principle: '(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due \u2026'. This principle achieved reward=51.0000 and shows high exploitation potential. Seek sequences similar to this variant.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.5961351419947634,
+          "final_score": 0.2980675709973817,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.8267811351237038,
+          "exploitation_score": 0.2843487293005084,
+          "final_score": 0.5555649322121061,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.23801241834068504,
+          "exploitation_score": 0.4213391753173488,
+          "final_score": 0.32967579682901693,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 0.9427746312691183,
+          "exploitation_score": 0.6436614181492153,
+          "final_score": 0.7932180247091668,
+          "was_selected": false
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.36107255819435985,
+          "exploitation_score": 0.7495197352862616,
+          "final_score": 0.5552961467403107,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+          "iteration_added": 5,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 51.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.7300941510605805,
+          "final_score": 0.8650470755302903,
+          "was_selected": true
+        },
+        {
+          "principle_id": "388a591d-b278-4fd4-ae61-905dd5abd0b1",
+          "iteration_added": 6,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content and optimal negative charge distribution tend to exhibit enhanced structural stability and improved catalytic efficiency due to favorable hydrophobic packing and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (44.8%) and a significant negative charge distribution (17.9%), which contribute to its structural integrity and improve its catalytic performance, as evidenced by the high ddg_scaled value of 1.1485.\n\n(3) Conclusion: Future sequence designs should aim to incorporate a balanced hydrophobic content and strategic negative charge distribution to enhance both structural stability and catalytic activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (44.8%) likely contributes to a stable protein fold through favorable hydrophobic packing interactions, which may enhance the enzyme's structural integrity and stability. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence, though not explicitly visible in the provided segment, could facilitate nucleophilic attack and acid-base catalysis during the reaction. Additionally, the negative charge distribution (17.9% negative-charged residues) may optimize electrostatic interactions with the positively charged substrate, improving both binding affinity and enantioselectivity, as evidenced by the high ddg_scaled value of 1.1485.",
+          "reward": 23.0,
+          "exploration_score": 0.36782718329244346,
+          "exploitation_score": 0.13805236642169946,
+          "final_score": 0.2529397748570715,
+          "was_selected": false
+        },
+        {
+          "principle_id": "b1477169-a226-4030-a7e2-144cb952abd9",
+          "iteration_added": 7,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (51.8%), which likely contributes to its compact and stable structure through hydrophobic packing.\n(3) Conclusion: Future sequence designs should aim to maintain or increase hydrophobic content to enhance enzyme stability and activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (51.8%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The presence of a catalytic triad-like motif (e.g., ASP-GLU-HIS) within the sequence facilitates optimal substrate binding and orientation, enhancing both reaction yield and enantioselectivity. The estimated net charge of -1 suggests an appropriate balance of charged residues that could mediate necessary electrostatic interactions with the substrate and transition state, further optimizing the catalytic process.",
+          "reward": 40.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+      "new_principle_id": "b1477169-a226-4030-a7e2-144cb952abd9",
+      "new_principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (51.8%), which likely contributes to its compact and stable structure through hydrophobic packing.\n(3) Conclusion: Future sequence designs should aim to maintain or increase hydrophobic content to enhance enzyme stability and activity.",
+      "new_principle_reward": 40.0,
+      "selected_sequences": [
+        "MGPVRPVPLPPELRKYVPEETAERRVLGAAVDSPADIRPTLEAMRPHFDDEFLLVVHRMPADDPRTPARGQWMIMVFNGVKDLEAMARAFAAMHAPDEPVHTRRVRRDDPLDELVAWAEEAMGGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 40.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 8,
+      "phase": "bo",
+      "n_principles_before": 8,
+      "action_type": "validate",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Validate principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific mo\u2026'. Reward=47.0000 shows moderate promise. Confirm with structurally similar but distinct sequences.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.6061914762699713,
+          "final_score": 0.30309573813498564,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.30969134676803994,
+          "exploitation_score": 0.27478185740974315,
+          "final_score": 0.2922366020888916,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.1586909769587413,
+          "exploitation_score": 0.4198234179466723,
+          "final_score": 0.2892571974527068,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.656333343392958,
+          "final_score": 0.8281666716964791,
+          "was_selected": true
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.2866185065613135,
+          "exploitation_score": 0.766053670493575,
+          "final_score": 0.5263360885274442,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+          "iteration_added": 5,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 51.0,
+          "exploration_score": 0.38351058031534646,
+          "exploitation_score": 0.7461773917236583,
+          "final_score": 0.5648439860195024,
+          "was_selected": false
+        },
+        {
+          "principle_id": "388a591d-b278-4fd4-ae61-905dd5abd0b1",
+          "iteration_added": 6,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content and optimal negative charge distribution tend to exhibit enhanced structural stability and improved catalytic efficiency due to favorable hydrophobic packing and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (44.8%) and a significant negative charge distribution (17.9%), which contribute to its structural integrity and improve its catalytic performance, as evidenced by the high ddg_scaled value of 1.1485.\n\n(3) Conclusion: Future sequence designs should aim to incorporate a balanced hydrophobic content and strategic negative charge distribution to enhance both structural stability and catalytic activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (44.8%) likely contributes to a stable protein fold through favorable hydrophobic packing interactions, which may enhance the enzyme's structural integrity and stability. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence, though not explicitly visible in the provided segment, could facilitate nucleophilic attack and acid-base catalysis during the reaction. Additionally, the negative charge distribution (17.9% negative-charged residues) may optimize electrostatic interactions with the positively charged substrate, improving both binding affinity and enantioselectivity, as evidenced by the high ddg_scaled value of 1.1485.",
+          "reward": 23.0,
+          "exploration_score": 0.2982537462293205,
+          "exploitation_score": 0.12553914398843397,
+          "final_score": 0.21189644510887723,
+          "was_selected": false
+        },
+        {
+          "principle_id": "b1477169-a226-4030-a7e2-144cb952abd9",
+          "iteration_added": 7,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (51.8%), which likely contributes to its compact and stable structure through hydrophobic packing.\n(3) Conclusion: Future sequence designs should aim to maintain or increase hydrophobic content to enhance enzyme stability and activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (51.8%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The presence of a catalytic triad-like motif (e.g., ASP-GLU-HIS) within the sequence facilitates optimal substrate binding and orientation, enhancing both reaction yield and enantioselectivity. The estimated net charge of -1 suggests an appropriate balance of charged residues that could mediate necessary electrostatic interactions with the substrate and transition state, further optimizing the catalytic process.",
+          "reward": 40.0,
+          "exploration_score": 0.2638482375989087,
+          "exploitation_score": 0.473067898640424,
+          "final_score": 0.3684580681196663,
+          "was_selected": false
+        },
+        {
+          "principle_id": "cb835c20-f873-44ce-b674-256382217322",
+          "iteration_added": 8,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have compact and stable protein structures, which are crucial for proper folding and maintaining active site geometry.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), contributing to its compact and stable structure, which is essential for its proper folding and active site geometry.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to ensure a compact and stable protein structure, thereby enhancing proper folding and active site geometry.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -7, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of a potential catalytic motif, such as a charged residue near the active site, could enhance nucleophilic attack and stabilize transition states, leading to improved reaction yield and enantioselectivity as observed (objective = 27.0000, ddg_scaled = -0.0211).",
+          "reward": 27.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+      "new_principle_id": "cb835c20-f873-44ce-b674-256382217322",
+      "new_principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have compact and stable protein structures, which are crucial for proper folding and maintaining active site geometry.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), contributing to its compact and stable structure, which is essential for its proper folding and active site geometry.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to ensure a compact and stable protein structure, thereby enhancing proper folding and active site geometry.",
+      "new_principle_reward": 27.0,
+      "selected_sequences": [
+        "MGDAFLAEFRREADRVIARAPDPEMRARAREARDRIEALIREAGAENLDRLTREEVREFGEAMMTMKAAELGLTPEEAEEVIARVRPDIDEAAERGLSALEMMGVAHASVARAAGELRGWPEEEIERMVQAERERAARGVAAHGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 27.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 9,
+      "phase": "bo",
+      "n_principles_before": 9,
+      "action_type": "validate",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Validate principle: '(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific mo\u2026'. Reward=47.0000 shows moderate promise. Confirm with structurally similar but distinct sequences.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.6382082247831629,
+          "final_score": 0.31910411239158143,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.26967720115028315,
+          "exploitation_score": 0.3185207197664527,
+          "final_score": 0.2940989604583679,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.16603351627540186,
+          "exploitation_score": 0.46317308704151794,
+          "final_score": 0.3146033016584599,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.6839382944733955,
+          "final_score": 0.8419691472366977,
+          "was_selected": true
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.40967663170319035,
+          "exploitation_score": 0.7829203145060853,
+          "final_score": 0.5962984731046379,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+          "iteration_added": 5,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 51.0,
+          "exploration_score": 0.2304957899741074,
+          "exploitation_score": 0.7650555215171857,
+          "final_score": 0.49777565574564653,
+          "was_selected": false
+        },
+        {
+          "principle_id": "388a591d-b278-4fd4-ae61-905dd5abd0b1",
+          "iteration_added": 6,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content and optimal negative charge distribution tend to exhibit enhanced structural stability and improved catalytic efficiency due to favorable hydrophobic packing and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (44.8%) and a significant negative charge distribution (17.9%), which contribute to its structural integrity and improve its catalytic performance, as evidenced by the high ddg_scaled value of 1.1485.\n\n(3) Conclusion: Future sequence designs should aim to incorporate a balanced hydrophobic content and strategic negative charge distribution to enhance both structural stability and catalytic activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (44.8%) likely contributes to a stable protein fold through favorable hydrophobic packing interactions, which may enhance the enzyme's structural integrity and stability. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence, though not explicitly visible in the provided segment, could facilitate nucleophilic attack and acid-base catalysis during the reaction. Additionally, the negative charge distribution (17.9% negative-charged residues) may optimize electrostatic interactions with the positively charged substrate, improving both binding affinity and enantioselectivity, as evidenced by the high ddg_scaled value of 1.1485.",
+          "reward": 23.0,
+          "exploration_score": 0.5265427055121615,
+          "exploitation_score": 0.15708441851786842,
+          "final_score": 0.341813562015015,
+          "was_selected": false
+        },
+        {
+          "principle_id": "b1477169-a226-4030-a7e2-144cb952abd9",
+          "iteration_added": 7,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (51.8%), which likely contributes to its compact and stable structure through hydrophobic packing.\n(3) Conclusion: Future sequence designs should aim to maintain or increase hydrophobic content to enhance enzyme stability and activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (51.8%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The presence of a catalytic triad-like motif (e.g., ASP-GLU-HIS) within the sequence facilitates optimal substrate binding and orientation, enhancing both reaction yield and enantioselectivity. The estimated net charge of -1 suggests an appropriate balance of charged residues that could mediate necessary electrostatic interactions with the substrate and transition state, further optimizing the catalytic process.",
+          "reward": 40.0,
+          "exploration_score": 0.15888695526130286,
+          "exploitation_score": 0.5141860856919213,
+          "final_score": 0.3365365204766121,
+          "was_selected": false
+        },
+        {
+          "principle_id": "cb835c20-f873-44ce-b674-256382217322",
+          "iteration_added": 8,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have compact and stable protein structures, which are crucial for proper folding and maintaining active site geometry.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), contributing to its compact and stable structure, which is essential for its proper folding and active site geometry.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to ensure a compact and stable protein structure, thereby enhancing proper folding and active site geometry.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -7, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of a potential catalytic motif, such as a charged residue near the active site, could enhance nucleophilic attack and stabilize transition states, leading to improved reaction yield and enantioselectivity as observed (objective = 27.0000, ddg_scaled = -0.0211).",
+          "reward": 27.0,
+          "exploration_score": 0.1932366941352989,
+          "exploitation_score": 0.21901520819309178,
+          "final_score": 0.20612595116419535,
+          "was_selected": false
+        },
+        {
+          "principle_id": "2987bb3d-b2b0-4c17-bfbf-8c7a17c538ee",
+          "iteration_added": 9,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), which likely contributes to its compact and stable structure through hydrophobic packing interactions.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to promote compact and stable enzyme structures.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The negative charge distribution, with a net charge of -10, suggests a balance of charged residues that could facilitate electrostatic interactions with both the substrate and transition state, stabilizing the active site. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence may enable a nucleophilic attack on the electrophilic carbon of the substrate, driving the reaction forward and enhancing enantioselectivity.",
+          "reward": 44.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+      "new_principle_id": "2987bb3d-b2b0-4c17-bfbf-8c7a17c538ee",
+      "new_principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), which likely contributes to its compact and stable structure through hydrophobic packing interactions.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to promote compact and stable enzyme structures.",
+      "new_principle_reward": 44.0,
+      "selected_sequences": [
+        "MGEERLRELTRRYLELAMKYPFEEIVERVARYMGMTKEEVLEIFEKAIKEGNPEYVREFGRIMVYMAAFGLGAPEEFADRLDEVGVEIAEEAIREGKSARVVMTRVHRAVTEAALEAGLIPREEADRIVAILEEIEREIERLDGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 44.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    },
+    {
+      "iteration": 10,
+      "phase": "bo",
+      "n_principles_before": 10,
+      "action_type": "explore",
+      "plateau_detected": true,
+      "suggestion": "[PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse candidate sequences that differ from previously evaluated ones. Consider regions of sequence space not yet covered by known principles.",
+      "principle_scores": [
+        {
+          "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+          "iteration_added": -1,
+          "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+          "reward": 45.0,
+          "exploration_score": 0.16919829804742284,
+          "exploitation_score": 0.6325992778308788,
+          "final_score": 0.4008987879391508,
+          "was_selected": false
+        },
+        {
+          "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+          "iteration_added": 1,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+          "reward": 32.0,
+          "exploration_score": 0.16634720439189746,
+          "exploitation_score": 0.3011742304551592,
+          "final_score": 0.23376071742352833,
+          "was_selected": false
+        },
+        {
+          "principle_id": "50effecb-b17d-43ac-9d97-b94649ecafd8",
+          "iteration_added": 2,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and hydrophobic core stability to enhance substrate binding and maintain active site geometry for efficient catalysis.\n(2) Minor premise: The enzyme in question has a high negative charge and multiple acidic residues that facilitate strong electrostatic interactions with the substrate, while a hydrophobic core composed of 42.7% hydrophobic residues ensures robust protein stability and conformational rigidity, which are essential for maintaining the active site geometry.\n(3) Conclusion: In future sequence designs, prioritize sequences with a balanced distribution of acidic residues for electrostatic interactions and a significant proportion of hydrophobic residues to ensure protein stability and active site geometry.",
+          "hypothesis": "The enzyme's high negative charge (\u221211) and the presence of multiple acidic residues such as aspartic acid and glutamic acid likely contribute to strong electrostatic interactions with the negatively charged substrate, enhancing substrate binding affinity and positioning. The hydrophobic core, composed of 42.7% hydrophobic residues, ensures robust protein stability and conformational rigidity, which is crucial for maintaining the active site geometry necessary for efficient catalysis. Additionally, the sequence contains potential catalytic motifs, such as aspartic acid and histidine residues, which may form part of a catalytic triad or contribute to general acid-base catalysis, thereby facilitating the desired asymmetric transformation.",
+          "reward": 38.0,
+          "exploration_score": 0.27770535753729864,
+          "exploitation_score": 0.44956283182930445,
+          "final_score": 0.36363409468330155,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+          "iteration_added": 3,
+          "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+          "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+          "reward": 47.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.6805881049567515,
+          "final_score": 0.8402940524783757,
+          "was_selected": true
+        },
+        {
+          "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+          "iteration_added": 4,
+          "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+          "reward": 52.0,
+          "exploration_score": 0.4460913180769492,
+          "exploitation_score": 0.7840126390726525,
+          "final_score": 0.6150519785748009,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+          "iteration_added": 5,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 51.0,
+          "exploration_score": 0.13720591503028792,
+          "exploitation_score": 0.7654256270564209,
+          "final_score": 0.4513157710433544,
+          "was_selected": false
+        },
+        {
+          "principle_id": "388a591d-b278-4fd4-ae61-905dd5abd0b1",
+          "iteration_added": 6,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content and optimal negative charge distribution tend to exhibit enhanced structural stability and improved catalytic efficiency due to favorable hydrophobic packing and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (44.8%) and a significant negative charge distribution (17.9%), which contribute to its structural integrity and improve its catalytic performance, as evidenced by the high ddg_scaled value of 1.1485.\n\n(3) Conclusion: Future sequence designs should aim to incorporate a balanced hydrophobic content and strategic negative charge distribution to enhance both structural stability and catalytic activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (44.8%) likely contributes to a stable protein fold through favorable hydrophobic packing interactions, which may enhance the enzyme's structural integrity and stability. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence, though not explicitly visible in the provided segment, could facilitate nucleophilic attack and acid-base catalysis during the reaction. Additionally, the negative charge distribution (17.9% negative-charged residues) may optimize electrostatic interactions with the positively charged substrate, improving both binding affinity and enantioselectivity, as evidenced by the high ddg_scaled value of 1.1485.",
+          "reward": 23.0,
+          "exploration_score": 0.5468191909461292,
+          "exploitation_score": 0.14177493853870388,
+          "final_score": 0.3442970647424165,
+          "was_selected": false
+        },
+        {
+          "principle_id": "b1477169-a226-4030-a7e2-144cb952abd9",
+          "iteration_added": 7,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (51.8%), which likely contributes to its compact and stable structure through hydrophobic packing.\n(3) Conclusion: Future sequence designs should aim to maintain or increase hydrophobic content to enhance enzyme stability and activity.",
+          "hypothesis": "The enzyme's high hydrophobic content (51.8%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The presence of a catalytic triad-like motif (e.g., ASP-GLU-HIS) within the sequence facilitates optimal substrate binding and orientation, enhancing both reaction yield and enantioselectivity. The estimated net charge of -1 suggests an appropriate balance of charged residues that could mediate necessary electrostatic interactions with the substrate and transition state, further optimizing the catalytic process.",
+          "reward": 40.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.5026636220123311,
+          "final_score": 0.25133181100616553,
+          "was_selected": false
+        },
+        {
+          "principle_id": "cb835c20-f873-44ce-b674-256382217322",
+          "iteration_added": 8,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have compact and stable protein structures, which are crucial for proper folding and maintaining active site geometry.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), contributing to its compact and stable structure, which is essential for its proper folding and active site geometry.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to ensure a compact and stable protein structure, thereby enhancing proper folding and active site geometry.",
+          "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -7, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of a potential catalytic motif, such as a charged residue near the active site, could enhance nucleophilic attack and stabilize transition states, leading to improved reaction yield and enantioselectivity as observed (objective = 27.0000, ddg_scaled = -0.0211).",
+          "reward": 27.0,
+          "exploration_score": 0.15214712276252776,
+          "exploitation_score": 0.20190312881900535,
+          "final_score": 0.17702512579076657,
+          "was_selected": false
+        },
+        {
+          "principle_id": "2987bb3d-b2b0-4c17-bfbf-8c7a17c538ee",
+          "iteration_added": 9,
+          "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), which likely contributes to its compact and stable structure through hydrophobic packing interactions.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to promote compact and stable enzyme structures.",
+          "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The negative charge distribution, with a net charge of -10, suggests a balance of charged residues that could facilitate electrostatic interactions with both the substrate and transition state, stabilizing the active site. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence may enable a nucleophilic attack on the electrophilic carbon of the substrate, driving the reaction forward and enhancing enantioselectivity.",
+          "reward": 44.0,
+          "exploration_score": 0.10815495865452644,
+          "exploitation_score": 0.6075053660399891,
+          "final_score": 0.35783016234725773,
+          "was_selected": false
+        },
+        {
+          "principle_id": "c8a1f25b-15af-49d4-835c-744d3761c3cd",
+          "iteration_added": 10,
+          "principle_text": "(1) Major premise: High hydrophobic content and strategic negative charge distribution in enzymes contribute to compact, stable structures and enhanced catalytic efficiency through improved substrate binding and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (47.1%) and a negatively charged C-terminus, which likely facilitates a compact structure and electrostatic interactions, respectively, thereby enhancing substrate binding and enantioselectivity.\n\n(3) Conclusion: Future sequence designs should aim to incorporate regions with high hydrophobic content and strategically placed negatively charged residues to promote compactness and improve catalytic efficiency and enantioselectivity.",
+          "hypothesis": "The enzyme's high hydrophobic content (47.1%) likely contributes to a compact and stable protein structure, which may enhance substrate binding and catalytic efficiency. The negative charge distribution across the sequence, particularly the highly charged residues at the C-terminus (e.g., E, D), could facilitate electrostatic interactions with the positively charged intermediate, improving enantioselectivity. The presence of a potential catalytic motif, such as a DEH triad (D38, E107, H141), supports proton transfer steps essential for the reaction mechanism, directly contributing to the observed high yield and enantioselectivity (ddg_scaled = -0.0211).",
+          "reward": 27.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+      "new_principle_id": "c8a1f25b-15af-49d4-835c-744d3761c3cd",
+      "new_principle_text": "(1) Major premise: High hydrophobic content and strategic negative charge distribution in enzymes contribute to compact, stable structures and enhanced catalytic efficiency through improved substrate binding and electrostatic interactions.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (47.1%) and a negatively charged C-terminus, which likely facilitates a compact structure and electrostatic interactions, respectively, thereby enhancing substrate binding and enantioselectivity.\n\n(3) Conclusion: Future sequence designs should aim to incorporate regions with high hydrophobic content and strategically placed negatively charged residues to promote compactness and improve catalytic efficiency and enantioselectivity.",
+      "new_principle_reward": 27.0,
+      "selected_sequences": [
+        "MGRRVVELMAEAAGVPLEEIDVERTRREIAEELGVPYELYDRVIATPWGEVSDEEREPFAEAMTRMAQKMLGLPPEFAERGFAEVRDAVREAARRGAHARWLMGVLHNAVVRLAMEAGAIDPEAARRLIEALEEVRREAERETGGSGGSWSHPQFEK"
+      ],
+      "selected_outcomes": [
+        {
+          "objective": 27.0,
+          "ddg_scaled": -0.021085578948259354
+        }
+      ],
+      "best_train_y": [
+        52.0,
+        2.207183361053467
+      ]
+    }
+  ],
+  "winning_principles": {
+    "by_reward": [
+      {
+        "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+        "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+        "sequence": "MGPRAREVAKRYMGEEAFEEAVRRARARLRARGHPAADLPLDELIAGVEAGDEERERLFREFMREMSEAMFEMGLLDEDIDLTEEAVERAEADPETDRASIAMAEAHARALRELAEAGRLDPERVARVRELAERAEAAVERGRGGSGGSWSHPQFEK",
+        "reward": 52.0,
+        "iteration": 4,
+        "selection_count": 1,
+        "influence": 104.0
+      },
+      {
+        "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+        "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+        "sequence": "MGGRAREEAEKVMGREAFDRALALMRERLRAEGHPAADTPLDELIAGVEAGDEEKAAAFLDYMRRMSEAMFELGLTEEDFELTEMAMDRAEAEPETDRASLYMAEAHARAFLEMAEAGRLDPETRERVREMAKRIEAAIARGRGGSGGSWSHPQFEK",
+        "reward": 51.0,
+        "iteration": 5,
+        "selection_count": 1,
+        "influence": 102.0
+      },
+      {
+        "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+        "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+        "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+        "sequence": "MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEAGDEERAAQFREWMREMSRAMHELGLTDEDIELTERAVERAEADPETDRFMLEMALAHAEALEELADAGRLTPEQRERVRELAERARAAYERGRGGSGGSWSHPQFEK",
+        "reward": 47.0,
+        "iteration": 3,
+        "selection_count": 5,
+        "influence": 282.0
+      },
+      {
+        "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+        "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+        "sequence": "MGRLTPEELRAAREAIAAVVPPLALVDDVRRPEERVEELRERGYERYAEAIRRAGEIVEEAGGKRGAGISAGIVVTEAFMIMEEEGNPLLGAAFMVIGPVVLYLAGLSLEAIWKVLDAIGEAEVEYLVEKGHPIPREKIEKAFKYAMLTMVVAALVVLVAAALKLPRGLAVAVLDALFVLFTLYAYVGLGGDKEAFEFAARLIELHRDGAIRILEVLNGGGSGGSWSHPQFEK",
+        "reward": 45.0,
+        "iteration": -1,
+        "selection_count": 4,
+        "influence": 225.0
+      },
+      {
+        "principle_id": "2987bb3d-b2b0-4c17-bfbf-8c7a17c538ee",
+        "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), which likely contributes to its compact and stable structure through hydrophobic packing interactions.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to promote compact and stable enzyme structures.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The negative charge distribution, with a net charge of -10, suggests a balance of charged residues that could facilitate electrostatic interactions with both the substrate and transition state, stabilizing the active site. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence may enable a nucleophilic attack on the electrophilic carbon of the substrate, driving the reaction forward and enhancing enantioselectivity.",
+        "sequence": "MGEERLRELTRRYLELAMKYPFEEIVERVARYMGMTKEEVLEIFEKAIKEGNPEYVREFGRIMVYMAAFGLGAPEEFADRLDEVGVEIAEEAIREGKSARVVMTRVHRAVTEAALEAGLIPREEADRIVAILEEIEREIERLDGGSGGSWSHPQFEK",
+        "reward": 44.0,
+        "iteration": 9,
+        "selection_count": 0,
+        "influence": 44.0
+      }
+    ],
+    "by_selection": [
+      {
+        "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+        "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+        "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+        "sequence": "MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEAGDEERAAQFREWMREMSRAMHELGLTDEDIELTERAVERAEADPETDRFMLEMALAHAEALEELADAGRLTPEQRERVRELAERARAAYERGRGGSGGSWSHPQFEK",
+        "reward": 47.0,
+        "iteration": 3,
+        "selection_count": 5,
+        "influence": 282.0
+      },
+      {
+        "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+        "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+        "sequence": "MGRLTPEELRAAREAIAAVVPPLALVDDVRRPEERVEELRERGYERYAEAIRRAGEIVEEAGGKRGAGISAGIVVTEAFMIMEEEGNPLLGAAFMVIGPVVLYLAGLSLEAIWKVLDAIGEAEVEYLVEKGHPIPREKIEKAFKYAMLTMVVAALVVLVAAALKLPRGLAVAVLDALFVLFTLYAYVGLGGDKEAFEFAARLIELHRDGAIRILEVLNGGGSGGSWSHPQFEK",
+        "reward": 45.0,
+        "iteration": -1,
+        "selection_count": 4,
+        "influence": 225.0
+      },
+      {
+        "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+        "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+        "sequence": "MGPRAREVAKRYMGEEAFEEAVRRARARLRARGHPAADLPLDELIAGVEAGDEERERLFREFMREMSEAMFEMGLLDEDIDLTEEAVERAEADPETDRASIAMAEAHARALRELAEAGRLDPERVARVRELAERAEAAVERGRGGSGGSWSHPQFEK",
+        "reward": 52.0,
+        "iteration": 4,
+        "selection_count": 1,
+        "influence": 104.0
+      },
+      {
+        "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+        "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+        "sequence": "MGGRAREEAEKVMGREAFDRALALMRERLRAEGHPAADTPLDELIAGVEAGDEEKAAAFLDYMRRMSEAMFELGLTEEDFELTEMAMDRAEAEPETDRASLYMAEAHARAFLEMAEAGRLDPETRERVREMAKRIEAAIARGRGGSGGSWSHPQFEK",
+        "reward": 51.0,
+        "iteration": 5,
+        "selection_count": 1,
+        "influence": 102.0
+      },
+      {
+        "principle_id": "8ceab43a-bc4c-45a8-8ced-a5fb442ad0eb",
+        "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures that facilitate efficient catalysis through hydrophobic packing.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (45.9%), resulting in a compact structure that enhances catalytic efficiency.\n(3) Conclusion: In future designs, prioritize sequences with high hydrophobic content to promote compact protein structures and improve catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (45.9%) likely contributes to a compact, stable protein structure with efficient hydrophobic packing, which enhances catalytic efficiency. The negative charge distribution, particularly the cluster of acidic residues (Asp, Glu) near the active site, creates favorable electrostatic interactions with the positively charged substrate, facilitating binding and orientation. Additionally, the presence of a potential catalytic motif, such as a His-Glu-Asp triad, could enable a nucleophilic attack on the substrate, driving the reaction forward and improving enantioselectivity.",
+        "sequence": "MGMTLEEQAQAIADEAMRPENMERLFERIGELLGKPAEEVRETFDRYFRDGDRSVAREFLEQMVYMSGLIAGLSPEEIERALAASEARIAEAADARLNGRRAMGVAHGAVAEWLEADPRWRGRPEVLGIRILAERGLALGALEGGSGGSWSHPQFEK",
+        "reward": 32.0,
+        "iteration": 1,
+        "selection_count": 0,
+        "influence": 32.0
+      }
+    ],
+    "by_influence": [
+      {
+        "principle_id": "0ebc7dab-3e10-437d-a84e-d9dbf97d74bc",
+        "principle_text": "(1) Major premise: Enzymes often utilize a combination of electrostatic interactions and specific motifs to enhance catalytic efficiency and selectivity.\n(2) Minor premise: The enzyme in question exhibits a high content of negatively charged residues that interact with positively charged intermediates, a catalytic triad-like motif for proton transfer and nucleophilic attack, and a hydrophobic core ensuring proper folding and conformational stability.\n(3) Conclusion: Future sequence designs should prioritize incorporating negatively charged residues near positively charged intermediates, including motifs like ASP-ARG-HIS for enhanced catalysis, and maintaining a hydrophobic core to ensure proper folding and active-site geometry.",
+        "hypothesis": "The enzyme's high content of negatively charged residues (24.2%) likely contributes to strong electrostatic interactions with the positively charged intermediates in the reaction, stabilizing transition states and lowering the activation energy. The presence of a catalytic triad-like motif (e.g., ASP-ARG-HIS) facilitates proton transfer and nucleophilic attack, enhancing both reaction yield and enantioselectivity. Additionally, the hydrophobic core (42.0% hydrophobic residues) ensures proper folding and conformational stability, which is crucial for maintaining active-site geometry and efficient substrate binding.",
+        "sequence": "MGARAREEAAEIMGREAFEEALRRARERLRARGHPAADLPLDELVAGVEAGDEERAAQFREWMREMSRAMHELGLTDEDIELTERAVERAEADPETDRFMLEMALAHAEALEELADAGRLTPEQRERVRELAERARAAYERGRGGSGGSWSHPQFEK",
+        "reward": 47.0,
+        "iteration": 3,
+        "selection_count": 5,
+        "influence": 282.0
+      },
+      {
+        "principle_id": "eb2c76f5-a9b9-40bd-9624-f9e0bdc45437",
+        "principle_text": "(1) Major premise: Enzymes with a high hydrophobic content and favorable electrostatic profiles are more stable and properly folded, which is essential for maintaining the correct active site geometry and enhancing catalytic efficiency.\n\n(2) Minor premise: The enzyme in question has a high hydrophobic content (54.1%) and a net charge of -6, contributing to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis.\n\n(3) Conclusion: In future sequence designs, prioritize enzymes with a balanced hydrophobic content and favorable electrostatic profiles to ensure proper folding and active site geometry, thereby enhancing catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (54.1%) and favorable electrostatic profile (net charge of -6) likely contribute to its stability and proper folding, which are crucial for maintaining the active site geometry necessary for efficient catalysis. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) and key charged residues (e.g., aspartate, glutamate) facilitate substrate binding and orientation, enhancing both the reaction yield and enantioselectivity. The specific arrangement of these residues ensures optimal hydrogen bonding and electrostatic interactions, guiding the substrate into the active site with high precision.",
+        "sequence": "MGRLTPEELRAAREAIAAVVPPLALVDDVRRPEERVEELRERGYERYAEAIRRAGEIVEEAGGKRGAGISAGIVVTEAFMIMEEEGNPLLGAAFMVIGPVVLYLAGLSLEAIWKVLDAIGEAEVEYLVEKGHPIPREKIEKAFKYAMLTMVVAALVVLVAAALKLPRGLAVAVLDALFVLFTLYAYVGLGGDKEAFEFAARLIELHRDGAIRILEVLNGGGSGGSWSHPQFEK",
+        "reward": 45.0,
+        "iteration": -1,
+        "selection_count": 4,
+        "influence": 225.0
+      },
+      {
+        "principle_id": "51d85ee6-26d3-476f-aac2-572aee74d67e",
+        "principle_text": "(1) Major premise: High hydrophobic content and appropriate negative charge distribution are crucial for maintaining a compact and stable protein structure, which enhances enzyme stability and catalytic efficiency.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%) and a net charge of -9, contributing to a compact and stable structure, as evidenced by its favorable ddg_scaled value of -0.0211.\n(3) Conclusion: In future sequence designs, prioritize high hydrophobic content and balanced negative charge distribution to ensure a compact and stable protein structure, thereby improving enzyme stability and catalytic efficiency.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact and stable protein structure, which is essential for maintaining proper folding and active site geometry. The negative charge distribution, with a net charge of -9, suggests effective electrostatic interactions within the active site, facilitating substrate binding and orientation. Additionally, the presence of charged residues at both the N- and C-termini may stabilize the overall protein conformation and enhance catalytic efficiency, as seen in the observed ddg_scaled value of -0.0211, indicating a favorable change in free energy.",
+        "sequence": "MGPRAREVAKRYMGEEAFEEAVRRARARLRARGHPAADLPLDELIAGVEAGDEERERLFREFMREMSEAMFEMGLLDEDIDLTEEAVERAEADPETDRASIAMAEAHARALRELAEAGRLDPERVARVRELAERAEAAVERGRGGSGGSWSHPQFEK",
+        "reward": 52.0,
+        "iteration": 4,
+        "selection_count": 1,
+        "influence": 104.0
+      },
+      {
+        "principle_id": "1166ec69-416d-4a93-929b-dda3a9e84c0b",
+        "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to have more stable protein folds due to favorable hydrophobic packing, which enhances structural integrity and stability.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), leading to favorable hydrophobic packing and contributing to its stable protein fold.\n(3) Conclusion: In future sequence designs, prioritize maintaining or increasing hydrophobic content to enhance enzyme stability.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a stable protein fold through favorable hydrophobic packing, which may enhance the overall structural integrity and stability. The negative charge distribution (22.9% negative-charged residues) could facilitate specific electrostatic interactions with the substrate, guiding it into the active site with high specificity. Additionally, the presence of a potential catalytic motif, such as a His-Glu pair, could enable a mechanism involving proton transfer, thereby optimizing the reaction yield and enantioselectivity (ddg_scaled = -0.0211).",
+        "sequence": "MGGRAREEAEKVMGREAFDRALALMRERLRAEGHPAADTPLDELIAGVEAGDEEKAAAFLDYMRRMSEAMFELGLTEEDFELTEMAMDRAEAEPETDRASLYMAEAHARAFLEMAEAGRLDPETRERVREMAKRIEAAIARGRGGSGGSWSHPQFEK",
+        "reward": 51.0,
+        "iteration": 5,
+        "selection_count": 1,
+        "influence": 102.0
+      },
+      {
+        "principle_id": "2987bb3d-b2b0-4c17-bfbf-8c7a17c538ee",
+        "principle_text": "(1) Major premise: Enzymes with high hydrophobic content tend to form compact, stable structures due to favorable hydrophobic packing interactions.\n(2) Minor premise: The enzyme in question has a high hydrophobic content (43.9%), which likely contributes to its compact and stable structure through hydrophobic packing interactions.\n(3) Conclusion: In future sequence designs, aim to maintain or increase hydrophobic content to promote compact and stable enzyme structures.",
+        "hypothesis": "The enzyme's high hydrophobic content (43.9%) likely contributes to a compact, stable protein structure through favorable hydrophobic packing interactions. The negative charge distribution, with a net charge of -10, suggests a balance of charged residues that could facilitate electrostatic interactions with both the substrate and transition state, stabilizing the active site. The presence of a catalytic triad-like motif (e.g., serine, histidine, aspartate) within the sequence may enable a nucleophilic attack on the electrophilic carbon of the substrate, driving the reaction forward and enhancing enantioselectivity.",
+        "sequence": "MGEERLRELTRRYLELAMKYPFEEIVERVARYMGMTKEEVLEIFEKAIKEGNPEYVREFGRIMVYMAAFGLGAPEEFADRLDEVGVEIAEEAIREGKSARVVMTRVHRAVTEAALEAGLIPREEADRIVAILEEIEREIERLDGGSGGSWSHPQFEK",
+        "reward": 44.0,
+        "iteration": 9,
+        "selection_count": 0,
+        "influence": 44.0
+      }
+    ]
+  }
+}

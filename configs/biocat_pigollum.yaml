@@ -1,0 +1,137 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# PiGollum – Biocat Experiment Configuration
+#
+# Enzyme engineering for biocatalysis: maximise yield (objective) and
+# enantioselectivity (ddg_scaled) using principle-guided multi-objective BO
+# with GP as experiment agent (PiFlow-style inner loop).
+#
+# Dataset: gollum-2/data/biocat/
+#   enzymes_sequence_yield_ee_processed_ddg_yeo-johnson.csv  (200 labelled)
+#   enzymes_sequence_10k.csv                                  (10k candidates)
+#
+# Backbone: ESM-2 (650M) tokenisation → DualDeepGP with LoRA fine-tuning
+# Principle guidance: sentence-transformers (all-MiniLM-L6-v2) + LLM
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+data:
+  class_path: gollum.data.module.BaseDataModule
+  init_args:
+    # Paths relative to --data_root (default: gollum-2/)
+    data_path: data/biocat/enzymes_sequence_yield_ee_processed_ddg_yeo-johnson.csv
+    test_data_path: data/biocat/enzymes_sequence_10k.csv
+    round_2_data_path: data/biocat/enzymes_sequence_round_2.csv
+    input_column: "Amino acid sequence"
+    target_column:
+      - objective        # yield  (maximise)
+      - ddg_scaled       # enantioselectivity proxy (maximise)
+    maximize: [true, true]
+    exclude_top: false
+    normalize_input: standard_scaling
+    featurizer:
+      class_path: gollum.featurization.base.Featurizer
+      init_args:
+        representation: get_tokens
+        model_name: facebook/esm2_t33_650M_UR50D
+        pooling_method: cls
+    initializer:
+      class_path: gollum.initialization.initializers.BOInitializer
+      init_args:
+        method: sobol
+        pca_dim: 16
+        n_clusters: 1
+
+# ── Surrogate model ───────────────────────────────────────────────────────────
+surrogate_model:
+  class_path: gollum.surrogate_models.gp_mo_multilayer.DualDeepGP
+  init_args:
+    finetuning_model:
+      class_path: gollum.featurization.deep_multilayer.LLMFeaturizer
+      init_args:
+        input_dim: 1280          # ESM-2 t33 hidden size
+        projection_dim: 32
+        from_top: true
+        target_ratio: 0.25
+        model_name: facebook/esm2_t33_650M_UR50D
+        pooling_method: cls
+        normalize_embeddings: false
+        lora_dropout: 0.2
+        trainable: true
+    ft_lr: 0.002
+    gp_lr: 0.1
+    noise_constraint: 1.0e-5
+    device: cuda           # change to "cpu" if no GPU available
+
+# ── Acquisition function ──────────────────────────────────────────────────────
+acquisition:
+  class_path: botorch.acquisition.multi_objective.qLogNoisyExpectedHypervolumeImprovement
+  init_args:
+    ref_point: [0.0, -2.0]
+
+# ── BO loop ───────────────────────────────────────────────────────────────────
+bo:
+  class_path: gollum.bo.optimizer.BotorchOptimizer
+  init_args:
+    batch_size: 1
+
+n_iters: 10
+seed: 42
+
+# ── PiGollum principle-guidance settings ──────────────────────────────────────
+pigollum:
+  # Weight of principle scores vs BO acquisition scores (α)
+  # 0.0 = pure BO  |  1.0 = pure principle guidance
+  principle_weight: 0.3
+
+  # How to schedule α as more principles accumulate
+  # Options: "constant" | "linear" | "step"
+  principle_weight_schedule: linear
+
+  # Minimum principles before guidance activates
+  min_principles_for_guidance: 3
+
+  # ── Inner PiFlow loop settings ────────────────────────────────────────────
+  # Number of hypothesis-validation cycles per BO iteration.
+  # Each step: Planner → LLM hypothesis → GP validation → principle extraction
+  n_inner_steps: 5
+
+  # Number of candidate sequences to consider per inner step.
+  # Selected by GP uncertainty (explore) or GP mean (refine/validate).
+  candidate_sample_size: 10
+
+  # ── Warm-start settings ───────────────────────────────────────────────────
+  # Whether to run the warm-start (broad → refined principles)
+  warm_start_principles: true
+
+  # Number of broad domain-knowledge principles to generate
+  n_broad_principles: 5
+
+  # ── Exploration-exploitation trade-off ────────────────────────────────────
+  # λ in PiFlow: exploration vs exploitation in principle scoring
+  lambda_factor: 0.5
+
+  # Plateau detection thresholds
+  plateau_threshold: 0.1
+  plateau_count: 3
+
+  # Sentence-transformers model for principle/candidate embeddings
+  embedding_model: all-MiniLM-L6-v2
+
+  # Task context injected into LLM prompts
+  # task_context: >
+  #   Biocatalytic enzyme engineering: design amino acid sequences to maximise
+  #   yield and enantioselectivity for an asymmetric transformation.
+
+  # ── Inference backend ──────────────────────────────────────────────────────
+  # backend: "hf"  → local HuggingFace model (default when no API key present)
+  # backend: "api" → OpenAI-compatible API endpoint
+  backend: hf
+
+  # Local HF model for hypothesis + principle extraction.
+  hf_model_name: Qwen/Qwen2.5-7B-Instruct
+  hf_torch_dtype: bfloat16
+
+  # API settings (only needed when backend: "api")
+  llm_api_key: null
+  llm_base_url: null
+  llm_model: null
