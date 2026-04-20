@@ -153,6 +153,9 @@ def build_pi_optimizer(cfg: dict, extractor: Optional[PrincipleExtractor]) -> Pi
         extractor=extractor,
         scorer=scorer,
         planner=planner,
+        enable_post_acq_agents=pi_cfg.get("enable_post_acq_agents", False),
+        top_k_for_rescoring=pi_cfg.get("top_k_for_rescoring", 20),
+        include_experimental_data=pi_cfg.get("include_experimental_data", True),
     )
     return optimizer
 

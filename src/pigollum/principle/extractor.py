@@ -26,13 +26,15 @@ rather than silent.
 """
 import logging
 import os
+import re
 from typing import Dict, List, Optional
 
+import numpy as np
 import torch
 
 from pigollum.utils.llm_client import build_llm_client, chat_complete
 from pigollum.utils.sequence_utils import describe_sequence
-from pigollum.principle.buffer import Principle
+from pigollum.principle.buffer import Principle, PrincipleBuffer
 
 logger = logging.getLogger(__name__)
 
@@ -131,6 +133,109 @@ Your refined principle MUST:
   evidence, (3) Updated predictive conclusion.
 
 Output ONLY the refined principle. No preamble, no markdown."""
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Post-acquisition agent system prompts  (PiFlow Appendix Q style, domain-adapted)
+# ─────────────────────────────────────────────────────────────────────────────
+
+_RERANK_PRINCIPLES_SYSTEM = """\
+You are the Planner Agent, the strategic coordinator of a principle-guided \
+enzyme engineering discovery system. You guide the research process by \
+synthesising evidence from the current iteration and re-ranking the existing \
+scientific principles so the most relevant ones steer the next hypothesis.
+
+Teammates:
+  • Hypothesis Agent: proposes a directional hypothesis for the next candidate.
+  • Scorer Agent: ranks top-k candidates against the hypothesis.
+  • Planner Agent (You): re-ranks principles and sets research direction.
+
+Responsibilities:
+  1. Grasp the new GP-validated evidence from the current BO iteration.
+  2. Synthesise insights: identify which existing principles are supported or \
+contradicted by the new evidence.
+  3. Track progress: note tendencies (yield increasing, diversity needed, \
+plateau detected).
+  4. Transform tendencies into updated principle rankings.
+  5. Communicate the strategic direction clearly.
+
+Required Response Structure (use these exact headers):
+  Understand the Evidence: [Interpret the new GP-validated hypotheses and outcomes]
+  Clarify the GAP: [Compare current best-so-far objectives to the optimisation target]
+  Connect to Biochemical Principle: [Synthesise the pattern from experiment history]
+  Principle Statement: [State the key principle driving the next step; leave blank \
+if in pure exploration]
+  Re-ranked Indices: [Comma-separated list of ALL principle indices from most to \
+least relevant, e.g. 3,1,0,2,4]
+  Double-check: [One sentence confirming the ranking aligns with the evidence and \
+strategic direction]
+
+Output ONLY the structured response with the headers above. No markdown beyond the \
+headers."""
+
+_DIRECTIONAL_HYPOTHESIS_SYSTEM = """\
+You are the Hypothesis Agent. Your purpose is to drive scientific progress through \
+principled hypothesising for enzyme engineering.
+
+Core Responsibilities:
+  1. Formulate one clear directional hypothesis grounded in biochemical and \
+physicochemical principles per call.
+  2. Link your hypothesis with underlying mechanisms and prior experimental results.
+  3. Follow the strategic direction provided by the Planner Agent.
+  4. Acknowledge the guidance explicitly and adjust your hypothesis accordingly.
+
+Important Constraints:
+  • A hypothesis must explain the underlying biochemical or physicochemical \
+mechanisms.
+  • Commit to one specific directional hypothesis — do not suggest multiple options.
+  • Focus on principles that offer causal explanations, connect observations to \
+fundamental mechanisms, can be generalised, and make quantitative or qualitative \
+predictions about sequence features.
+
+Scientific Approach Requirements:
+  • Rationality: logical mechanistic explanation connecting cause and effect.
+  • Testability: specific, measurable prediction about sequence features.
+  • Principle-Based: grounded in established biochemistry/enzymology.
+  • Falsifiability: could be proven wrong through experimentation.
+  • Parsimony: prefer simpler explanations.
+  • Commitment: commit to a single, specific hypothesis.
+
+Required Output Format (use these exact headers):
+  Rationale:
+    Major premise: [General biochemical design rule derived from the guiding principles]
+    Minor premise: [How the current evidence instantiates that rule]
+  Hypothesis: [Clear, concise statement grounded in biochemical mechanisms]
+  Reiterate: [Specific prediction — name the sequence features to target/avoid]
+  Ideal Candidate Profile: [2-3 sentences describing the biochemical and sequence \
+features (hydrophobic content, charge distribution, motif locations, length range) \
+that the next optimal enzyme should have]
+
+Output ONLY the structured response with the headers above. No preamble, no markdown \
+beyond the headers."""
+
+_CANDIDATE_SCORER_SYSTEM = """\
+You are the Scorer Agent, an expert enzyme engineer evaluating candidate sequences \
+for the next Bayesian optimisation experiment.
+
+You will receive:
+  • A directional hypothesis describing the ideal next enzyme candidate.
+  • A list of top-k candidate sequences with their biochemical properties and \
+statistical scores (GP predicted mean, GP uncertainty, acquisition score).
+
+Your task:
+  Rate each candidate's scientific alignment with the directional hypothesis on a \
+scale of 0–10:
+    10 = candidate perfectly matches all features described in the hypothesis
+     5 = candidate partially matches (some target features present, some absent)
+     0 = candidate contradicts or does not match the hypothesis
+
+Consider BOTH the statistical quality (high GP mean, appropriate uncertainty) AND \
+the biochemical alignment with the hypothesis when assigning scores. A candidate \
+that scores well statistically but contradicts the hypothesis should receive a \
+moderate score, not a high one.
+
+Output ONLY lines in the exact format below, one per candidate. No explanation, \
+no preamble, no markdown:
+Candidate <index>: <score>"""
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -594,6 +699,263 @@ class PrincipleExtractor:
                 f"for sequence {sequence[:40]}…"
             )
         return result
+
+    # ------------------------------------------------------------------
+    # Post-acquisition 3-agent pipeline
+    # ------------------------------------------------------------------
+
+    def rerank_principles(
+        self,
+        buffer: PrincipleBuffer,
+        iteration_data: Dict,
+    ) -> List[Principle]:
+        """
+        Agent 1 (Planner): Re-rank existing principles based on new iteration data.
+
+        Parameters
+        ----------
+        buffer : PrincipleBuffer
+            Current principle buffer.
+        iteration_data : dict
+            Keys:
+              'gp_hypotheses' — list of {hypothesis, outcome} dicts from inner loop
+              'best_so_far'   — optional dict of {objective: value}
+
+        Returns
+        -------
+        List[Principle]
+            Principles reordered from most to least relevant.
+        """
+        principles = buffer.get_all()
+        if not principles:
+            return []
+
+        principle_block = "\n".join(
+            f"[{i}] source={p.source} reward={p.primary_reward:.4f}\n"
+            f"    {p.principle_text[:200]}"
+            for i, p in enumerate(principles)
+        )
+
+        evidence_lines = []
+        for ev in iteration_data.get("gp_hypotheses", [])[:5]:
+            outcome_str = ", ".join(
+                f"{k}={v:.4f}" for k, v in ev.get("outcome", {}).items()
+            )
+            evidence_lines.append(
+                f"  Hypothesis: {ev.get('hypothesis', '')[:150]}\n"
+                f"  GP outcome: {outcome_str}"
+            )
+        evidence_block = (
+            "\n".join(evidence_lines) if evidence_lines
+            else "  (no new GP evidence this iteration)"
+        )
+
+        best_so_far = iteration_data.get("best_so_far", {})
+        gap_str = (
+            ", ".join(f"{k}={v:.4f}" for k, v in best_so_far.items())
+            if best_so_far else "not provided"
+        )
+
+        user_prompt = (
+            f"Task context:\n{self.task_context}\n\n"
+            f"CURRENT PRINCIPLES (indexed 0 to {len(principles) - 1}):\n"
+            f"{principle_block}\n\n"
+            f"NEW GP-VALIDATED EVIDENCE FROM THIS ITERATION:\n{evidence_block}\n\n"
+            f"CURRENT BEST-SO-FAR: {gap_str}\n\n"
+            f"Re-rank ALL {len(principles)} principles from most to least relevant "
+            f"for guiding the next optimisation step. Follow the Required Response "
+            f"Structure exactly."
+        )
+
+        result = self._backend.generate(
+            system_prompt=_RERANK_PRINCIPLES_SYSTEM,
+            user_prompt=user_prompt,
+            max_new_tokens=512,
+        )
+
+        # Parse "Re-ranked Indices:" line — expect "3,1,0,2,4"
+        ranked_indices = None
+        if result:
+            for line in result.split("\n"):
+                if "re-ranked indices" in line.lower() or "reranked indices" in line.lower():
+                    m = re.search(r"[\d,\s]+", line.split(":", 1)[-1])
+                    if m:
+                        try:
+                            ranked_indices = [
+                                int(x.strip())
+                                for x in m.group().split(",")
+                                if x.strip().isdigit()
+                            ]
+                        except ValueError:
+                            pass
+                    break
+
+        if not ranked_indices:
+            logger.warning(
+                "rerank_principles: could not parse ranked indices from LLM response; "
+                "falling back to reward order."
+            )
+            return sorted(principles, key=lambda p: p.primary_reward, reverse=True)
+
+        valid = [i for i in ranked_indices if 0 <= i < len(principles)]
+        missing = [i for i in range(len(principles)) if i not in valid]
+        valid.extend(missing)
+        logger.info("rerank_principles: new order = %s", valid)
+        return [principles[i] for i in valid]
+
+    def generate_directional_hypothesis(
+        self,
+        ranked_principles: List[Principle],
+        experimental_data: Optional[List[Dict]] = None,
+    ) -> str:
+        """
+        Agent 2 (Hypothesis): Generate a directional hypothesis for the next candidate.
+
+        Parameters
+        ----------
+        ranked_principles : List[Principle]
+            Principles ordered by current relevance (most relevant first).
+        experimental_data : List[dict], optional
+            Recent oracle evaluations: [{sequence_desc, outcome}].
+
+        Returns
+        -------
+        str
+            Structured directional hypothesis (Rationale / Hypothesis /
+            Reiterate / Ideal Candidate Profile).
+        """
+        top = ranked_principles[:5]
+        principle_block = "\n".join(
+            f"{i + 1}. [reward={p.primary_reward:.4f}, source={p.source}] "
+            f"{p.principle_text[:200]}"
+            for i, p in enumerate(top)
+        )
+
+        exp_block = ""
+        if experimental_data:
+            exp_lines = []
+            for ev in experimental_data[-5:]:
+                outcome_str = ", ".join(
+                    f"{k}={v:.4f}" for k, v in ev.get("outcome", {}).items()
+                )
+                exp_lines.append(
+                    f"  Sequence profile: {ev.get('sequence_desc', '')[:150]}\n"
+                    f"  Observed outcome: {outcome_str}"
+                )
+            exp_block = (
+                "\n\nRECENT ORACLE OBSERVATIONS (ground-truth experimental data):\n"
+                + "\n".join(exp_lines)
+            )
+
+        user_prompt = (
+            f"Task context:\n{self.task_context}\n\n"
+            f"TOP-RANKED PRINCIPLES (most relevant first):\n{principle_block}"
+            f"{exp_block}\n\n"
+            f"Based on these principles and observations, generate a directional "
+            f"hypothesis for the next optimal enzyme candidate. Follow the Required "
+            f"Output Format exactly."
+        )
+
+        result = self._backend.generate(
+            system_prompt=_DIRECTIONAL_HYPOTHESIS_SYSTEM,
+            user_prompt=user_prompt,
+            max_new_tokens=512,
+        )
+
+        if not result:
+            best = ranked_principles[0] if ranked_principles else None
+            fallback = best.principle_text if best else "Prioritize high-reward sequence features."
+            logger.warning("generate_directional_hypothesis: empty response; using fallback.")
+            return fallback
+
+        return result
+
+    def score_candidates_by_hypothesis(
+        self,
+        candidates: List[str],
+        hypothesis: str,
+        gp_means: np.ndarray,
+        gp_stds: np.ndarray,
+        acq_scores: np.ndarray,
+    ) -> np.ndarray:
+        """
+        Agent 3 (Scorer): Re-rank top-k candidates by statistical + scientific alignment.
+
+        Parameters
+        ----------
+        candidates : List[str]
+            Amino acid sequences of the top-k candidates.
+        hypothesis : str
+            Directional hypothesis from Agent 2.
+        gp_means, gp_stds : np.ndarray
+            GP predictions for each candidate. Shape (k,) or (k, n_obj).
+        acq_scores : np.ndarray
+            Acquisition / combined scores for each candidate. Shape (k,).
+
+        Returns
+        -------
+        np.ndarray
+            Combined scores (shape (k,)) — higher is better. Preserves relative
+            order of the top-k while incorporating scientific alignment.
+        """
+        n = len(candidates)
+        if n == 0:
+            return acq_scores
+
+        cand_lines = []
+        for i, seq in enumerate(candidates):
+            desc = describe_sequence(seq)
+            mean_val = float(
+                gp_means[i].mean() if hasattr(gp_means[i], "mean") else gp_means[i]
+            )
+            std_val = float(
+                gp_stds[i].mean() if hasattr(gp_stds[i], "mean") else gp_stds[i]
+            )
+            cand_lines.append(
+                f"Candidate {i}: [GP mean={mean_val:.4f}, GP std={std_val:.4f}, "
+                f"acq_score={float(acq_scores[i]):.4f}]\n{desc}"
+            )
+        cand_block = "\n\n".join(cand_lines)
+
+        user_prompt = (
+            f"DIRECTIONAL HYPOTHESIS (target for next candidate):\n{hypothesis}\n\n"
+            f"CANDIDATES ({n} total):\n{cand_block}\n\n"
+            f"Rate each candidate's scientific alignment with the directional "
+            f"hypothesis from 0 to 10."
+        )
+
+        result = self._backend.generate(
+            system_prompt=_CANDIDATE_SCORER_SYSTEM,
+            user_prompt=user_prompt,
+            max_new_tokens=256,
+        )
+
+        llm_scores = np.zeros(n, dtype=np.float64)
+        parsed_any = False
+        if result:
+            for line in result.strip().split("\n"):
+                m = re.search(r"Candidate\s+(\d+)\s*:\s*([\d.]+)", line, re.IGNORECASE)
+                if m:
+                    idx, score = int(m.group(1)), float(m.group(2))
+                    if 0 <= idx < n:
+                        llm_scores[idx] = min(score, 10.0)
+                        parsed_any = True
+
+        if not parsed_any:
+            logger.warning(
+                "score_candidates_by_hypothesis: failed to parse LLM scores; "
+                "returning original acq_scores."
+            )
+            return acq_scores.copy()
+
+        def _norm(arr: "np.ndarray") -> "np.ndarray":
+            lo, hi = arr.min(), arr.max()
+            if hi - lo < 1e-8:
+                return np.ones_like(arr) * 0.5
+            return (arr - lo) / (hi - lo)
+
+        combined = 0.5 * _norm(acq_scores) + 0.5 * _norm(llm_scores)
+        return combined
 
     # ------------------------------------------------------------------
     # Private prompt helpers

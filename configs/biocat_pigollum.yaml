@@ -135,3 +135,16 @@ pigollum:
   llm_api_key: null
   llm_base_url: null
   llm_model: null
+
+  # ── Post-acquisition 3-agent pipeline ────────────────────────────────────
+  # After acquisition scores are computed, 3 LLM agents run before greedy select:
+  #   Agent 1 (Planner)    – re-ranks principles given new GP-validated evidence
+  #   Agent 2 (Hypothesis) – generates a directional hypothesis for the next step
+  #   Agent 3 (Scorer)     – re-ranks top-k candidates by hypothesis alignment
+  enable_post_acq_agents: true
+
+  # How many top-k candidates (by acquisition score) to pass to the Scorer agent
+  top_k_for_rescoring: 20
+
+  # Whether to include oracle evaluation history in the Hypothesis agent's context
+  include_experimental_data: true

@@ -97,6 +97,9 @@ class PiGollumOptimizer(BotorchOptimizer):
         scorer: Optional[PrincipleScorer] = None,
         planner: Optional[Planner] = None,
         buffer: Optional[PrincipleBuffer] = None,
+        enable_post_acq_agents: bool = False,
+        top_k_for_rescoring: int = 20,
+        include_experimental_data: bool = True,
         **kwargs,
     ) -> None:
         super().__init__(*args, **kwargs)
@@ -104,6 +107,9 @@ class PiGollumOptimizer(BotorchOptimizer):
         self.min_principles_for_guidance = min_principles_for_guidance
         self.principle_weight_schedule = principle_weight_schedule
         self.n_inner_steps = n_inner_steps
+        self.enable_post_acq_agents = enable_post_acq_agents
+        self.top_k_for_rescoring = top_k_for_rescoring
+        self.include_experimental_data = include_experimental_data
 
         self.principle_buffer = buffer or PrincipleBuffer()
         self.principle_extractor = extractor  # may be None
@@ -118,6 +124,8 @@ class PiGollumOptimizer(BotorchOptimizer):
         self._last_action_info: dict = {}
         self._last_gp_means: Optional[np.ndarray] = None
         self._last_gp_stds: Optional[np.ndarray] = None
+        self._iteration_gp_data: List[Dict] = []   # accumulates per inner loop step
+        self._oracle_history: List[Dict] = []       # accumulates across all iterations
 
     # ------------------------------------------------------------------
     # GP prediction helper (experiment agent)
@@ -260,6 +268,12 @@ class PiGollumOptimizer(BotorchOptimizer):
                     principle.embedding = emb
                 self.principle_buffer.add(principle)
 
+                # Track for post-acquisition agents
+                self._iteration_gp_data.append({
+                    "hypothesis": hypothesis,
+                    "outcome": gp_outcome,
+                })
+
             logger.info(
                 "  Inner step %d complete. Buffer size: %d",
                 step + 1, self.principle_buffer.size,
@@ -318,6 +332,8 @@ class PiGollumOptimizer(BotorchOptimizer):
         # ----------------------------------------------------------------
         # Step 2: Run inner PiFlow loop (hypothesis → GP validation → principles)
         # ----------------------------------------------------------------
+        self._iteration_gp_data = []  # reset for this iteration
+
         if objective_names is not None:
             logger.info("PiGollumOptimizer: running inner PiFlow loop (%d steps)…", self.n_inner_steps)
             self.run_inner_piflow_loop(
@@ -386,6 +402,71 @@ class PiGollumOptimizer(BotorchOptimizer):
             "PiGollumOptimizer: gp_mean=%.4f  principle_mean=%.4f  final_mean=%.4f",
             gp_scores.mean(), principle_scores.mean(), final_scores.mean(),
         )
+
+        # ----------------------------------------------------------------
+        # Step 3.5: Post-acquisition 3-agent pipeline
+        # Runs AFTER acquisition scores are computed, BEFORE greedy select.
+        # Agent 1 (Planner)  – re-ranks principles given new iteration data
+        # Agent 2 (Hypothesis) – generates directional hypothesis for next step
+        # Agent 3 (Scorer)   – re-ranks top-k candidates by hypothesis alignment
+        # ----------------------------------------------------------------
+        if self.enable_post_acq_agents and self.principle_extractor is not None:
+            top_k = min(self.top_k_for_rescoring, len(final_scores))
+            top_k_idx = np.argsort(final_scores)[-top_k:]
+
+            # Agent 1: Planner re-ranks principles
+            logger.info("PiGollum [Agent 1]: re-ranking principles…")
+            best_so_far: Dict = {}
+            if self.journal is not None and hasattr(self.journal, "_iterations") \
+                    and self.journal._iterations:
+                last = self.journal._iterations[-1]
+                best_so_far = last.get("best_so_far", {})
+            ranked_principles = self.principle_extractor.rerank_principles(
+                buffer=self.principle_buffer,
+                iteration_data={
+                    "gp_hypotheses": self._iteration_gp_data,
+                    "best_so_far": best_so_far,
+                },
+            )
+
+            # Agent 2: Hypothesis generates directional hypothesis
+            logger.info("PiGollum [Agent 2]: generating directional hypothesis…")
+            exp_data = (
+                self._get_oracle_history() if self.include_experimental_data else None
+            )
+            direction_hyp = self.principle_extractor.generate_directional_hypothesis(
+                ranked_principles=ranked_principles,
+                experimental_data=exp_data,
+            )
+            logger.info(
+                "PiGollum directional hypothesis: %s…",
+                direction_hyp[:120].replace("\n", " "),
+            )
+            print(f"\n[PiGollum] Directional Hypothesis:\n{direction_hyp}\n")
+
+            # Agent 3: Scorer re-ranks top-k candidates by hypothesis alignment
+            logger.info(
+                "PiGollum [Agent 3]: scoring top-%d candidates by hypothesis…", top_k
+            )
+            top_k_seqs = [candidate_sequences[i] for i in top_k_idx]
+            rescored = self.principle_extractor.score_candidates_by_hypothesis(
+                candidates=top_k_seqs,
+                hypothesis=direction_hyp,
+                gp_means=gp_means[top_k_idx],
+                gp_stds=gp_stds[top_k_idx],
+                acq_scores=final_scores[top_k_idx],
+            )
+
+            # Redistribute original top-k score magnitudes according to new ranking,
+            # preserving the top-k's advantage over the rest of the pool.
+            original_top_k = final_scores[top_k_idx].copy()
+            sorted_desc = np.sort(original_top_k)[::-1]
+            new_rank = np.argsort(rescored)[::-1]  # local indices, best first
+            new_top_k = np.empty(top_k)
+            for rank, local_i in enumerate(new_rank):
+                new_top_k[local_i] = sorted_desc[rank]
+            final_scores = final_scores.copy()
+            final_scores[top_k_idx] = new_top_k
 
         # ----------------------------------------------------------------
         # Step 4: Greedy batch selection
@@ -460,6 +541,13 @@ class PiGollumOptimizer(BotorchOptimizer):
             principle.embedding = emb
 
         self.principle_buffer.add(principle)
+
+        # Track for Agent 2's experimental context
+        self._oracle_history.append({
+            "sequence_desc": describe_sequence(sequence),
+            "outcome": dict(outcome),
+        })
+
         return principle
 
     # ------------------------------------------------------------------
@@ -619,6 +707,10 @@ class PiGollumOptimizer(BotorchOptimizer):
             return min(max_alpha, steps * 0.05)
 
         return self.principle_weight
+
+    def _get_oracle_history(self) -> List[Dict]:
+        """Return the list of oracle evaluations accumulated so far."""
+        return list(self._oracle_history)
 
     @staticmethod
     def _normalize_scores(scores: np.ndarray) -> np.ndarray:
