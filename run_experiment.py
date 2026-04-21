@@ -243,7 +243,7 @@ def wandb_log_iteration(
     if not _wandb_active():
         return
 
-    log_dict: Dict = {"iteration": iteration}
+    log_dict: Dict = {"bo_iteration": iteration}
 
     # ── BO objectives ─────────────────────────────────────────────────
     for name, val in zip(objective_names, best_train_y):
@@ -295,7 +295,7 @@ def wandb_log_iteration(
                 log_dict[f"principle_scores/exploitation/{pid}"] = snap.exploitation_score
                 log_dict[f"principle_scores/final/{pid}"] = snap.final_score
 
-    _wandb_module.log(log_dict, step=iteration)
+    _wandb_module.log(log_dict)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -318,6 +318,11 @@ def run(cfg: dict, data_root: str, output_dir: str, seed: int) -> None:
             config=cfg,
             dir=output_dir,
         )
+        # Decouple BO iteration step from the GP training's internal step counter.
+        # Without this, GP training logs at high step numbers and W&B rejects
+        # any later call with step=1,2,… as "out of order", silently dropping them.
+        _wandb_module.define_metric("bo_iteration")
+        _wandb_module.define_metric("*", step_metric="bo_iteration")
         logger.info("W&B run initialised: %s", _wandb_module.run.name)
     elif wandb_cfg.get("enabled", False) and not _WANDB_AVAILABLE:
         logger.warning("wandb not installed — W&B logging disabled. Run: pip install wandb")

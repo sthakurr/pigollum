@@ -114,6 +114,256 @@
   Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=+0.0021
   Best so far: target=+0.8342
 
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 2  [EXPLORE  ⚠ PLATEAU]  — 7 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   0.703   0.296   0.499            **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.008   0.296   0.152            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   1.000   0.296   0.648         ★  **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.159   0.760   0.460            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.000   0.760   0.380            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.411   0.760   0.585            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.741   0.298   0.519            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.000   0.000   0.000            (1) Major premise: Enzyme performance is enhanced …
+
+  ► New principle discovered  (reward=-0.0388)
+      (1) Major premise: Enzyme performance is enhanced by specific
+        structural features such as conserved residues participating in
+        electrostatic interactions with cofactors and hydrophobic
+        packing that stabilizes the active site geometry. (2) Minor
+        premise: The conserved aspartate residue D234 near the active
+        site and the high hydrophobic content around it in the sequence
+        exemplify this rule by stabilizing the transition state through
+        electrostatic interactions with the PLP cofactor and
+        contributing to a compact and stable active-site geometry. (3)
+        Conclusion: In future sequence designs, prioritize the
+        conservation of residues that form electrostatic interactions
+        with cofactors and ensure a high hydrophobic content and
+        specific packing around the active site to enhance enzyme
+        stability and catalytic efficiency.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=-0.0388
+  Best so far: target=+0.8342
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 3  [EXPLORE  ⚠ PLATEAU]  — 8 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   0.805   0.324   0.565            **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.000   0.324   0.162            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   1.000   0.324   0.662         ★  **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.213   0.784   0.498            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.035   0.784   0.409            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.317   0.784   0.551            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.263   0.327   0.295            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.915   0.280   0.598            (1) Major premise: Enzyme performance is enhanced …
+    8     3   +1.1171   0.000   0.000   0.000            (1) Major premise: Enzyme performance can be enhan…
+
+  ► New principle discovered  (reward=+1.1171)
+      (1) Major premise: Enzyme performance can be enhanced by
+        optimizing electrostatic interactions within the active site,
+        which improves substrate binding and catalytic efficiency. (2)
+        Minor premise: The substitution of alanine (A) with lysine (K)
+        at position 158 in the enzyme sequence increases the positive
+        charge distribution around the active site, enhancing
+        electrostatic interactions and stabilizing the transition state.
+        (3) Conclusion: In future sequence designs, prioritize residues
+        near the active site that can introduce additional positive
+        charges to optimize electrostatic interactions and improve
+        catalytic efficiency.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=+1.1171
+  Best so far: target=+1.1171
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 4  [REFINE]  — 9 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Refine around principle: '(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic i…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   0.908   0.334   0.621            **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.112   0.334   0.223            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   0.902   0.334   0.618            **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.257   0.590   0.424            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.042   0.590   0.316            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.224   0.590   0.407            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.000   0.335   0.168            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.467   0.310   0.388            (1) Major premise: Enzyme performance is enhanced …
+    8     3   +1.1171   1.000   0.921   0.961         ★  (1) Major premise: Enzyme performance can be enhan…
+    9     4   +0.1432   0.000   0.000   0.000            (1) Major premise: Enzyme performance is optimized…
+
+  ► New principle discovered  (reward=+0.1432)
+      (1) Major premise: Enzyme performance is optimized when key
+        residues form a catalytic triad and contribute to proper folding
+        and electrostatic interactions. (2) Minor premise: The aspartate
+        residue D245 forms part of the catalytic triad, stabilizing the
+        hydrophobic core through a high proportion of hydrophobic
+        residues, and contributing to positive charge distribution for
+        electrostatic interactions. (3) Conclusion: In future sequence
+        designs, prioritize residues that form catalytic triads,
+        stabilize the hydrophobic core, and contribute to favorable
+        electrostatic interactions for optimal enzyme performance.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=+0.1432
+  Best so far: target=+1.1171
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 5  [REFINE]  — 10 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Refine around principle: '(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic i…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   1.000   0.333   0.666            **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.226   0.333   0.279            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   0.881   0.333   0.607            **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.384   0.602   0.493            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.119   0.602   0.360            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.205   0.602   0.404            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.000   0.334   0.167            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.252   0.308   0.280            (1) Major premise: Enzyme performance is enhanced …
+    8     3   +1.1171   0.723   0.932   0.827         ★  (1) Major premise: Enzyme performance can be enhan…
+    9     4   +0.1432   0.714   0.433   0.573            (1) Major premise: Enzyme performance is optimized…
+   10     5   -0.0223   0.000   0.000   0.000            (1) Major premise: Positively charged residues in …
+
+  ► New principle discovered  (reward=-0.0223)
+      (1) Major premise: Positively charged residues in the active site
+        can enhance electrostatic interactions with negatively charged
+        substrates, stabilizing the transition state and improving
+        catalytic efficiency. (2) Minor premise: The positively charged
+        residue at position 103 (K) in the active site of the TrpB
+        variant enhances electrostatic interactions with the negatively
+        charged indole ring of the substrate, contributing to improved
+        catalytic efficiency as evidenced by the fitness value of
+        -0.0223. (3) Conclusion: In future sequence designs,
+        incorporating positively charged residues near negatively
+        charged functional groups in the active site can enhance
+        catalytic efficiency.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=-0.0223
+  Best so far: target=+1.1171
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 6  [EXPLORE  ⚠ PLATEAU]  — 11 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   1.000   0.345   0.673            **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.322   0.345   0.333            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   0.850   0.345   0.598            **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.439   0.621   0.530            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.152   0.621   0.387            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.255   0.621   0.438            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.000   0.347   0.173            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.204   0.319   0.261            (1) Major premise: Enzyme performance is enhanced …
+    8     3   +1.1171   0.530   0.939   0.735         ★  (1) Major premise: Enzyme performance can be enhan…
+    9     4   +0.1432   0.574   0.449   0.511            (1) Major premise: Enzyme performance is optimized…
+   10     5   -0.0223   0.972   0.330   0.651            (1) Major premise: Positively charged residues in …
+   11     6   -0.0277   0.000   0.000   0.000            (1) Major premise: Enzymes often utilize electrost…
+
+  ► New principle discovered  (reward=-0.0277)
+      (1) Major premise: Enzymes often utilize electrostatic
+        interactions, such as salt bridges, to stabilize transition
+        states and enhance catalytic efficiency. (2) Minor premise: The
+        sequence features a salt bridge between Asp (D) at position 128
+        and Lys (K) at position 140, which enhances electrostatic
+        attraction and stabilizes the transition state during the
+        β-substitution reaction. (3) Conclusion: In future sequence
+        designs, consider incorporating specific pairs of oppositely
+        charged residues to form salt bridges that can stabilize
+        transition states and improve catalytic efficiency.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=-0.0277
+  Best so far: target=+1.1171
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 7  [EXPLORE]  — 12 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Explore: current best principle (reward=0.0000) has low exploitation score. Diversify into unexplored regions…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   1.000   0.356   0.678         ★  **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.339   0.356   0.348            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   0.785   0.356   0.571            **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.490   0.638   0.564            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.186   0.638   0.412            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.269   0.638   0.453            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.000   0.357   0.179            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.123   0.329   0.226            (1) Major premise: Enzyme performance is enhanced …
+    8     3   +1.1171   0.381   0.946   0.664            (1) Major premise: Enzyme performance can be enhan…
+    9     4   +0.1432   0.418   0.463   0.440            (1) Major premise: Enzyme performance is optimized…
+   10     5   -0.0223   0.799   0.340   0.570            (1) Major premise: Positively charged residues in …
+   11     6   -0.0277   0.781   0.337   0.559            (1) Major premise: Enzymes often utilize electrost…
+   12     7   +0.3989   0.000   0.000   0.000            (1) Major premise: Enzymes often require specific …
+
+  ► New principle discovered  (reward=+0.3989)
+      (1) Major premise: Enzymes often require specific amino acid
+        residues in their active sites to form key interactions such as
+        those in a catalytic triad, which are essential for cofactor
+        binding and activation. (2) Minor premise: The conserved
+        aspartate residue (D229) in the sequence forms part of a
+        potential catalytic triad, contributing to PLP cofactor binding
+        and activation, and the high hydrophobic content and positive
+        net charge enhance enzyme stability and catalytic efficiency.
+        (3) Conclusion: Future sequence designs should include specific
+        residues forming key interactions like a catalytic triad and
+        ensure adequate hydrophobic core stability and positive net
+        charge to optimize enzyme performance.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=+0.3989
+  Best so far: target=+1.1171
+
+──────────────────────────────────────────────────────────────────────────────
+  Iteration 8  [EXPLORE]  — 13 principles in buffer
+──────────────────────────────────────────────────────────────────────────────
+  Guidance: [PiGollum] Explore: current best principle (reward=0.0000) has low exploitation score. Diversify into unexplored regions…
+
+    #  iter    reward    expl    expt   final  selected  principle
+  --------------------------------------------------------------------------
+    0    -1   +0.0000   1.000   0.341   0.671         ★  **Rule**: Ensure proper PLP cofactor binding by ma…
+    1    -1   +0.0000   0.347   0.341   0.344            **Mechanism**: The PLP cofactor binds via hydrogen…
+    2    -1   +0.0000   0.825   0.341   0.583            **Predictive Implication**: When designing mutants…
+    3    -1   +0.3746   0.495   0.630   0.562            **Major premise**: Proper PLP cofactor binding is …
+    4    -1   +0.3746   0.209   0.630   0.419            **Major premise**: Hydrogen bonding networks invol…
+    5    -1   +0.3746   0.294   0.630   0.462            **Major premise**: Residues forming hydrogen bonds…
+    6     1   +0.0021   0.045   0.343   0.194            (1) Major premise: Enzyme active sites rely on pre…
+    7     2   -0.0388   0.123   0.314   0.219            (1) Major premise: Enzyme performance is enhanced …
+    8     3   +1.1171   0.386   0.947   0.667            (1) Major premise: Enzyme performance can be enhan…
+    9     4   +0.1432   0.378   0.449   0.414            (1) Major premise: Enzyme performance is optimized…
+   10     5   -0.0223   0.783   0.326   0.554            (1) Major premise: Positively charged residues in …
+   11     6   -0.0277   0.753   0.322   0.538            (1) Major premise: Enzymes often utilize electrost…
+   12     7   +0.3989   0.000   0.647   0.324            (1) Major premise: Enzymes often require specific …
+   13     8   -0.0327   0.000   0.000   0.000            (1) Major premise: Positively charged residues in …
+
+  ► New principle discovered  (reward=-0.0327)
+      (1) Major premise: Positively charged residues in enzyme active
+        sites can enhance substrate binding through electrostatic
+        interactions, stabilizing the transition state and improving
+        catalytic efficiency. (2) Minor premise: The positively charged
+        Arg10 in the active site forms an electrostatic interaction with
+        the negatively charged indole ring of the substrate, stabilizing
+        the transition state and facilitating the PLP-dependent
+        β-substitution reaction, as evidenced by the modest but
+        significant improvement in fitness (target = -0.0327). (3)
+        Conclusion: In future sequence designs, incorporating positively
+        charged residues near substrates with negatively charged
+        functional groups can enhance catalytic efficiency by
+        stabilizing the transition state.
+
+  Evaluated: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAG…  →  target=-0.0327
+  Best so far: target=+1.1171
+
 ══════════════════════════════════════════════════════════════════════════════
   Winning Principles
 ══════════════════════════════════════════════════════════════════════════════
@@ -121,7 +371,42 @@
 ──────────────────────────────────────────────────────────────────────────────
   Top 5 by Observed Reward (best outcomes)
 ──────────────────────────────────────────────────────────────────────────────
-  #1  reward=+0.3746  reward=+0.3746  iter=-1  id=e7b8c5fc…
+  #1  reward=+1.1171  reward=+1.1171  iter=3  id=ab8c83b6…
+      Principle: (1) Major premise: Enzyme performance can be enhanced
+        by optimizing electrostatic interactions within the active site,
+        which improves substrate binding and catalytic efficiency. (2)
+        Minor premise: The substitution of alanine (A) with lysine (K)
+        at position 158 in the enzyme sequence increases the positive
+        charge distribution around the active site, enhancing
+        electrostatic interactions and stabilizing the transition state.
+        (3) Conclusion: In future sequence designs, prioritize residues
+        near the active site that can introduce additional positive
+        charges to optimize electrostatic interactions and improve
+        catalytic efficiency.
+      Hypothesis: The observed high fitness outcome (target = 1.1171)
+        can be attributed to a specific residue at position 158, where a
+        non-polar alanine (A) has been substituted with a positively
+        charged lysine (K). Th
+
+  #2  reward=+0.3989  reward=+0.3989  iter=7  id=97e246fc…
+      Principle: (1) Major premise: Enzymes often require specific amino
+        acid residues in their active sites to form key interactions
+        such as those in a catalytic triad, which are essential for
+        cofactor binding and activation. (2) Minor premise: The
+        conserved aspartate residue (D229) in the sequence forms part of
+        a potential catalytic triad, contributing to PLP cofactor
+        binding and activation, and the high hydrophobic content and
+        positive net charge enhance enzyme stability and catalytic
+        efficiency. (3) Conclusion: Future sequence designs should
+        include specific residues forming key interactions like a
+        catalytic triad and ensure adequate hydrophobic core stability
+        and positive net charge to optimize enzyme performance.
+      Hypothesis: The observed enzyme performance can be attributed to
+        the presence of a conserved aspartate residue (D229) near the
+        active site, which likely forms a key part of the catalytic
+        triad necessary for PLP c
+
+  #3  reward=+0.3746  reward=+0.3746  iter=-1  id=e7b8c5fc…
       Principle: **Major premise**: Proper PLP cofactor binding is
         crucial for enzymatic activity, involving specific hydrogen bond
         donors and acceptors at the PLP-binding site.  **Minor premise
@@ -141,7 +426,7 @@
         PLP cofactor binding by maintaining hydrogen bond donors and
         acceptors at th
 
-  #2  reward=+0.3746  reward=+0.3746  iter=-1  id=aea4ca42…
+  #4  reward=+0.3746  reward=+0.3746  iter=-1  id=aea4ca42…
       Principle: **Major premise**: Hydrogen bonding networks involving
         specific residues are crucial for PLP cofactor binding in
         enzymes, which is essential for maintaining high catalytic
@@ -165,7 +450,7 @@
         cofactor binds via hydrogen bonding networks involving specific
         residues. Dis
 
-  #3  reward=+0.3746  reward=+0.3746  iter=-1  id=95db3881…
+  #5  reward=+0.3746  reward=+0.3746  iter=-1  id=95db3881…
       Principle: **Major premise**: Residues forming hydrogen bonds with
         PLP are critical for maintaining catalytic activity in PLP-
         dependent enzymes.  **Minor premise with evidence**: In multiple
@@ -186,55 +471,47 @@
         Implication**: When designing mutants, prioritize residues that
         form hydrogen bonds wit
 
-  #4  reward=+0.0021  reward=+0.0021  iter=1  id=493f5198…
-      Principle: (1) Major premise: Enzyme active sites rely on precise
-        geometric and electrostatic arrangements to maintain optimal
-        cofactor binding and substrate positioning, which are critical
-        for catalytic efficiency. (2) Minor premise: The observed low
-        yield is due to a single amino acid substitution that disrupts
-        the hydrogen bonding network around the PLP cofactor, altering
-        the binding affinity and substrate positioning, as evidenced by
-        the high hydrophobic content and key charged residues near the
-        active site. (3) Conclusion: In future sequence designs,
-        prioritize maintaining or enhancing the hydrogen bonding network
-        around cofactors and ensure proper positioning of substrates to
-        preserve optimal active site geometry and electrostatic
-        interactions.
-      Hypothesis: The observed low yield (target = 0.0021) likely stems
-        from a single amino acid substitution that disrupts the optimal
-        geometry and electrostatic interactions within the active site.
-        Specifically, the
-
-  #5  reward=+0.0000  reward=+0.0000  iter=-1  id=f19e0075…
-      Principle: **Rule**: Ensure proper PLP cofactor binding by
-        maintaining hydrogen bond donors and acceptors at the PLP-
-        binding site.
-      Hypothesis: (domain-knowledge seed principle)
-
 
 ──────────────────────────────────────────────────────────────────────────────
   Top 5 by Selection Count (most often guided BO)
 ──────────────────────────────────────────────────────────────────────────────
-  #1  reward=+0.0000  selections=2  iter=-1  id=0802bb14…
+  #1  reward=+0.0000  selections=4  iter=-1  id=0802bb14…
       Principle: **Predictive Implication**: When designing mutants,
         prioritize residues that form hydrogen bonds with PLP, ensuring
         they maintain their hydrogen-bonding capacity.
       Hypothesis: (domain-knowledge seed principle)
 
-  #2  reward=+0.0000  selections=0  iter=-1  id=f19e0075…
+  #2  reward=+1.1171  selections=3  iter=3  id=ab8c83b6…
+      Principle: (1) Major premise: Enzyme performance can be enhanced
+        by optimizing electrostatic interactions within the active site,
+        which improves substrate binding and catalytic efficiency. (2)
+        Minor premise: The substitution of alanine (A) with lysine (K)
+        at position 158 in the enzyme sequence increases the positive
+        charge distribution around the active site, enhancing
+        electrostatic interactions and stabilizing the transition state.
+        (3) Conclusion: In future sequence designs, prioritize residues
+        near the active site that can introduce additional positive
+        charges to optimize electrostatic interactions and improve
+        catalytic efficiency.
+      Hypothesis: The observed high fitness outcome (target = 1.1171)
+        can be attributed to a specific residue at position 158, where a
+        non-polar alanine (A) has been substituted with a positively
+        charged lysine (K). Th
+
+  #3  reward=+0.0000  selections=2  iter=-1  id=f19e0075…
       Principle: **Rule**: Ensure proper PLP cofactor binding by
         maintaining hydrogen bond donors and acceptors at the PLP-
         binding site.
       Hypothesis: (domain-knowledge seed principle)
 
-  #3  reward=+0.0000  selections=0  iter=-1  id=59d1fdaa…
+  #4  reward=+0.0000  selections=0  iter=-1  id=59d1fdaa…
       Principle: **Mechanism**: The PLP cofactor binds via hydrogen
         bonding networks involving specific residues. Disrupting these
         interactions can lead to poor cofactor binding, reducing the
         enzyme's catalytic efficiency.
       Hypothesis: (domain-knowledge seed principle)
 
-  #4  reward=+0.3746  selections=0  iter=-1  id=e7b8c5fc…
+  #5  reward=+0.3746  selections=0  iter=-1  id=e7b8c5fc…
       Principle: **Major premise**: Proper PLP cofactor binding is
         crucial for enzymatic activity, involving specific hydrogen bond
         donors and acceptors at the PLP-binding site.  **Minor premise
@@ -253,36 +530,47 @@
       Hypothesis: Refined from broad principle: **Rule**: Ensure proper
         PLP cofactor binding by maintaining hydrogen bond donors and
         acceptors at th
-
-  #5  reward=+0.3746  selections=0  iter=-1  id=aea4ca42…
-      Principle: **Major premise**: Hydrogen bonding networks involving
-        specific residues are crucial for PLP cofactor binding in
-        enzymes, which is essential for maintaining high catalytic
-        efficiency.  **Minor premise with evidence**: In a series of
-        enzymes with similar sequences, disrupting hydrogen bonding
-        networks by altering specific residues leads to a reduction in
-        PLP cofactor binding, resulting in decreased catalytic
-        efficiency. For instance, sequences with minor variations in
-        positive-charged residues (e.g., 14.7% to 14.9%) show reduced
-        catalytic efficiency (targets ranging from 0.4350 to 0.0042),
-        while sequences with significant deviations (e.g., 12.6% to
-        12.9% negative-charged residues) also exhibit reduced catalytic
-        efficiency (targets ranging from 0.0205 to -0.1343).  **Updated
-        predictive conclusion**: Therefore, disrupting hydrogen bonding
-        networks involving specific residues will generally lead to poor
-        PLP cofactor binding and reduced catalytic efficiency, unless
-        the changes do not significantly alter the overall hydrogen
-        bonding pattern or are compensated by other structural elements
-        that maintain cofactor binding.
-      Hypothesis: Refined from broad principle: **Mechanism**: The PLP
-        cofactor binds via hydrogen bonding networks involving specific
-        residues. Dis
 
 
 ──────────────────────────────────────────────────────────────────────────────
   Top 5 by Influence Score (reward × selections)
 ──────────────────────────────────────────────────────────────────────────────
-  #1  reward=+0.3746  influence=0.37  iter=-1  id=e7b8c5fc…
+  #1  reward=+1.1171  influence=4.47  iter=3  id=ab8c83b6…
+      Principle: (1) Major premise: Enzyme performance can be enhanced
+        by optimizing electrostatic interactions within the active site,
+        which improves substrate binding and catalytic efficiency. (2)
+        Minor premise: The substitution of alanine (A) with lysine (K)
+        at position 158 in the enzyme sequence increases the positive
+        charge distribution around the active site, enhancing
+        electrostatic interactions and stabilizing the transition state.
+        (3) Conclusion: In future sequence designs, prioritize residues
+        near the active site that can introduce additional positive
+        charges to optimize electrostatic interactions and improve
+        catalytic efficiency.
+      Hypothesis: The observed high fitness outcome (target = 1.1171)
+        can be attributed to a specific residue at position 158, where a
+        non-polar alanine (A) has been substituted with a positively
+        charged lysine (K). Th
+
+  #2  reward=+0.3989  influence=0.40  iter=7  id=97e246fc…
+      Principle: (1) Major premise: Enzymes often require specific amino
+        acid residues in their active sites to form key interactions
+        such as those in a catalytic triad, which are essential for
+        cofactor binding and activation. (2) Minor premise: The
+        conserved aspartate residue (D229) in the sequence forms part of
+        a potential catalytic triad, contributing to PLP cofactor
+        binding and activation, and the high hydrophobic content and
+        positive net charge enhance enzyme stability and catalytic
+        efficiency. (3) Conclusion: Future sequence designs should
+        include specific residues forming key interactions like a
+        catalytic triad and ensure adequate hydrophobic core stability
+        and positive net charge to optimize enzyme performance.
+      Hypothesis: The observed enzyme performance can be attributed to
+        the presence of a conserved aspartate residue (D229) near the
+        active site, which likely forms a key part of the catalytic
+        triad necessary for PLP c
+
+  #3  reward=+0.3746  influence=0.37  iter=-1  id=e7b8c5fc…
       Principle: **Major premise**: Proper PLP cofactor binding is
         crucial for enzymatic activity, involving specific hydrogen bond
         donors and acceptors at the PLP-binding site.  **Minor premise
@@ -302,7 +590,7 @@
         PLP cofactor binding by maintaining hydrogen bond donors and
         acceptors at th
 
-  #2  reward=+0.3746  influence=0.37  iter=-1  id=aea4ca42…
+  #4  reward=+0.3746  influence=0.37  iter=-1  id=aea4ca42…
       Principle: **Major premise**: Hydrogen bonding networks involving
         specific residues are crucial for PLP cofactor binding in
         enzymes, which is essential for maintaining high catalytic
@@ -326,7 +614,7 @@
         cofactor binds via hydrogen bonding networks involving specific
         residues. Dis
 
-  #3  reward=+0.3746  influence=0.37  iter=-1  id=95db3881…
+  #5  reward=+0.3746  influence=0.37  iter=-1  id=95db3881…
       Principle: **Major premise**: Residues forming hydrogen bonds with
         PLP are critical for maintaining catalytic activity in PLP-
         dependent enzymes.  **Minor premise with evidence**: In multiple
@@ -347,57 +635,37 @@
         Implication**: When designing mutants, prioritize residues that
         form hydrogen bonds wit
 
-  #4  reward=+0.0021  influence=0.00  iter=1  id=493f5198…
-      Principle: (1) Major premise: Enzyme active sites rely on precise
-        geometric and electrostatic arrangements to maintain optimal
-        cofactor binding and substrate positioning, which are critical
-        for catalytic efficiency. (2) Minor premise: The observed low
-        yield is due to a single amino acid substitution that disrupts
-        the hydrogen bonding network around the PLP cofactor, altering
-        the binding affinity and substrate positioning, as evidenced by
-        the high hydrophobic content and key charged residues near the
-        active site. (3) Conclusion: In future sequence designs,
-        prioritize maintaining or enhancing the hydrogen bonding network
-        around cofactors and ensure proper positioning of substrates to
-        preserve optimal active site geometry and electrostatic
-        interactions.
-      Hypothesis: The observed low yield (target = 0.0021) likely stems
-        from a single amino acid substitution that disrupts the optimal
-        geometry and electrostatic interactions within the active site.
-        Specifically, the
-
-  #5  reward=+0.0000  influence=0.00  iter=-1  id=f19e0075…
-      Principle: **Rule**: Ensure proper PLP cofactor binding by
-        maintaining hydrogen bond donors and acceptors at the PLP-
-        binding site.
-      Hypothesis: (domain-knowledge seed principle)
-
 
 ══════════════════════════════════════════════════════════════════════════════
   The Winning Principle
 ══════════════════════════════════════════════════════════════════════════════
-  Reward:         +0.3746
-  Selection count: 0
-  Influence score: 0.37
-  Discovered at iteration: -1
-  Sequence: …
+  Reward:         +1.1171
+  Selection count: 3
+  Influence score: 4.47
+  Discovered at iteration: 3
+  Sequence: MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTG…
 
   HYPOTHESIS
-    Refined from broad principle: **Rule**: Ensure proper PLP cofactor
-      binding by maintaining hydrogen bond donors and acceptors at th
+    The observed high fitness outcome (target = 1.1171) can be attributed
+      to a specific residue at position 158, where a non-polar alanine (A)
+      has been substituted with a positively charged lysine (K). This
+      change likely enhances the electrostatic interactions within the
+      active site, stabilizing the transition state and improving
+      substrate binding. Additionally, the increased positive charge
+      distribution, particularly around the active site, may facilitate
+      better interaction with the PLP cofactor and the α-subunit (TrpA),
+      optimizing inter-subunit communication and overall catalytic
+      efficiency. These modifications likely contribute to the observed
+      high yield and enantioselectivity in tryptophan synthesis.
 
   PRINCIPLE
-    **Major premise**: Proper PLP cofactor binding is crucial for
-      enzymatic activity, involving specific hydrogen bond donors and
-      acceptors at the PLP-binding site.  **Minor premise with evidence**:
-      The presence of 14.7% positive-charged and 12.6% negative-charged
-      residues within the first 60 amino acids of the sequence
-      consistently correlates with higher enzymatic activity (target
-      values ranging from 0.0205 to 0.8342), while deviations from these
-      percentages (either higher or lower) generally result in lower or
-      even negative activity (target values ranging from -0.1343 to
-      0.0042).  **Updated predictive conclusion**: To ensure optimal PLP
-      cofactor binding and maintain high enzymatic activity, the PLP-
-      binding site should contain approximately 14.7% positive-charged and
-      12.6% negative-charged residues, with minor variations tolerated but
-      not exceeding 15% positive-charged or 13% negative-charged residues.
+    (1) Major premise: Enzyme performance can be enhanced by optimizing
+      electrostatic interactions within the active site, which improves
+      substrate binding and catalytic efficiency. (2) Minor premise: The
+      substitution of alanine (A) with lysine (K) at position 158 in the
+      enzyme sequence increases the positive charge distribution around
+      the active site, enhancing electrostatic interactions and
+      stabilizing the transition state. (3) Conclusion: In future sequence
+      designs, prioritize residues near the active site that can introduce
+      additional positive charges to optimize electrostatic interactions
+      and improve catalytic efficiency.

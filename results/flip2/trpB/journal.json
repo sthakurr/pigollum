@@ -3,7 +3,9 @@
     "target"
   ],
   "selection_counts": {
-    "0802bb14-623f-4ccd-aa23-4a03a76c1f8a": 2
+    "0802bb14-623f-4ccd-aa23-4a03a76c1f8a": 4,
+    "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8": 3,
+    "f19e0075-576c-4298-9a4f-71ee055ab7d8": 2
   },
   "records": [
     {
@@ -205,10 +207,1129 @@
       "best_train_y": [
         0.8341607085990271
       ]
+    },
+    {
+      "iteration": 2,
+      "phase": "bo",
+      "n_principles_before": 7,
+      "action_type": "explore",
+      "plateau_detected": true,
+      "suggestion": "[PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse candidate sequences that differ from previously evaluated ones. Consider regions of sequence space not yet covered by known principles.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.7034493347776286,
+          "exploitation_score": 0.2955025354748506,
+          "final_score": 0.4994759351262396,
+          "was_selected": false
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.008448090886945885,
+          "exploitation_score": 0.2955025354748506,
+          "final_score": 0.15197531318089824,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.2955025354748506,
+          "final_score": 0.6477512677374253,
+          "was_selected": true
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.1590553945984047,
+          "exploitation_score": 0.7603670404039903,
+          "final_score": 0.4597112175011975,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.7603670404039903,
+          "final_score": 0.38018352020199514,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.4105305712049673,
+          "exploitation_score": 0.7603670404039903,
+          "final_score": 0.5854488058044788,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.7407051564451678,
+          "exploitation_score": 0.29782918254716617,
+          "final_score": 0.519267169496167,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+      "new_principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+      "new_principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+      "new_principle_reward": -0.0388068018115022,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYNFGSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": -0.0388068018115022
+        }
+      ],
+      "best_train_y": [
+        0.8341607085990271
+      ]
+    },
+    {
+      "iteration": 3,
+      "phase": "bo",
+      "n_principles_before": 8,
+      "action_type": "explore",
+      "plateau_detected": true,
+      "suggestion": "[PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse candidate sequences that differ from previously evaluated ones. Consider regions of sequence space not yet covered by known principles.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.8046684970342864,
+          "exploitation_score": 0.3244931403602238,
+          "final_score": 0.5645808186972552,
+          "was_selected": false
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.3244931403602238,
+          "final_score": 0.1622465701801119,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.3244931403602238,
+          "final_score": 0.6622465701801119,
+          "was_selected": true
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.2131352031025202,
+          "exploitation_score": 0.7838217047585769,
+          "final_score": 0.49847845393054857,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.03459842189659679,
+          "exploitation_score": 0.7838217047585769,
+          "final_score": 0.40921006332758686,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.3174202412600339,
+          "exploitation_score": 0.7838217047585769,
+          "final_score": 0.5506209730093055,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.26282002981018965,
+          "exploitation_score": 0.3269394201125836,
+          "final_score": 0.2948797249613866,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.914663034187531,
+          "exploitation_score": 0.28038009171454337,
+          "final_score": 0.5975215629510372,
+          "was_selected": false
+        },
+        {
+          "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+          "iteration_added": 3,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+          "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+          "reward": 1.1170866112555011,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+      "new_principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+      "new_principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+      "new_principle_reward": 1.1170866112555011,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGQVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": 1.1170866112555011
+        }
+      ],
+      "best_train_y": [
+        1.1170866112555011
+      ]
+    },
+    {
+      "iteration": 4,
+      "phase": "bo",
+      "n_principles_before": 9,
+      "action_type": "refine",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Refine around principle: '(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions withi\u2026'. This principle achieved reward=1.1171 and shows high exploitation potential. Seek sequences similar to this variant.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.9081459422542967,
+          "exploitation_score": 0.3338083070501788,
+          "final_score": 0.6209771246522378,
+          "was_selected": false
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.11163154279754758,
+          "exploitation_score": 0.3338083070501788,
+          "final_score": 0.22271992492386317,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.901798448466075,
+          "exploitation_score": 0.3338083070501788,
+          "final_score": 0.6178033777581269,
+          "was_selected": false
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.25749353527531266,
+          "exploitation_score": 0.5904877382875069,
+          "final_score": 0.4239906367814098,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.0423237596387148,
+          "exploitation_score": 0.5904877382875069,
+          "final_score": 0.31640574896311086,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.22380205587000893,
+          "exploitation_score": 0.5904877382875069,
+          "final_score": 0.4071448970787579,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.33510485132395046,
+          "final_score": 0.16755242566197523,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.46688835143196816,
+          "exploitation_score": 0.30991829792181563,
+          "final_score": 0.38840332467689187,
+          "was_selected": false
+        },
+        {
+          "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+          "iteration_added": 3,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+          "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+          "reward": 1.1170866112555011,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.9213456828133182,
+          "final_score": 0.9606728414066591,
+          "was_selected": true
+        },
+        {
+          "principle_id": "fa417113-2346-4ff9-81d2-4225d6eeeb97",
+          "iteration_added": 4,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is optimized when key residues form a catalytic triad and contribute to proper folding and electrostatic interactions.\n(2) Minor premise: The aspartate residue D245 forms part of the catalytic triad, stabilizing the hydrophobic core through a high proportion of hydrophobic residues, and contributing to positive charge distribution for electrostatic interactions.\n(3) Conclusion: In future sequence designs, prioritize residues that form catalytic triads, stabilize the hydrophobic core, and contribute to favorable electrostatic interactions for optimal enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a highly conserved aspartate residue (D245) near the active site, which likely forms a crucial part of the catalytic triad with serine and histidine residues, facilitating the nucleophilic attack on the indole ring by L-serine. Additionally, the hydrophobic core stabilized by a high proportion of hydrophobic residues (41.6%) ensures proper folding and active-site geometry, enhancing substrate binding and catalytic efficiency. The positive charge distribution, particularly the presence of lysine and arginine residues, contributes to the electrostatic interactions necessary for substrate orientation and catalysis, thereby optimizing the enzyme's fitness for tryptophan synthesis.",
+          "reward": 0.1432156950216478,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+      "new_principle_id": "fa417113-2346-4ff9-81d2-4225d6eeeb97",
+      "new_principle_text": "(1) Major premise: Enzyme performance is optimized when key residues form a catalytic triad and contribute to proper folding and electrostatic interactions.\n(2) Minor premise: The aspartate residue D245 forms part of the catalytic triad, stabilizing the hydrophobic core through a high proportion of hydrophobic residues, and contributing to positive charge distribution for electrostatic interactions.\n(3) Conclusion: In future sequence designs, prioritize residues that form catalytic triads, stabilize the hydrophobic core, and contribute to favorable electrostatic interactions for optimal enzyme performance.",
+      "new_principle_reward": 0.1432156950216478,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACNSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": 0.1432156950216478
+        }
+      ],
+      "best_train_y": [
+        1.1170866112555011
+      ]
+    },
+    {
+      "iteration": 5,
+      "phase": "bo",
+      "n_principles_before": 10,
+      "action_type": "refine",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Refine around principle: '(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions withi\u2026'. This principle achieved reward=1.1171 and shows high exploitation potential. Seek sequences similar to this variant.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.3328580201754211,
+          "final_score": 0.6664290100877106,
+          "was_selected": false
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.2260162117675071,
+          "exploitation_score": 0.3328580201754211,
+          "final_score": 0.2794371159714641,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.8814725861357986,
+          "exploitation_score": 0.3328580201754211,
+          "final_score": 0.6071653031556099,
+          "was_selected": false
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.38383335144993175,
+          "exploitation_score": 0.602123914270528,
+          "final_score": 0.4929786328602299,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.11856321571347478,
+          "exploitation_score": 0.602123914270528,
+          "final_score": 0.3603435649920014,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.20517651605734508,
+          "exploitation_score": 0.602123914270528,
+          "final_score": 0.40365021516393657,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.3342172405278897,
+          "final_score": 0.16710862026394485,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.2522132444412237,
+          "exploitation_score": 0.30784190886960366,
+          "final_score": 0.28002757665541367,
+          "was_selected": false
+        },
+        {
+          "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+          "iteration_added": 3,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+          "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+          "reward": 1.1170866112555011,
+          "exploration_score": 0.7225464518210633,
+          "exploitation_score": 0.9317184923014185,
+          "final_score": 0.8271324720612409,
+          "was_selected": true
+        },
+        {
+          "principle_id": "fa417113-2346-4ff9-81d2-4225d6eeeb97",
+          "iteration_added": 4,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is optimized when key residues form a catalytic triad and contribute to proper folding and electrostatic interactions.\n(2) Minor premise: The aspartate residue D245 forms part of the catalytic triad, stabilizing the hydrophobic core through a high proportion of hydrophobic residues, and contributing to positive charge distribution for electrostatic interactions.\n(3) Conclusion: In future sequence designs, prioritize residues that form catalytic triads, stabilize the hydrophobic core, and contribute to favorable electrostatic interactions for optimal enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a highly conserved aspartate residue (D245) near the active site, which likely forms a crucial part of the catalytic triad with serine and histidine residues, facilitating the nucleophilic attack on the indole ring by L-serine. Additionally, the hydrophobic core stabilized by a high proportion of hydrophobic residues (41.6%) ensures proper folding and active-site geometry, enhancing substrate binding and catalytic efficiency. The positive charge distribution, particularly the presence of lysine and arginine residues, contributes to the electrostatic interactions necessary for substrate orientation and catalysis, thereby optimizing the enzyme's fitness for tryptophan synthesis.",
+          "reward": 0.1432156950216478,
+          "exploration_score": 0.7139971427536195,
+          "exploitation_score": 0.43263734132526427,
+          "final_score": 0.5733172420394419,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1ed10339-7bfc-422b-9523-797717ae6ad4",
+          "iteration_added": 5,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Positively charged residues in the active site can enhance electrostatic interactions with negatively charged substrates, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged residue at position 103 (K) in the active site of the TrpB variant enhances electrostatic interactions with the negatively charged indole ring of the substrate, contributing to improved catalytic efficiency as evidenced by the fitness value of -0.0223.\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near negatively charged functional groups in the active site can enhance catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a positively charged residue at position 103 (K) in the active site, which enhances electrostatic interactions with the negatively charged indole ring of the substrate, stabilizing the transition state and improving catalytic efficiency. Additionally, the high hydrophobic content and precise packing of residues around the active site ensure optimal substrate binding geometry, facilitating the PLP-dependent \u03b2-substitution reaction. These structural and electrostatic optimizations contribute to the observed fitness value of -0.0223, reflecting enhanced catalytic activity and improved growth complementation in the engineered TrpB variant.",
+          "reward": -0.022264184037922,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+      "new_principle_id": "1ed10339-7bfc-422b-9523-797717ae6ad4",
+      "new_principle_text": "(1) Major premise: Positively charged residues in the active site can enhance electrostatic interactions with negatively charged substrates, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged residue at position 103 (K) in the active site of the TrpB variant enhances electrostatic interactions with the negatively charged indole ring of the substrate, contributing to improved catalytic efficiency as evidenced by the fitness value of -0.0223.\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near negatively charged functional groups in the active site can enhance catalytic efficiency.",
+      "new_principle_reward": -0.022264184037922,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGFVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": -0.022264184037922
+        }
+      ],
+      "best_train_y": [
+        1.1170866112555011
+      ]
+    },
+    {
+      "iteration": 6,
+      "phase": "bo",
+      "n_principles_before": 11,
+      "action_type": "explore",
+      "plateau_detected": true,
+      "suggestion": "[PiGollum] Plateau detected over last 3 iterations (reward change < 0.1). Forcing exploration: seek structurally diverse candidate sequences that differ from previously evaluated ones. Consider regions of sequence space not yet covered by known principles.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.3452462147480786,
+          "final_score": 0.6726231073740393,
+          "was_selected": false
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.32156761902183967,
+          "exploitation_score": 0.3452462147480786,
+          "final_score": 0.33340691688495916,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.8502630894323614,
+          "exploitation_score": 0.3452462147480786,
+          "final_score": 0.5977546520902199,
+          "was_selected": false
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.4393570963468239,
+          "exploitation_score": 0.621112723631204,
+          "final_score": 0.5302349099890139,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.15226065929504964,
+          "exploitation_score": 0.621112723631204,
+          "final_score": 0.3866866914631268,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.2554538988214736,
+          "exploitation_score": 0.621112723631204,
+          "final_score": 0.4382833112263388,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.34666052266657693,
+          "final_score": 0.17333026133328847,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.20378490878714192,
+          "exploitation_score": 0.31918979879155807,
+          "final_score": 0.26148735378935,
+          "was_selected": false
+        },
+        {
+          "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+          "iteration_added": 3,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+          "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+          "reward": 1.1170866112555011,
+          "exploration_score": 0.5297740694123008,
+          "exploitation_score": 0.9394728328408803,
+          "final_score": 0.7346234511265906,
+          "was_selected": true
+        },
+        {
+          "principle_id": "fa417113-2346-4ff9-81d2-4225d6eeeb97",
+          "iteration_added": 4,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is optimized when key residues form a catalytic triad and contribute to proper folding and electrostatic interactions.\n(2) Minor premise: The aspartate residue D245 forms part of the catalytic triad, stabilizing the hydrophobic core through a high proportion of hydrophobic residues, and contributing to positive charge distribution for electrostatic interactions.\n(3) Conclusion: In future sequence designs, prioritize residues that form catalytic triads, stabilize the hydrophobic core, and contribute to favorable electrostatic interactions for optimal enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a highly conserved aspartate residue (D245) near the active site, which likely forms a crucial part of the catalytic triad with serine and histidine residues, facilitating the nucleophilic attack on the indole ring by L-serine. Additionally, the hydrophobic core stabilized by a high proportion of hydrophobic residues (41.6%) ensures proper folding and active-site geometry, enhancing substrate binding and catalytic efficiency. The positive charge distribution, particularly the presence of lysine and arginine residues, contributes to the electrostatic interactions necessary for substrate orientation and catalysis, thereby optimizing the enzyme's fitness for tryptophan synthesis.",
+          "reward": 0.1432156950216478,
+          "exploration_score": 0.5740345993807361,
+          "exploitation_score": 0.4485863439103847,
+          "final_score": 0.5113104716455604,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1ed10339-7bfc-422b-9523-797717ae6ad4",
+          "iteration_added": 5,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Positively charged residues in the active site can enhance electrostatic interactions with negatively charged substrates, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged residue at position 103 (K) in the active site of the TrpB variant enhances electrostatic interactions with the negatively charged indole ring of the substrate, contributing to improved catalytic efficiency as evidenced by the fitness value of -0.0223.\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near negatively charged functional groups in the active site can enhance catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a positively charged residue at position 103 (K) in the active site, which enhances electrostatic interactions with the negatively charged indole ring of the substrate, stabilizing the transition state and improving catalytic efficiency. Additionally, the high hydrophobic content and precise packing of residues around the active site ensure optimal substrate binding geometry, facilitating the PLP-dependent \u03b2-substitution reaction. These structural and electrostatic optimizations contribute to the observed fitness value of -0.0223, reflecting enhanced catalytic activity and improved growth complementation in the engineered TrpB variant.",
+          "reward": -0.022264184037922,
+          "exploration_score": 0.972018457614706,
+          "exploitation_score": 0.33017112196441756,
+          "final_score": 0.6510947897895618,
+          "was_selected": false
+        },
+        {
+          "principle_id": "a49a2dc7-ec8e-445b-998e-6fa1c19b245b",
+          "iteration_added": 6,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzymes often utilize electrostatic interactions, such as salt bridges, to stabilize transition states and enhance catalytic efficiency.\n(2) Minor premise: The sequence features a salt bridge between Asp (D) at position 128 and Lys (K) at position 140, which enhances electrostatic attraction and stabilizes the transition state during the \u03b2-substitution reaction.\n(3) Conclusion: In future sequence designs, consider incorporating specific pairs of oppositely charged residues to form salt bridges that can stabilize transition states and improve catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a negatively charged residue, Asp (D), at position 128 (D128), which is part of a salt bridge network involving a positively charged Lys (K) at position 140 (K140). This interaction stabilizes the transition state by enhancing electrostatic attraction between the negatively charged indole ring of the substrate and the positively charged active site, thereby increasing catalytic efficiency. Additionally, the high hydrophobic content of the sequence (41.9%) ensures proper folding and stability, while the presence of a catalytic triad-like motif involving Ser (S), His (H), and Asp (D) residues facilitates the PLP-dependent \u03b2-substitution reaction, contributing to the observed yield of L-tryptophan.",
+          "reward": -0.0277430769615366,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+      "new_principle_id": "a49a2dc7-ec8e-445b-998e-6fa1c19b245b",
+      "new_principle_text": "(1) Major premise: Enzymes often utilize electrostatic interactions, such as salt bridges, to stabilize transition states and enhance catalytic efficiency.\n(2) Minor premise: The sequence features a salt bridge between Asp (D) at position 128 and Lys (K) at position 140, which enhances electrostatic attraction and stabilizes the transition state during the \u03b2-substitution reaction.\n(3) Conclusion: In future sequence designs, consider incorporating specific pairs of oppositely charged residues to form salt bridges that can stabilize transition states and improve catalytic efficiency.",
+      "new_principle_reward": -0.0277430769615366,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGEVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": -0.0277430769615366
+        }
+      ],
+      "best_train_y": [
+        1.1170866112555011
+      ]
+    },
+    {
+      "iteration": 7,
+      "phase": "bo",
+      "n_principles_before": 12,
+      "action_type": "explore",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Explore: current best principle (reward=0.0000) has low exploitation score. Diversify into unexplored regions of sequence space.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.3560297252801545,
+          "final_score": 0.6780148626400773,
+          "was_selected": true
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.33945770027991756,
+          "exploitation_score": 0.3560297252801545,
+          "final_score": 0.347743712780036,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.7853500155781119,
+          "exploitation_score": 0.3560297252801545,
+          "final_score": 0.5706898704291332,
+          "was_selected": false
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.4899541239431568,
+          "exploitation_score": 0.6380744951284674,
+          "final_score": 0.5640143095358121,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.1857350548687967,
+          "exploitation_score": 0.6380744951284674,
+          "final_score": 0.41190477499863204,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.2687609836155943,
+          "exploitation_score": 0.6380744951284674,
+          "final_score": 0.45341773937203084,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.35749621433668993,
+          "final_score": 0.17874810716834497,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.12251583193223364,
+          "exploitation_score": 0.32898848035257433,
+          "final_score": 0.225752156142404,
+          "was_selected": false
+        },
+        {
+          "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+          "iteration_added": 3,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+          "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+          "reward": 1.1170866112555011,
+          "exploration_score": 0.38124890752602486,
+          "exploitation_score": 0.9461025546850943,
+          "final_score": 0.6636757311055596,
+          "was_selected": false
+        },
+        {
+          "principle_id": "fa417113-2346-4ff9-81d2-4225d6eeeb97",
+          "iteration_added": 4,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is optimized when key residues form a catalytic triad and contribute to proper folding and electrostatic interactions.\n(2) Minor premise: The aspartate residue D245 forms part of the catalytic triad, stabilizing the hydrophobic core through a high proportion of hydrophobic residues, and contributing to positive charge distribution for electrostatic interactions.\n(3) Conclusion: In future sequence designs, prioritize residues that form catalytic triads, stabilize the hydrophobic core, and contribute to favorable electrostatic interactions for optimal enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a highly conserved aspartate residue (D245) near the active site, which likely forms a crucial part of the catalytic triad with serine and histidine residues, facilitating the nucleophilic attack on the indole ring by L-serine. Additionally, the hydrophobic core stabilized by a high proportion of hydrophobic residues (41.6%) ensures proper folding and active-site geometry, enhancing substrate binding and catalytic efficiency. The positive charge distribution, particularly the presence of lysine and arginine residues, contributes to the electrostatic interactions necessary for substrate orientation and catalysis, thereby optimizing the enzyme's fitness for tryptophan synthesis.",
+          "reward": 0.1432156950216478,
+          "exploration_score": 0.4179647554375984,
+          "exploitation_score": 0.46273953116494865,
+          "final_score": 0.44035214330127354,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1ed10339-7bfc-422b-9523-797717ae6ad4",
+          "iteration_added": 5,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Positively charged residues in the active site can enhance electrostatic interactions with negatively charged substrates, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged residue at position 103 (K) in the active site of the TrpB variant enhances electrostatic interactions with the negatively charged indole ring of the substrate, contributing to improved catalytic efficiency as evidenced by the fitness value of -0.0223.\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near negatively charged functional groups in the active site can enhance catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a positively charged residue at position 103 (K) in the active site, which enhances electrostatic interactions with the negatively charged indole ring of the substrate, stabilizing the transition state and improving catalytic efficiency. Additionally, the high hydrophobic content and precise packing of residues around the active site ensure optimal substrate binding geometry, facilitating the PLP-dependent \u03b2-substitution reaction. These structural and electrostatic optimizations contribute to the observed fitness value of -0.0223, reflecting enhanced catalytic activity and improved growth complementation in the engineered TrpB variant.",
+          "reward": -0.022264184037922,
+          "exploration_score": 0.7992991419652704,
+          "exploitation_score": 0.34039007028824014,
+          "final_score": 0.5698446061267552,
+          "was_selected": false
+        },
+        {
+          "principle_id": "a49a2dc7-ec8e-445b-998e-6fa1c19b245b",
+          "iteration_added": 6,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzymes often utilize electrostatic interactions, such as salt bridges, to stabilize transition states and enhance catalytic efficiency.\n(2) Minor premise: The sequence features a salt bridge between Asp (D) at position 128 and Lys (K) at position 140, which enhances electrostatic attraction and stabilizes the transition state during the \u03b2-substitution reaction.\n(3) Conclusion: In future sequence designs, consider incorporating specific pairs of oppositely charged residues to form salt bridges that can stabilize transition states and improve catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a negatively charged residue, Asp (D), at position 128 (D128), which is part of a salt bridge network involving a positively charged Lys (K) at position 140 (K140). This interaction stabilizes the transition state by enhancing electrostatic attraction between the negatively charged indole ring of the substrate and the positively charged active site, thereby increasing catalytic efficiency. Additionally, the high hydrophobic content of the sequence (41.9%) ensures proper folding and stability, while the presence of a catalytic triad-like motif involving Ser (S), His (H), and Asp (D) residues facilitates the PLP-dependent \u03b2-substitution reaction, contributing to the observed yield of L-tryptophan.",
+          "reward": -0.0277430769615366,
+          "exploration_score": 0.7805897074210776,
+          "exploitation_score": 0.33659256101763685,
+          "final_score": 0.5585911342193572,
+          "was_selected": false
+        },
+        {
+          "principle_id": "97e246fc-5506-4afc-90ff-f71438e02293",
+          "iteration_added": 7,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzymes often require specific amino acid residues in their active sites to form key interactions such as those in a catalytic triad, which are essential for cofactor binding and activation.\n(2) Minor premise: The conserved aspartate residue (D229) in the sequence forms part of a potential catalytic triad, contributing to PLP cofactor binding and activation, and the high hydrophobic content and positive net charge enhance enzyme stability and catalytic efficiency.\n(3) Conclusion: Future sequence designs should include specific residues forming key interactions like a catalytic triad and ensure adequate hydrophobic core stability and positive net charge to optimize enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D229) near the active site, which likely forms a key part of the catalytic triad necessary for PLP cofactor binding and activation. Additionally, the hydrophobic core stability provided by the high hydrophobic content (41.9%) ensures proper folding and conformational rigidity, facilitating optimal substrate binding and catalysis. The positive net charge (+8) across the sequence, particularly from basic residues, contributes to favorable electrostatic interactions with the negatively charged substrate and cofactor, enhancing catalytic efficiency and product formation.",
+          "reward": 0.3989183206669207,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+      "new_principle_id": "97e246fc-5506-4afc-90ff-f71438e02293",
+      "new_principle_text": "(1) Major premise: Enzymes often require specific amino acid residues in their active sites to form key interactions such as those in a catalytic triad, which are essential for cofactor binding and activation.\n(2) Minor premise: The conserved aspartate residue (D229) in the sequence forms part of a potential catalytic triad, contributing to PLP cofactor binding and activation, and the high hydrophobic content and positive net charge enhance enzyme stability and catalytic efficiency.\n(3) Conclusion: Future sequence designs should include specific residues forming key interactions like a catalytic triad and ensure adequate hydrophobic core stability and positive net charge to optimize enzyme performance.",
+      "new_principle_reward": 0.3989183206669207,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFYSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": 0.3989183206669207
+        }
+      ],
+      "best_train_y": [
+        1.1170866112555011
+      ]
+    },
+    {
+      "iteration": 8,
+      "phase": "bo",
+      "n_principles_before": 13,
+      "action_type": "explore",
+      "plateau_detected": false,
+      "suggestion": "[PiGollum] Explore: current best principle (reward=0.0000) has low exploitation score. Diversify into unexplored regions of sequence space.",
+      "principle_scores": [
+        {
+          "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 1.0,
+          "exploitation_score": 0.34121142220902484,
+          "final_score": 0.6706057111045124,
+          "was_selected": true
+        },
+        {
+          "principle_id": "59d1fdaa-df72-4d11-b583-1ac9f353d8f0",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Disrupting these interactions can lead to poor cofactor binding, reducing the enzyme's catalytic efficiency.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.34710396650458303,
+          "exploitation_score": 0.34121142220902484,
+          "final_score": 0.34415769435680393,
+          "was_selected": false
+        },
+        {
+          "principle_id": "0802bb14-623f-4ccd-aa23-4a03a76c1f8a",
+          "iteration_added": -1,
+          "source": "broad",
+          "principle_text": "**Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds with PLP, ensuring they maintain their hydrogen-bonding capacity.",
+          "hypothesis": "(domain-knowledge seed principle)",
+          "reward": 0.0,
+          "exploration_score": 0.8246419834012694,
+          "exploitation_score": 0.34121142220902484,
+          "final_score": 0.5829267028051471,
+          "was_selected": false
+        },
+        {
+          "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
+          "hypothesis": "Refined from broad principle: **Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at th",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.49476472177079034,
+          "exploitation_score": 0.6295774819844688,
+          "final_score": 0.5621711018776296,
+          "was_selected": false
+        },
+        {
+          "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
+          "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.20857944376828622,
+          "exploitation_score": 0.6295774819844688,
+          "final_score": 0.4190784628763775,
+          "was_selected": false
+        },
+        {
+          "principle_id": "95db3881-293a-4d5b-b1b2-8a97cf8c613e",
+          "iteration_added": -1,
+          "source": "refined",
+          "principle_text": "**Major premise**: Residues forming hydrogen bonds with PLP are critical for maintaining catalytic activity in PLP-dependent enzymes.\n\n**Minor premise with evidence**: In multiple PLP-dependent enzymes, residues that form hydrogen bonds with PLP have a composition profile characterized by a high proportion of hydrophobic residues (41.6% to 42.2%) and a moderate proportion of positive-charged residues (14.7% to 14.9%), while negative-charged residues are less frequent (12.6% to 12.9%).\n\n**Updated predictive conclusion**: To optimize the catalytic activity of PLP-dependent enzymes through mutagenesis, prioritize residues that form hydrogen bonds with PLP and ensure they maintain a composition profile with at least 41.6% hydrophobic residues, no more than 14.9% positive-charged residues, and no more than 12.9% negative-charged residues. Deviations from these composition profiles may lead to reduced catalytic activity.",
+          "hypothesis": "Refined from broad principle: **Predictive Implication**: When designing mutants, prioritize residues that form hydrogen bonds wit",
+          "reward": 0.37462989551104564,
+          "exploration_score": 0.2935454347013608,
+          "exploitation_score": 0.6295774819844688,
+          "final_score": 0.46156145834291484,
+          "was_selected": false
+        },
+        {
+          "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
+          "iteration_added": 1,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
+          "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
+          "reward": 0.0020644392730737,
+          "exploration_score": 0.04458520338400094,
+          "exploitation_score": 0.3426849132064898,
+          "final_score": 0.19363505829524538,
+          "was_selected": false
+        },
+        {
+          "principle_id": "6bcf776e-ae06-4c34-b535-f20625b929a5",
+          "iteration_added": 2,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is enhanced by specific structural features such as conserved residues participating in electrostatic interactions with cofactors and hydrophobic packing that stabilizes the active site geometry.\n(2) Minor premise: The conserved aspartate residue D234 near the active site and the high hydrophobic content around it in the sequence exemplify this rule by stabilizing the transition state through electrostatic interactions with the PLP cofactor and contributing to a compact and stable active-site geometry.\n(3) Conclusion: In future sequence designs, prioritize the conservation of residues that form electrostatic interactions with cofactors and ensure a high hydrophobic content and specific packing around the active site to enhance enzyme stability and catalytic efficiency.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D234) near the active site, which likely participates in the stabilization of the transition state through electrostatic interactions with the PLP cofactor. Additionally, the high hydrophobic content and specific packing of residues around the active site contribute to a compact and stable active-site geometry, facilitating efficient substrate binding and orientation. These structural features, combined with the overall positive charge distribution, enhance the enzyme's ability to maintain proper conformation and catalytic efficiency, resulting in the observed yield of -0.0388.",
+          "reward": -0.0388068018115022,
+          "exploration_score": 0.1233083719758293,
+          "exploitation_score": 0.3141058324079501,
+          "final_score": 0.2187071021918897,
+          "was_selected": false
+        },
+        {
+          "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+          "iteration_added": 3,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+          "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+          "reward": 1.1170866112555011,
+          "exploration_score": 0.385935707609468,
+          "exploitation_score": 0.947121756266945,
+          "final_score": 0.6665287319382065,
+          "was_selected": false
+        },
+        {
+          "principle_id": "fa417113-2346-4ff9-81d2-4225d6eeeb97",
+          "iteration_added": 4,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzyme performance is optimized when key residues form a catalytic triad and contribute to proper folding and electrostatic interactions.\n(2) Minor premise: The aspartate residue D245 forms part of the catalytic triad, stabilizing the hydrophobic core through a high proportion of hydrophobic residues, and contributing to positive charge distribution for electrostatic interactions.\n(3) Conclusion: In future sequence designs, prioritize residues that form catalytic triads, stabilize the hydrophobic core, and contribute to favorable electrostatic interactions for optimal enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a highly conserved aspartate residue (D245) near the active site, which likely forms a crucial part of the catalytic triad with serine and histidine residues, facilitating the nucleophilic attack on the indole ring by L-serine. Additionally, the hydrophobic core stabilized by a high proportion of hydrophobic residues (41.6%) ensures proper folding and active-site geometry, enhancing substrate binding and catalytic efficiency. The positive charge distribution, particularly the presence of lysine and arginine residues, contributes to the electrostatic interactions necessary for substrate orientation and catalysis, thereby optimizing the enzyme's fitness for tryptophan synthesis.",
+          "reward": 0.1432156950216478,
+          "exploration_score": 0.37774095072523095,
+          "exploitation_score": 0.44926812116621867,
+          "final_score": 0.4135045359457248,
+          "was_selected": false
+        },
+        {
+          "principle_id": "1ed10339-7bfc-422b-9523-797717ae6ad4",
+          "iteration_added": 5,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Positively charged residues in the active site can enhance electrostatic interactions with negatively charged substrates, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged residue at position 103 (K) in the active site of the TrpB variant enhances electrostatic interactions with the negatively charged indole ring of the substrate, contributing to improved catalytic efficiency as evidenced by the fitness value of -0.0223.\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near negatively charged functional groups in the active site can enhance catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a positively charged residue at position 103 (K) in the active site, which enhances electrostatic interactions with the negatively charged indole ring of the substrate, stabilizing the transition state and improving catalytic efficiency. Additionally, the high hydrophobic content and precise packing of residues around the active site ensure optimal substrate binding geometry, facilitating the PLP-dependent \u03b2-substitution reaction. These structural and electrostatic optimizations contribute to the observed fitness value of -0.0223, reflecting enhanced catalytic activity and improved growth complementation in the engineered TrpB variant.",
+          "reward": -0.022264184037922,
+          "exploration_score": 0.7832623960960013,
+          "exploitation_score": 0.3255193433009467,
+          "final_score": 0.5543908696984741,
+          "was_selected": false
+        },
+        {
+          "principle_id": "a49a2dc7-ec8e-445b-998e-6fa1c19b245b",
+          "iteration_added": 6,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzymes often utilize electrostatic interactions, such as salt bridges, to stabilize transition states and enhance catalytic efficiency.\n(2) Minor premise: The sequence features a salt bridge between Asp (D) at position 128 and Lys (K) at position 140, which enhances electrostatic attraction and stabilizes the transition state during the \u03b2-substitution reaction.\n(3) Conclusion: In future sequence designs, consider incorporating specific pairs of oppositely charged residues to form salt bridges that can stabilize transition states and improve catalytic efficiency.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a negatively charged residue, Asp (D), at position 128 (D128), which is part of a salt bridge network involving a positively charged Lys (K) at position 140 (K140). This interaction stabilizes the transition state by enhancing electrostatic attraction between the negatively charged indole ring of the substrate and the positively charged active site, thereby increasing catalytic efficiency. Additionally, the high hydrophobic content of the sequence (41.9%) ensures proper folding and stability, while the presence of a catalytic triad-like motif involving Ser (S), His (H), and Asp (D) residues facilitates the PLP-dependent \u03b2-substitution reaction, contributing to the observed yield of L-tryptophan.",
+          "reward": -0.0277430769615366,
+          "exploration_score": 0.753382608318279,
+          "exploitation_score": 0.321715358159555,
+          "final_score": 0.537548983238917,
+          "was_selected": false
+        },
+        {
+          "principle_id": "97e246fc-5506-4afc-90ff-f71438e02293",
+          "iteration_added": 7,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Enzymes often require specific amino acid residues in their active sites to form key interactions such as those in a catalytic triad, which are essential for cofactor binding and activation.\n(2) Minor premise: The conserved aspartate residue (D229) in the sequence forms part of a potential catalytic triad, contributing to PLP cofactor binding and activation, and the high hydrophobic content and positive net charge enhance enzyme stability and catalytic efficiency.\n(3) Conclusion: Future sequence designs should include specific residues forming key interactions like a catalytic triad and ensure adequate hydrophobic core stability and positive net charge to optimize enzyme performance.",
+          "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D229) near the active site, which likely forms a key part of the catalytic triad necessary for PLP cofactor binding and activation. Additionally, the hydrophobic core stability provided by the high hydrophobic content (41.9%) ensures proper folding and conformational rigidity, facilitating optimal substrate binding and catalysis. The positive net charge (+8) across the sequence, particularly from basic residues, contributes to favorable electrostatic interactions with the negatively charged substrate and cofactor, enhancing catalytic efficiency and product formation.",
+          "reward": 0.3989183206669207,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.6473580162629872,
+          "final_score": 0.3236790081314936,
+          "was_selected": false
+        },
+        {
+          "principle_id": "f8d39e90-a502-41a5-bf66-cf46ddb19a13",
+          "iteration_added": 8,
+          "source": "oracle",
+          "principle_text": "(1) Major premise: Positively charged residues in enzyme active sites can enhance substrate binding through electrostatic interactions, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged Arg10 in the active site forms an electrostatic interaction with the negatively charged indole ring of the substrate, stabilizing the transition state and facilitating the PLP-dependent \u03b2-substitution reaction, as evidenced by the modest but significant improvement in fitness (target = -0.0327).\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near substrates with negatively charged functional groups can enhance catalytic efficiency by stabilizing the transition state.",
+          "hypothesis": "The observed outcome likely stems from the specific sequence feature of a positively charged residue at position 10 (Arg10) within the active site, which enhances electrostatic interactions with the negatively charged indole ring of the substrate. This interaction stabilizes the transition state and facilitates the PLP-dependent \u03b2-substitution reaction. Additionally, the hydrophobic core surrounding Arg10 ensures proper active-site geometry and substrate positioning, contributing to the observed catalytic efficiency. These specific interactions and geometric constraints likely explain the modest but significant improvement in fitness, as reflected by the target value of -0.0327.",
+          "reward": -0.0326953294511433,
+          "exploration_score": 0.0,
+          "exploitation_score": 0.0,
+          "final_score": 0.0,
+          "was_selected": false
+        }
+      ],
+      "best_principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
+      "new_principle_id": "f8d39e90-a502-41a5-bf66-cf46ddb19a13",
+      "new_principle_text": "(1) Major premise: Positively charged residues in enzyme active sites can enhance substrate binding through electrostatic interactions, stabilizing the transition state and improving catalytic efficiency.\n(2) Minor premise: The positively charged Arg10 in the active site forms an electrostatic interaction with the negatively charged indole ring of the substrate, stabilizing the transition state and facilitating the PLP-dependent \u03b2-substitution reaction, as evidenced by the modest but significant improvement in fitness (target = -0.0327).\n(3) Conclusion: In future sequence designs, incorporating positively charged residues near substrates with negatively charged functional groups can enhance catalytic efficiency by stabilizing the transition state.",
+      "new_principle_reward": -0.0326953294511433,
+      "selected_sequences": [
+        "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGANAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR"
+      ],
+      "selected_outcomes": [
+        {
+          "target": -0.0326953294511433
+        }
+      ],
+      "best_train_y": [
+        1.1170866112555011
+      ]
     }
   ],
   "winning_principles": {
     "by_reward": [
+      {
+        "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+        "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+        "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGQVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
+        "reward": 1.1170866112555011,
+        "iteration": 3,
+        "selection_count": 3,
+        "influence": 4.4683464450220045
+      },
+      {
+        "principle_id": "97e246fc-5506-4afc-90ff-f71438e02293",
+        "principle_text": "(1) Major premise: Enzymes often require specific amino acid residues in their active sites to form key interactions such as those in a catalytic triad, which are essential for cofactor binding and activation.\n(2) Minor premise: The conserved aspartate residue (D229) in the sequence forms part of a potential catalytic triad, contributing to PLP cofactor binding and activation, and the high hydrophobic content and positive net charge enhance enzyme stability and catalytic efficiency.\n(3) Conclusion: Future sequence designs should include specific residues forming key interactions like a catalytic triad and ensure adequate hydrophobic core stability and positive net charge to optimize enzyme performance.",
+        "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D229) near the active site, which likely forms a key part of the catalytic triad necessary for PLP cofactor binding and activation. Additionally, the hydrophobic core stability provided by the high hydrophobic content (41.9%) ensures proper folding and conformational rigidity, facilitating optimal substrate binding and catalysis. The positive net charge (+8) across the sequence, particularly from basic residues, contributes to favorable electrostatic interactions with the negatively charged substrate and cofactor, enhancing catalytic efficiency and product formation.",
+        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFYSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
+        "reward": 0.3989183206669207,
+        "iteration": 7,
+        "selection_count": 0,
+        "influence": 0.3989183206669207
+      },
       {
         "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
         "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
@@ -238,26 +1359,6 @@
         "iteration": -1,
         "selection_count": 0,
         "influence": 0.37462989551104564
-      },
-      {
-        "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
-        "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
-        "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
-        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYIFGSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
-        "reward": 0.0020644392730737,
-        "iteration": 1,
-        "selection_count": 0,
-        "influence": 0.0020644392730737
-      },
-      {
-        "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
-        "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
-        "hypothesis": "(domain-knowledge seed principle)",
-        "sequence": "",
-        "reward": 0.0,
-        "iteration": -1,
-        "selection_count": 0,
-        "influence": 0.0
       }
     ],
     "by_selection": [
@@ -268,8 +1369,18 @@
         "sequence": "",
         "reward": 0.0,
         "iteration": -1,
-        "selection_count": 2,
+        "selection_count": 4,
         "influence": 0.0
+      },
+      {
+        "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+        "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+        "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGQVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
+        "reward": 1.1170866112555011,
+        "iteration": 3,
+        "selection_count": 3,
+        "influence": 4.4683464450220045
       },
       {
         "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
@@ -278,7 +1389,7 @@
         "sequence": "",
         "reward": 0.0,
         "iteration": -1,
-        "selection_count": 0,
+        "selection_count": 2,
         "influence": 0.0
       },
       {
@@ -300,19 +1411,29 @@
         "iteration": -1,
         "selection_count": 0,
         "influence": 0.37462989551104564
-      },
-      {
-        "principle_id": "aea4ca42-108c-4735-bbdf-610327508204",
-        "principle_text": "**Major premise**: Hydrogen bonding networks involving specific residues are crucial for PLP cofactor binding in enzymes, which is essential for maintaining high catalytic efficiency.\n\n**Minor premise with evidence**: In a series of enzymes with similar sequences, disrupting hydrogen bonding networks by altering specific residues leads to a reduction in PLP cofactor binding, resulting in decreased catalytic efficiency. For instance, sequences with minor variations in positive-charged residues (e.g., 14.7% to 14.9%) show reduced catalytic efficiency (targets ranging from 0.4350 to 0.0042), while sequences with significant deviations (e.g., 12.6% to 12.9% negative-charged residues) also exhibit reduced catalytic efficiency (targets ranging from 0.0205 to -0.1343).\n\n**Updated predictive conclusion**: Therefore, disrupting hydrogen bonding networks involving specific residues will generally lead to poor PLP cofactor binding and reduced catalytic efficiency, unless the changes do not significantly alter the overall hydrogen bonding pattern or are compensated by other structural elements that maintain cofactor binding.",
-        "hypothesis": "Refined from broad principle: **Mechanism**: The PLP cofactor binds via hydrogen bonding networks involving specific residues. Dis",
-        "sequence": "",
-        "reward": 0.37462989551104564,
-        "iteration": -1,
-        "selection_count": 0,
-        "influence": 0.37462989551104564
       }
     ],
     "by_influence": [
+      {
+        "principle_id": "ab8c83b6-23ab-4d84-b643-a2eb1c4158a8",
+        "principle_text": "(1) Major premise: Enzyme performance can be enhanced by optimizing electrostatic interactions within the active site, which improves substrate binding and catalytic efficiency.\n(2) Minor premise: The substitution of alanine (A) with lysine (K) at position 158 in the enzyme sequence increases the positive charge distribution around the active site, enhancing electrostatic interactions and stabilizing the transition state.\n(3) Conclusion: In future sequence designs, prioritize residues near the active site that can introduce additional positive charges to optimize electrostatic interactions and improve catalytic efficiency.",
+        "hypothesis": "The observed high fitness outcome (target = 1.1171) can be attributed to a specific residue at position 158, where a non-polar alanine (A) has been substituted with a positively charged lysine (K). This change likely enhances the electrostatic interactions within the active site, stabilizing the transition state and improving substrate binding. Additionally, the increased positive charge distribution, particularly around the active site, may facilitate better interaction with the PLP cofactor and the \u03b1-subunit (TrpA), optimizing inter-subunit communication and overall catalytic efficiency. These modifications likely contribute to the observed high yield and enantioselectivity in tryptophan synthesis.",
+        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFGQVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
+        "reward": 1.1170866112555011,
+        "iteration": 3,
+        "selection_count": 3,
+        "influence": 4.4683464450220045
+      },
+      {
+        "principle_id": "97e246fc-5506-4afc-90ff-f71438e02293",
+        "principle_text": "(1) Major premise: Enzymes often require specific amino acid residues in their active sites to form key interactions such as those in a catalytic triad, which are essential for cofactor binding and activation.\n(2) Minor premise: The conserved aspartate residue (D229) in the sequence forms part of a potential catalytic triad, contributing to PLP cofactor binding and activation, and the high hydrophobic content and positive net charge enhance enzyme stability and catalytic efficiency.\n(3) Conclusion: Future sequence designs should include specific residues forming key interactions like a catalytic triad and ensure adequate hydrophobic core stability and positive net charge to optimize enzyme performance.",
+        "hypothesis": "The observed enzyme performance can be attributed to the presence of a conserved aspartate residue (D229) near the active site, which likely forms a key part of the catalytic triad necessary for PLP cofactor binding and activation. Additionally, the hydrophobic core stability provided by the high hydrophobic content (41.9%) ensures proper folding and conformational rigidity, facilitating optimal substrate binding and catalysis. The positive net charge (+8) across the sequence, particularly from basic residues, contributes to favorable electrostatic interactions with the negatively charged substrate and cofactor, enhancing catalytic efficiency and product formation.",
+        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYVFYSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
+        "reward": 0.3989183206669207,
+        "iteration": 7,
+        "selection_count": 0,
+        "influence": 0.3989183206669207
+      },
       {
         "principle_id": "e7b8c5fc-331e-4419-a449-1b94461078ce",
         "principle_text": "**Major premise**: Proper PLP cofactor binding is crucial for enzymatic activity, involving specific hydrogen bond donors and acceptors at the PLP-binding site.\n\n**Minor premise with evidence**: The presence of 14.7% positive-charged and 12.6% negative-charged residues within the first 60 amino acids of the sequence consistently correlates with higher enzymatic activity (target values ranging from 0.0205 to 0.8342), while deviations from these percentages (either higher or lower) generally result in lower or even negative activity (target values ranging from -0.1343 to 0.0042).\n\n**Updated predictive conclusion**: To ensure optimal PLP cofactor binding and maintain high enzymatic activity, the PLP-binding site should contain approximately 14.7% positive-charged and 12.6% negative-charged residues, with minor variations tolerated but not exceeding 15% positive-charged or 13% negative-charged residues.",
@@ -342,26 +1463,6 @@
         "iteration": -1,
         "selection_count": 0,
         "influence": 0.37462989551104564
-      },
-      {
-        "principle_id": "493f5198-f06f-417b-bd53-a9d11f7a757b",
-        "principle_text": "(1) Major premise: Enzyme active sites rely on precise geometric and electrostatic arrangements to maintain optimal cofactor binding and substrate positioning, which are critical for catalytic efficiency.\n(2) Minor premise: The observed low yield is due to a single amino acid substitution that disrupts the hydrogen bonding network around the PLP cofactor, altering the binding affinity and substrate positioning, as evidenced by the high hydrophobic content and key charged residues near the active site.\n(3) Conclusion: In future sequence designs, prioritize maintaining or enhancing the hydrogen bonding network around cofactors and ensure proper positioning of substrates to preserve optimal active site geometry and electrostatic interactions.",
-        "hypothesis": "The observed low yield (target = 0.0021) likely stems from a single amino acid substitution that disrupts the optimal geometry and electrostatic interactions within the active site. Specifically, the substitution may alter the hydrogen bonding network around the PLP cofactor, weakening the binding affinity and stability. Additionally, the changed residue could interfere with the precise positioning of L-serine, necessitating a more strained conformation that reduces the efficiency of the \u03b2-substitution reaction. This hypothesis is supported by the high hydrophobic content and the presence of key charged residues near the active site, which are crucial for both cofactor binding and substrate orientation.",
-        "sequence": "MKGYFGPYGGQYVPEILMGALEELEAAYEGIMKDESFWKEFNDLLRDYAGRPTPLYFARRLSEKYGARVYLKREDLLHTGAHKINNAIGQVLLAKLMGKTRIIAETGAGQHGVATATAAALFGMECVIYMGEEDTIRQKLNVERMKLLGAKVVPVKSGSRTLKDAIDEALRDWITNLQTTYYIFGSVVGPHPYPIIVRNFQKVIGEETKKQIPEKEGRLPDYIVACVSGGSNAAGIFYPFIDSGVKLIGVEAGGEGLETGKHAASLLKGKIGYLHGSKTFVLQDDWGQVQVSHSVSAGLDYSGVGPEHAYWRETGKVLYDAVTDEEALDAFIELSRLEGIIPALESSHALAYLKKINIKGKVVVVNLSGRGDKDLESVLNHPYVRERIR",
-        "reward": 0.0020644392730737,
-        "iteration": 1,
-        "selection_count": 0,
-        "influence": 0.0020644392730737
-      },
-      {
-        "principle_id": "f19e0075-576c-4298-9a4f-71ee055ab7d8",
-        "principle_text": "**Rule**: Ensure proper PLP cofactor binding by maintaining hydrogen bond donors and acceptors at the PLP-binding site.",
-        "hypothesis": "(domain-knowledge seed principle)",
-        "sequence": "",
-        "reward": 0.0,
-        "iteration": -1,
-        "selection_count": 0,
-        "influence": 0.0
       }
     ]
   }

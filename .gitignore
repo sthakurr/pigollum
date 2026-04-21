@@ -5,3 +5,5 @@ src/gollum/__pycache__/
 src/pigollum/bo/__pycache__/
 src/pigollum/principle/__pycache__/
 src/pigollum.egg-info/
+wandb/
+results/
